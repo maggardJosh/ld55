@@ -1,0 +1,64 @@
+# Whenever a tag push matching pattern "v*" then run the job
+on: 
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+env:
+  GODOT_VERSION: 4.2.1
+  EXPORT_NAME: ld55
+
+jobs:
+
+  export-game:
+    name: Game Export
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.2.1
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v1
+        - name: Version
+          run: sed -i 's/v0.0.1/${{ github.ref_name }}/g' project.godot
+        - name: Setup
+          run: |
+            mkdir -v -p ~/.local/share
+            ln -s /root/.local/share/godot ~/.local/share/godot
+            ls ~/.local/share/godot/
+        - name: Install rsync 📚
+          run: |
+            apt-get update && apt-get install -y rsync
+        - name: Build
+          run: |
+            mkdir ./$EXPORT_NAME
+            rsync -Rr --exclude .git . ./$EXPORT_NAME
+            mkdir -v -p build/web
+            mkdir -v -p build/pc
+            cd $EXPORT_NAME
+            godot -v --headless --export-debug "html5" ../build/web/index.html
+            godot -v --headless --export-debug "Windows Desktop" ../build/pc/aarl.exe
+        - name: Butler Upload
+          uses: manleydev/butler-publish-itchio-action@master
+          env:
+            BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+            CHANNEL: web
+            ITCH_GAME: ld55
+            ITCH_USER: maggardJosh
+            PACKAGE: build/web
+            VERSION: ${{ github.ref_name }}
+        - name: Butler Upload
+          uses: manleydev/butler-publish-itchio-action@master
+          env:
+            BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+            CHANNEL: pc
+            ITCH_GAME: ld55
+            ITCH_USER: maggardJosh
+            PACKAGE: build/pc
+            VERSION: ${{ github.ref_name }}
+        - name: Create Release
+          uses: ncipollo/release-action@v1.13.0
+          with:
+            token: ${{ secrets.GITHUBTOKEN }}
+            generateReleaseNotes: true
+            tag: ${{ github.ref_name }}
