@@ -32,6 +32,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water: bool = false
 
 func enter_water():
+	if sprite.scale.x == 1:
+		swim_target_angle = -PI
+		swim_angle = -PI
+	else:
+		swim_target_angle = 0
+		swim_angle = 0
 	animation_player.play("swim")
 	float_component.set_in_water(true)
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -125,7 +131,9 @@ func _physics_process(delta):
 			swim_target_angle = direction_input.angle()
 		swim_angle = rotate_toward(swim_angle, swim_target_angle, swim_rotation_speed * delta)
 		GameEvents.add_debug_obj.emit("swim_angle", swim_angle)
-		var is_flipped = Vector2.RIGHT.dot(Vector2.from_angle(swim_angle)) > 0
+		var currently_flipped = sprite.scale.x == -1
+		var dot_value = Vector2.RIGHT.dot(Vector2.from_angle(swim_angle))
+		var is_flipped = dot_value > 0.1 if not currently_flipped else dot_value > -.1
 		GameEvents.add_debug_obj.emit("is_flipped", is_flipped)
 		sprite.rotation = swim_angle if is_flipped else swim_angle + PI
 		sprite.scale.x = -1 if is_flipped else 1
