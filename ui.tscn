@@ -24,6 +24,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_e1oy5")
+show_time = 4.0
 show_curve = SubResource("Curve_74mx5")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -45,7 +45,7 @@
     "trimmed": true,
     "spriteSourceSize": { "x": 11, "y": 8, "w": 13, "h": 17 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 400
+    "duration": 600
    },
    "player 6.aseprite": {
     "frame": { "x": 2, "y": 23, "w": 17, "h": 22 },
@@ -61,7 +61,7 @@
     "trimmed": true,
     "spriteSourceSize": { "x": 11, "y": 8, "w": 13, "h": 17 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 400
+    "duration": 600
    },
    "player 8.aseprite": {
     "frame": { "x": 69, "y": 26, "w": 17, "h": 22 },

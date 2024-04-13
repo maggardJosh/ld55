@@ -100,7 +100,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_krkgp"]
-length = 1.2
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -108,7 +108,7 @@ tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"times": PackedFloat32Array(0, 0.6, 0.8, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Rect2(2, 47, 17, 21), Rect2(2, 23, 17, 22), Rect2(60, 50, 17, 21), Rect2(69, 26, 17, 22)]
@@ -120,7 +120,7 @@ tracks/1/path = NodePath("Sprite:offset")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"times": PackedFloat32Array(0, 0.6, 0.8, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1.5, 0.5), Vector2(1.5, 2), Vector2(1.5, 0.5), Vector2(1.5, 2)]
@@ -172,13 +172,14 @@ script = ExtResource("4_qxc6h")
 max_oxygen_seconds = 10.0
 oxygen_bar = NodePath("../OxygenBar")
 replenish_rate = 15.0
+death_buffer = 4.5
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("2_7u1va")
-offset = Vector2(1, 0.5)
+offset = Vector2(1.5, 0.5)
 region_enabled = true
-region_rect = Rect2(30, 2, 20, 21)
+region_rect = Rect2(41, 46, 17, 21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
