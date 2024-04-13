@@ -1,12 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=19 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
 [ext_resource type="PackedScene" uid="uid://cjiok5o0qam3w" path="res://ui.tscn" id="3_0cdyn"]
 [ext_resource type="Script" path="res://WaterArea.gd" id="3_58cow"]
 [ext_resource type="PackedScene" uid="uid://b1tw6cgdbe6r7" path="res://biome.tscn" id="5_18gyt"]
+[ext_resource type="PackedScene" uid="uid://bpdlhgmmoy15j" path="res://portal.tscn" id="5_ekxwn"]
 [ext_resource type="Script" path="res://OxygenArea.gd" id="5_ghrk7"]
 [ext_resource type="PackedScene" uid="uid://s6lkr5v083iq" path="res://placeholder_sprite.tscn" id="6_bw7w6"]
+[ext_resource type="Texture2D" uid="uid://b8frlh3w52834" path="res://coral.png" id="8_kvchq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
 size = Vector2(4246, 378)
@@ -86,7 +88,6 @@ shape = SubResource("RectangleShape2D_wau00")
 debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 
 [node name="UI" parent="." instance=ExtResource("3_0cdyn")]
-visible = false
 
 [node name="Water" type="Polygon2D" parent="." node_paths=PackedStringArray("default_biome")]
 z_index = 1
@@ -111,7 +112,12 @@ position = Vector2(-2963, 131)
 color = Color(0.203922, 0.317647, 0.34902, 1)
 polygon = PackedVector2Array(1185, 126, -411, 325, -255, 1751, 1588, 1799, 1921, 892)
 
-[node name="WaterArea" type="Area2D" parent="."]
+[node name="Portal" parent="." instance=ExtResource("5_ekxwn")]
+
+[node name="Areas" type="Node2D" parent="."]
+visible = false
+
+[node name="WaterArea" type="Area2D" parent="Areas"]
 position = Vector2(0, 7)
 gravity_space_override = 2
 gravity_point_center = Vector2(0, 0)
@@ -120,23 +126,23 @@ linear_damp_space_override = 2
 linear_damp = 0.5
 script = ExtResource("3_58cow")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/WaterArea"]
 visible = false
 polygon = PackedVector2Array(4050, 0, -2686, 0, -917, 216, -1210, 1808, -2435, 1808, -2077, 3080, 4967, 3000)
 
-[node name="OxygenArea" type="Area2D" parent="."]
+[node name="OxygenArea" type="Area2D" parent="Areas"]
 script = ExtResource("5_ghrk7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OxygenArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/OxygenArea"]
 position = Vector2(1494.5, -367.5)
 shape = SubResource("RectangleShape2D_8xvdo")
 
-[node name="OxygenArea2" type="Area2D" parent="."]
+[node name="OxygenArea2" type="Area2D" parent="Areas"]
 z_index = 3
 position = Vector2(-2552, 1939)
 script = ExtResource("5_ghrk7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OxygenArea2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/OxygenArea2"]
 position = Vector2(335, -765)
 shape = SubResource("RectangleShape2D_jdpq8")
 
@@ -195,41 +201,57 @@ position = Vector2(782, 191)
 [node name="PlaceholderSprite18" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
 position = Vector2(637, 174)
 
-[node name="StartingIsland" type="StaticBody2D" parent="."]
+[node name="World" type="Node2D" parent="."]
+
+[node name="StartingIsland" type="StaticBody2D" parent="World"]
 position = Vector2(-110, -8)
 
-[node name="Polygon2D" type="Polygon2D" parent="StartingIsland"]
+[node name="Polygon2D" type="Polygon2D" parent="World/StartingIsland"]
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(25, 0, 81, 33, 79, 45, 72, 67, 42, 79, -5, 65, -59, 57, -123, 69, -184, 110, -249, 168, -251, 228, -186, 225, -105, 182, -71, 195, -33, 243, -131, 779, -357, 968, -323, 1727, -908, 2114, -786, 5, -695, -463, -372, -460, -288, -73, -262, -36, -192, -2, -110, -4)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StartingIsland"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/StartingIsland"]
 visible = false
 polygon = PackedVector2Array(25, 0, 81, 33, 79, 45, 72, 67, 42, 79, -5, 65, -59, 57, -123, 69, -184, 110, -249, 168, -251, 228, -186, 225, -105, 182, -71, 195, -33, 243, -131, 779, -357, 968, -323, 1727, -908, 2114, -786, 5, -695, -463, -372, -460, -288, -73, -262, -36, -192, -2, -110, -4)
 
-[node name="MiddleSeparator" type="StaticBody2D" parent="."]
+[node name="MiddleSeparator" type="StaticBody2D" parent="World"]
 position = Vector2(2240, 2)
 
-[node name="Sprite2D" type="Sprite2D" parent="MiddleSeparator"]
+[node name="Sprite2D" type="Sprite2D" parent="World/MiddleSeparator"]
 texture = SubResource("PlaceholderTexture2D_mk1d2")
 
-[node name="Polygon2D" type="Polygon2D" parent="MiddleSeparator"]
+[node name="Polygon2D" type="Polygon2D" parent="World/MiddleSeparator"]
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(-677, -104, -783, -1932, -1047, -1962, -1017, -112, -1387, 107, -1349, 560, -1047, 832, -919, 1157, -889, 1504, -972, 1814, -1221, 2108, -1160, 2350, -934, 2463, -405, 2342, 55, 2123, 86, 1610, -88, 1421, -315, 1270, -428, 968, -443, 628, -405, 432, -473, 130)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MiddleSeparator"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/MiddleSeparator"]
 visible = false
 polygon = PackedVector2Array(-677, -104, -783, -1932, -1047, -1962, -1017, -112, -1387, 107, -1349, 560, -1047, 832, -919, 1157, -889, 1504, -972, 1814, -1221, 2108, -1160, 2350, -934, 2463, -405, 2342, 55, 2123, 86, 1610, -88, 1421, -315, 1270, -428, 968, -443, 628, -405, 432, -473, 130)
 
-[node name="OOB" type="StaticBody2D" parent="."]
+[node name="OOB" type="StaticBody2D" parent="World"]
 position = Vector2(-1647, 2848)
 
-[node name="Polygon2D" type="Polygon2D" parent="OOB"]
+[node name="Polygon2D" type="Polygon2D" parent="World/OOB"]
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(808, -4029, 646, -752, -112, -636, -399, -924, 456, -1587, 365, -2017, -70, -2215, -769, -2296, -1374, -2019, -1447, -1203, -855, -1116, -598.32, -912.526, -472, -557, 727, -25, 2729, 11, 6109, -117, 5384, -2715, 6305, -5010, 10941, 170, 5928, 2662, -1246, 2435, -2484, -4436)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OOB"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/OOB"]
 visible = false
 polygon = PackedVector2Array(808, -4029, 646, -752, -112, -636, -399, -924, 456, -1587, 365, -2017, -70, -2215, -769, -2296, -1374, -2019, -1447, -1203, -855, -1116, -598.32, -912.526, -472, -557, 727, -25, 2729, 11, 6109, -117, 5384, -2715, 6305, -5010, 10941, 170, 5928, 2662, -1246, 2435, -2484, -4436)
 
-[connection signal="body_entered" from="WaterArea" to="WaterArea" method="_on_body_entered"]
-[connection signal="body_exited" from="WaterArea" to="WaterArea" method="_on_body_exited"]
+[node name="Coral" type="Sprite2D" parent="."]
+position = Vector2(-301, 212)
+texture = ExtResource("8_kvchq")
+
+[node name="Coral2" type="Sprite2D" parent="."]
+position = Vector2(-356, 216)
+rotation = 1.0472
+texture = ExtResource("8_kvchq")
+
+[node name="Coral3" type="Sprite2D" parent="."]
+position = Vector2(-354, 160)
+rotation = 1.89322
+texture = ExtResource("8_kvchq")
+
+[connection signal="body_entered" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_exited"]

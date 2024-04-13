@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpdlhgmmoy15j"]
+
+[ext_resource type="Texture2D" uid="uid://jhqp07488shd" path="res://portal.png" id="1_ouc00"]
+
+[sub_resource type="Animation" id="Animation_tfgl8"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(2, 2, 27, 33), Rect2(60, 2, 23, 33), Rect2(31, 37, 23, 33), Rect2(31, 2, 27, 33), Rect2(2, 37, 27, 31)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 1.5), Vector2(0.5, 1.5), Vector2(0.5, 1.5), Vector2(0.5, 1.5), Vector2(0.5, 2.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_83tn8"]
+_data = {
+"idle": SubResource("Animation_tfgl8")
+}
+
+[node name="Portal" type="Node2D"]
+z_index = -1
+position = Vector2(-222, -26)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ouc00")
+offset = Vector2(0.5, 1.5)
+region_enabled = true
+region_rect = Rect2(2, 2, 27, 33)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_83tn8")
+}
+autoplay = "idle"
