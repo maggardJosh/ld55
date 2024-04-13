@@ -15,6 +15,7 @@ _data = [Vector2(0, 0), 0.0, 0.76295, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="UI" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_xy1r8")
 
 [node name="DeathRect" type="ColorRect" parent="."]
@@ -87,7 +88,6 @@ columns = 5
 
 [node name="InventorySpace" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
 layout_mode = 2
-tooltip_text = "Click to drop"
 
 [node name="InventorySpace2" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
 layout_mode = 2
@@ -118,6 +118,7 @@ layout_mode = 2
 
 [node name="OxygenUI" type="Control" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("9_qgeul")
 
 [node name="Control" type="Control" parent="MarginContainer/OxygenUI"]
