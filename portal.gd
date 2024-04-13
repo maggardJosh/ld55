@@ -10,6 +10,8 @@ var can_summon:bool = false
 @onready var upgrade_title: Label = %UpgradeTitle
 @onready var upgrade_image: TextureRect = %UpgradeImage
 @onready var requirements_h_box: HBoxContainer = %RequirementsHBox
+@onready var upgrade_description: Label = %UpgradeDescription
+@onready var requires: Label = %Requires
 
 func _ready():
 	ui.visible = false
@@ -33,16 +35,21 @@ func summon():
 func refresh_upgrade_ui():
 	if current_upgrade == null:
 		upgrade_title.text = "Thanks for playing!"
+		upgrade_description.text = "Made for LD55 @MaggardJosh"
 		upgrade_image.texture = null
+		requires.visible = false
 		for child in requirements_h_box.get_children():
 			child.queue_free()
 		return
 	upgrade_title.text = current_upgrade.title
+	upgrade_description.text = current_upgrade.description
 	upgrade_image.texture = current_upgrade.image
 	for child in requirements_h_box.get_children():
 		child.queue_free()
 	for reqItem in current_upgrade.requirements:
 		var trect: TextureRect = TextureRect.new()
+		trect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+		trect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 		trect.texture = reqItem.inventory_image
 		requirements_h_box.add_child(trect)
 

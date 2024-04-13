@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpdlhgmmoy15j"]
+[gd_scene load_steps=10 format=3 uid="uid://bpdlhgmmoy15j"]
 
 [ext_resource type="Script" path="res://portal.gd" id="1_gin5e"]
 [ext_resource type="Texture2D" uid="uid://jhqp07488shd" path="res://portal.png" id="1_ouc00"]
 [ext_resource type="Resource" uid="uid://d14afxbanphdh" path="res://items/upgrades/otherwordlyTank.tres" id="2_8o5r2"]
 [ext_resource type="Texture2D" uid="uid://de5frxv42b7n7" path="res://addons/aseprite_importer/interface/icons/light_icon.png" id="2_jao6e"]
+[ext_resource type="Texture2D" uid="uid://b8frlh3w52834" path="res://items/coral.png" id="2_ovb61"]
 [ext_resource type="Texture2D" uid="uid://bbiyi08usjejr" path="res://e_key_prompt.png" id="5_25y0e"]
 
 [sub_resource type="Animation" id="Animation_tfgl8"]
@@ -72,19 +73,37 @@ color = Color(0, 0, 0, 0.65098)
 [node name="UpgradeTitle" type="Label" parent="UI"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -43.0
-offset_top = 12.0
-offset_right = 49.0
-offset_bottom = 25.0
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = -7.0
 grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Otherworldly O2 tank"
+horizontal_alignment = 1
+
+[node name="UpgradeDescription" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -8.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "get some more 02 bruh"
+horizontal_alignment = 1
 
 [node name="Requires" type="Label" parent="UI"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -92,14 +111,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -17.0
-offset_top = -6.5
+offset_top = 17.0
 offset_right = 17.0
-offset_bottom = 6.5
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Requires"
+text = "Summon Recipe"
 
 [node name="UpgradeImage" type="TextureRect" parent="UI"]
 unique_name_in_owner = true
@@ -121,11 +140,30 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
-offset_bottom = -5.0
+offset_top = -30.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = -3
 alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/RequirementsHBox"]
+layout_mode = 2
+texture = ExtResource("2_ovb61")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="UI/RequirementsHBox"]
+layout_mode = 2
+texture = ExtResource("2_ovb61")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="UI/RequirementsHBox"]
+layout_mode = 2
+texture = ExtResource("2_ovb61")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="e_prompt" type="TextureRect" parent="UI"]
 unique_name_in_owner = true
@@ -154,6 +192,7 @@ offset_bottom = 14.0
 text = "Summon"
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 

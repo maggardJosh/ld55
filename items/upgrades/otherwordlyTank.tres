@@ -11,4 +11,4 @@ upgrade_value = 30.0
 image = ExtResource("1_fdteu")
 requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("2_mlg7c"), ExtResource("2_mlg7c"), ExtResource("2_mlg7c")])
 title = "Otherwordly O2 Tank"
-description = "Increase available oxygen"
+description = "Increase O2 to 30 seconds"
