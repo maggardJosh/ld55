@@ -1,4 +1,7 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b57f8txs2e26j"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b57f8txs2e26j"]
+
+[ext_resource type="FontFile" uid="uid://dqqeu7lhklcon" path="res://munro_small.ttf" id="1_dd7y8"]
+[ext_resource type="FontFile" uid="uid://b2tsdilnsv1tr" path="res://munro.ttf" id="2_7gxjs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hq3fr"]
 bg_color = Color(0.247059, 0.247059, 0.454902, 1)
@@ -13,6 +16,16 @@ border_color = Color(0.247059, 0.247059, 0.454902, 1)
 
 [resource]
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/constants/outline_size = 2
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 3
+Label/constants/shadow_outline_size = 2
+Label/font_sizes/font_size = 10
+Label/fonts/font = ExtResource("1_dd7y8")
+LargeLabel/base_type = &"Label"
+LargeLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+LargeLabel/constants/outline_size = 3
+LargeLabel/constants/shadow_outline_size = 1
+LargeLabel/font_sizes/font_size = 16
+LargeLabel/fonts/font = ExtResource("2_7gxjs")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_hq3fr")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_pan0g")

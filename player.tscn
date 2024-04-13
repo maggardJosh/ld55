@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://mnaxd41w2loc"]
+[gd_scene load_steps=17 format=3 uid="uid://mnaxd41w2loc"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b3cg5"]
 [ext_resource type="Texture2D" uid="uid://c4etptninfkid" path="res://player.png" id="2_7u1va"]
+[ext_resource type="Script" path="res://PickupComponent.gd" id="2_588dk"]
 [ext_resource type="Script" path="res://OxygenBar.gd" id="2_ccr6u"]
 [ext_resource type="PackedScene" uid="uid://c515veavly2w0" path="res://float_component.tscn" id="3_a6bku"]
 [ext_resource type="Script" path="res://OxygenComponent.gd" id="4_qxc6h"]
+[ext_resource type="Texture2D" uid="uid://bbiyi08usjejr" path="res://e_key_prompt.png" id="6_d0b6w"]
+[ext_resource type="Script" path="res://InventoryComponent.gd" id="6_ln2tb"]
 
 [sub_resource type="Curve" id="Curve_b2lt3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -134,8 +137,9 @@ _data = {
 "walk": SubResource("Animation_dnhxd")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(-112, -37)
+collision_layer = 2
 wall_min_slide_angle = 0.0174533
 floor_constant_speed = true
 floor_max_angle = 0.872665
@@ -151,6 +155,28 @@ water_accel = 250.0
 water_speed = 150.0
 water_friction_speed = 150.0
 metadata/_edit_horizontal_guides_ = [-29.0]
+
+[node name="PickupComponent" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource("2_588dk")
+
+[node name="PickupPrompt" type="Node2D" parent="PickupComponent"]
+position = Vector2(-15, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="PickupComponent/PickupPrompt"]
+position = Vector2(0, -25)
+texture = ExtResource("6_d0b6w")
+
+[node name="Label" type="Label" parent="PickupComponent/PickupPrompt/Sprite2D"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -19.0
+offset_right = 61.0
+grow_vertical = 2
+text = "pickup"
+vertical_alignment = 1
 
 [node name="OxygenBar" type="ProgressBar" parent="."]
 z_index = 1
@@ -173,6 +199,9 @@ max_oxygen_seconds = 10.0
 oxygen_bar = NodePath("../OxygenBar")
 replenish_rate = 15.0
 death_buffer = 4.5
+
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("6_ln2tb")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true

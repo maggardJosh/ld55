@@ -26,10 +26,18 @@ extends CharacterBody2D
 @onready var float_component: FloatComponent = $FloatComponent
 @onready var oxygen_component: OxygenComponent = $OxygenComponent
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var pickup_component: PickupComponent = $PickupComponent
+@onready var inventory_component: InventoryComponent = $InventoryComponent
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water: bool = false
+
+func pickup_update_range(in_range: bool, pickup: ItemPickup):
+	if in_range:
+		pickup_component.enter_range_pickup(pickup)
+	else:
+		pickup_component.exit_range_pickup(pickup)
 
 func enter_water():
 	if sprite.scale.x == 1:
@@ -69,6 +77,11 @@ func set_in_oxygen(is_in_oxygen):
 		GameEvents.player_enter_air.emit()
 	oxygen_component.set_is_in_water(not is_in_oxygen)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		pickup_component.try_pickup(inventory_component)
+		
+		
 var swim_angle: float = 0
 var swim_target_angle: float =0
 func _physics_process(delta):

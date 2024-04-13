@@ -12,7 +12,6 @@ _data = [Vector2(0, 0), 0.0, 0.76295, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="UI" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_xy1r8")
 
 [node name="DeathRect" type="ColorRect" parent="."]
@@ -56,5 +55,6 @@ label_scene = ExtResource("3_o0xii")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme_type_variation = &"LargeLabel"
 text = "v0.0.0"
 script = ExtResource("4_5o7bk")
