@@ -39,11 +39,13 @@ size = Vector2(80, 16)
 
 [node name="Main" type="Node2D"]
 
+[node name="UI" parent="." instance=ExtResource("3_0cdyn")]
+
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-124, -22)
+position = Vector2(-213, -28)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rotku")]
-position = Vector2(-124, -21)
+position = Vector2(-212, -30)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Biomes" type="Node2D" parent="."]
@@ -86,8 +88,6 @@ water_color = Color(0.054902, 0.403922, 0.352941, 0.662745)
 position = Vector2(-226.5, 37)
 shape = SubResource("RectangleShape2D_wau00")
 debug_color = Color(0.666667, 0.933333, 1, 0.419608)
-
-[node name="UI" parent="." instance=ExtResource("3_0cdyn")]
 
 [node name="Water" type="Polygon2D" parent="." node_paths=PackedStringArray("default_biome")]
 z_index = 1
@@ -250,6 +250,28 @@ rotation = 0.265163
 
 [node name="Coral3" parent="." instance=ExtResource("9_6hed1")]
 position = Vector2(-356, 187)
+rotation = 1.57079
+
+[node name="Coral4" parent="." instance=ExtResource("9_6hed1")]
+position = Vector2(-112, -17)
+
+[node name="Coral5" parent="." instance=ExtResource("9_6hed1")]
+position = Vector2(-148, -16)
+rotation = 0.265163
+
+[node name="Coral6" parent="." instance=ExtResource("9_6hed1")]
+position = Vector2(-169, -13)
+rotation = 1.57079
+
+[node name="Coral7" parent="." instance=ExtResource("9_6hed1")]
+position = Vector2(-97, -15.1831)
+
+[node name="Coral8" parent="." instance=ExtResource("9_6hed1")]
+position = Vector2(-133, -14.1831)
+rotation = 0.265163
+
+[node name="Coral9" parent="." instance=ExtResource("9_6hed1")]
+position = Vector2(-154, -11.1831)
 rotation = 1.57079
 
 [connection signal="body_entered" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_entered"]

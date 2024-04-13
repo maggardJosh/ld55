@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjiok5o0qam3w"]
+[gd_scene load_steps=10 format=3 uid="uid://cjiok5o0qam3w"]
 
 [ext_resource type="Script" path="res://DeathRect.gd" id="1_e1oy5"]
 [ext_resource type="Script" path="res://DebugLabel.gd" id="1_f57q1"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://DebugMessageContainer.gd" id="2_n2sie"]
 [ext_resource type="PackedScene" uid="uid://b5jq1hyurpv6l" path="res://debug_messages.tscn" id="3_o0xii"]
 [ext_resource type="Script" path="res://VersionLabel.gd" id="4_5o7bk"]
+[ext_resource type="Script" path="res://InventoryUI.gd" id="7_4mbgn"]
+[ext_resource type="PackedScene" uid="uid://cgb5nkn0locyr" path="res://inventory_space.tscn" id="8_bjuti"]
 
 [sub_resource type="Curve" id="Curve_74mx5"]
 _data = [Vector2(0, 0), 0.0, 0.76295, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -21,7 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 script = ExtResource("1_e1oy5")
 show_time = 4.0
 show_curve = SubResource("Curve_74mx5")
@@ -37,13 +39,6 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="DebugLabel" type="Label" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Test"
-script = ExtResource("1_f57q1")
-
 [node name="DebugMessagesContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -58,3 +53,59 @@ size_flags_vertical = 8
 theme_type_variation = &"LargeLabel"
 text = "v0.0.0"
 script = ExtResource("4_5o7bk")
+
+[node name="DebugUI" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="DebugLabel" type="Label" parent="MarginContainer/DebugUI"]
+layout_mode = 2
+offset_top = 87.0
+offset_right = 16.0
+offset_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Test"
+script = ExtResource("1_f57q1")
+
+[node name="InventoryUI" type="Control" parent="MarginContainer"]
+layout_mode = 2
+script = ExtResource("7_4mbgn")
+
+[node name="InventoryGridContainer" type="GridContainer" parent="MarginContainer/InventoryUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 5
+
+[node name="InventorySpace" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace2" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace3" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace4" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace5" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace6" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace7" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace8" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace9" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace10" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2

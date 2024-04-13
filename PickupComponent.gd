@@ -4,9 +4,15 @@ extends Node2D
 var items_in_range: Array[ItemPickup]
 var player: Player
 
+@onready var pickup_label: Label = %PickupLabel
+
 func _ready():
 	visible = false
 	player = get_tree().get_first_node_in_group("player")
+	GameEvents.inventory_full_changed.connect(_on_inventory_full_changed)
+
+func _on_inventory_full_changed(is_full: bool):
+	pickup_label.text = "pickup" if not is_full	 else "inventory full"
 
 func enter_range_pickup(pickup: ItemPickup):
 	items_in_range.append(pickup)
