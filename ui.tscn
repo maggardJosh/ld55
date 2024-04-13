@@ -82,6 +82,7 @@ columns = 5
 
 [node name="InventorySpace" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
 layout_mode = 2
+tooltip_text = "Click to drop"
 
 [node name="InventorySpace2" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
 layout_mode = 2

@@ -1,21 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba5qec1sf8vey"]
+[gd_scene load_steps=6 format=3 uid="uid://ba5qec1sf8vey"]
 
 [ext_resource type="Texture2D" uid="uid://b8frlh3w52834" path="res://items/coral.png" id="1_0bl5f"]
 [ext_resource type="Script" path="res://items/ItemPickup.gd" id="2_caifj"]
 [ext_resource type="Resource" uid="uid://dcorhwv3uco24" path="res://items/coral.tres" id="3_601cy"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4m02g"]
+radius = 4.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wbb2"]
 radius = 16.0312
 
-[node name="Coral" type="Sprite2D"]
-position = Vector2(-301, 212)
-texture = ExtResource("1_0bl5f")
+[node name="Coral" type="RigidBody2D"]
+collision_layer = 4
+mass = 0.3
+freeze = true
+angular_damp = 11.312
 script = ExtResource("2_caifj")
 inventory_item = ExtResource("3_601cy")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_4m02g")
+
+[node name="Coral" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("1_0bl5f")
+
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -3)
 collision_layer = 0
 collision_mask = 2
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+linear_damp = 17.195
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 3)

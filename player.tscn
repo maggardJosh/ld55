@@ -203,6 +203,7 @@ death_buffer = 4.5
 
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("6_ln2tb")
+max_inventory_size = 4
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true

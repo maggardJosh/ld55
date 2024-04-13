@@ -12,7 +12,11 @@ func _ready() -> void:
 		items.append(null)
 	GameEvents.inventory_settings_updated.emit(max_inventory_size)
 	emit_inventory_signals()
+	GameEvents.drop_item_index.connect(_on_drop_item_index)
 
+func _on_drop_item_index(item_index: int):
+	items[item_index] = null
+	emit_inventory_signals()
 	
 func try_pickup(item_pickup: ItemPickup):
 	for i in max_inventory_size:

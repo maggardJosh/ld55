@@ -8,6 +8,7 @@ signal player_enter_air()
 signal inventory_updated(inventory_items: Array[InventoryItem], max_inventory_size: int)
 signal inventory_settings_updated(inventory_size: int)
 signal inventory_full_changed(is_full: bool)
+signal drop_item_index(index: int)
 
 func add_message_emit(message):
 	add_message.emit(message)

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bpdlhgmmoy15j" path="res://portal.tscn" id="5_ekxwn"]
 [ext_resource type="Script" path="res://OxygenArea.gd" id="5_ghrk7"]
 [ext_resource type="PackedScene" uid="uid://s6lkr5v083iq" path="res://placeholder_sprite.tscn" id="6_bw7w6"]
-[ext_resource type="PackedScene" uid="uid://ba5qec1sf8vey" path="res://coral_pickup.tscn" id="9_6hed1"]
+[ext_resource type="PackedScene" uid="uid://ba5qec1sf8vey" path="res://items/coral_pickup.tscn" id="9_6hed1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
 size = Vector2(4246, 378)
@@ -40,6 +40,7 @@ size = Vector2(80, 16)
 [node name="Main" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource("3_0cdyn")]
+visible = false
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-213, -28)
@@ -119,12 +120,12 @@ visible = false
 
 [node name="WaterArea" type="Area2D" parent="Areas"]
 position = Vector2(0, 7)
-collision_mask = 2
-gravity_space_override = 2
-gravity_point_center = Vector2(0, 0)
-gravity_direction = Vector2(0, 0)
-linear_damp_space_override = 2
-linear_damp = 0.5
+collision_mask = 6
+gravity_space_override = 3
+gravity_point_center = Vector2(0, 0.2)
+gravity_direction = Vector2(0, 0.2)
+linear_damp_space_override = 3
+linear_damp = 7.0
 script = ExtResource("3_58cow")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/WaterArea"]
@@ -243,6 +244,7 @@ visible = false
 polygon = PackedVector2Array(808, -4029, 646, -752, -112, -636, -399, -924, 456, -1587, 365, -2017, -70, -2215, -769, -2296, -1374, -2019, -1447, -1203, -855, -1116, -598.32, -912.526, -472, -557, 727, -25, 2729, 11, 6109, -117, 5384, -2715, 6305, -5010, 10941, 170, 5928, 2662, -1246, 2435, -2484, -4436)
 
 [node name="Coral" parent="." instance=ExtResource("9_6hed1")]
+position = Vector2(19, -83)
 
 [node name="Coral2" parent="." instance=ExtResource("9_6hed1")]
 position = Vector2(-358, 215)
@@ -267,8 +269,9 @@ rotation = 1.57079
 position = Vector2(-97, -15.1831)
 
 [node name="Coral8" parent="." instance=ExtResource("9_6hed1")]
-position = Vector2(-133, -14.1831)
+position = Vector2(-92, -73)
 rotation = 0.265163
+freeze = false
 
 [node name="Coral9" parent="." instance=ExtResource("9_6hed1")]
 position = Vector2(-154, -11.1831)
