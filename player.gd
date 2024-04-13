@@ -30,14 +30,17 @@ func enter_water():
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	floor_constant_speed = false
 	is_in_water = true
-	velocity.y *= .5
+	if Input.is_action_pressed("move_up"):
+		velocity.y *= .1
 
 func exit_water():
 	float_component.set_in_water(false)
 	motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
 	floor_constant_speed = true
 	is_in_water = false
-	velocity.y *= 2
+	if velocity.y > -20:
+		velocity.y = 0
+	
 	
 func set_in_oxygen(is_in_oxygen):
 	oxygen_component.set_is_in_water(not is_in_oxygen)

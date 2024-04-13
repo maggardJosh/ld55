@@ -52,6 +52,7 @@ appear_curve = SubResource("Curve_7b2ex")
 
 [node name="OxygenComponent" type="Node" parent="." node_paths=PackedStringArray("oxygen_bar")]
 script = ExtResource("4_qxc6h")
+max_oxygen_seconds = 10.0
 oxygen_bar = NodePath("../OxygenBar")
 replenish_rate = 15.0
 

@@ -30,7 +30,7 @@ point_count = 2
 size = Vector2(5029, 735)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdpq8"]
-size = Vector2(1969, 1262)
+size = Vector2(2186, 1266)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mk1d2"]
 size = Vector2(80, 16)
@@ -38,7 +38,7 @@ size = Vector2(80, 16)
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_rotku")]
-position = Vector2(169, -104)
+position = Vector2(-74, -109)
 
 [node name="Biomes" type="Node2D" parent="."]
 visible = false
@@ -104,7 +104,7 @@ z_index = -3
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-2963, 131)
 color = Color(0.203922, 0.317647, 0.34902, 1)
-polygon = PackedVector2Array(1185, 126, 197, 630, 358, 1849, 1588, 1799, 1921, 892)
+polygon = PackedVector2Array(1185, 126, -411, 325, -255, 1751, 1588, 1799, 1921, 892)
 
 [node name="WaterArea" type="Area2D" parent="."]
 position = Vector2(0, 7)
@@ -116,6 +116,7 @@ linear_damp = 0.5
 script = ExtResource("3_58cow")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterArea"]
+visible = false
 polygon = PackedVector2Array(4050, 0, -2686, 0, -917, 216, -1210, 1808, -2435, 1808, -2077, 3080, 4967, 3000)
 
 [node name="OxygenArea" type="Area2D" parent="."]
@@ -131,7 +132,7 @@ position = Vector2(-2552, 1939)
 script = ExtResource("5_ghrk7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OxygenArea2"]
-position = Vector2(443.5, -767)
+position = Vector2(335, -765)
 shape = SubResource("RectangleShape2D_jdpq8")
 
 [node name="Placeholder Sprites" type="Node2D" parent="."]
@@ -219,11 +220,11 @@ position = Vector2(-1647, 2848)
 
 [node name="Polygon2D" type="Polygon2D" parent="OOB"]
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(808, -4029, 646, -752, -112, -636, -399, -924, 456, -1587, 365, -2017, -70, -2215, -676, -2090, -693, -1179, -472, -557, 727, -25, 2729, 11, 6109, -117, 5384, -2715, 6305, -5010, 10941, 170, 5928, 2662, -1246, 2435, -2484, -4436)
+polygon = PackedVector2Array(808, -4029, 646, -752, -112, -636, -399, -924, 456, -1587, 365, -2017, -70, -2215, -769, -2296, -1374, -2019, -1447, -1203, -855, -1116, -598.32, -912.526, -472, -557, 727, -25, 2729, 11, 6109, -117, 5384, -2715, 6305, -5010, 10941, 170, 5928, 2662, -1246, 2435, -2484, -4436)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OOB"]
 visible = false
-polygon = PackedVector2Array(808, -4029, 646, -752, -112, -636, -399, -924, 456, -1587, 365, -2017, -70, -2215, -676, -2090, -693, -1179, -472, -557, 727, -25, 2729, 11, 6109, -117, 5384, -2715, 6305, -5010, 10941, 170, 5928, 2662, -1246, 2435, -2484, -4436)
+polygon = PackedVector2Array(808, -4029, 646, -752, -112, -636, -399, -924, 456, -1587, 365, -2017, -70, -2215, -769, -2296, -1374, -2019, -1447, -1203, -855, -1116, -598.32, -912.526, -472, -557, 727, -25, 2729, 11, 6109, -117, 5384, -2715, 6305, -5010, 10941, 170, 5928, 2662, -1246, 2435, -2484, -4436)
 
 [connection signal="body_entered" from="WaterArea" to="WaterArea" method="_on_body_entered"]
 [connection signal="body_exited" from="WaterArea" to="WaterArea" method="_on_body_exited"]
