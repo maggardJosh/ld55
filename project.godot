@@ -23,8 +23,8 @@ Recorder="res://utils/Recorder.gd"
 
 [display]
 
-window/size/viewport_width=854
-window/size/viewport_height=480
+window/size/viewport_width=960
+window/size/viewport_height=540
 window/stretch/mode="canvas_items"
 
 [gui]
