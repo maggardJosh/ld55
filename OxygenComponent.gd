@@ -26,5 +26,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		if count >= 0:
 			count = clamp(count - replenish_rate * delta, 0, max_oxygen_seconds)
-	oxygen_bar.value = max_oxygen_seconds - count
 	oxygen_bar.max_value = max_oxygen_seconds
+	oxygen_bar.value = max_oxygen_seconds - count

@@ -86,6 +86,7 @@ shape = SubResource("RectangleShape2D_wau00")
 debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 
 [node name="UI" parent="." instance=ExtResource("3_0cdyn")]
+visible = false
 
 [node name="Water" type="Polygon2D" parent="." node_paths=PackedStringArray("default_biome")]
 z_index = 1

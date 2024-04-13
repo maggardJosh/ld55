@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjiok5o0qam3w"]
+[gd_scene load_steps=8 format=3 uid="uid://cjiok5o0qam3w"]
 
 [ext_resource type="Script" path="res://DeathRect.gd" id="1_e1oy5"]
 [ext_resource type="Script" path="res://DebugLabel.gd" id="1_f57q1"]
+[ext_resource type="Script" path="res://ui.gd" id="1_xy1r8"]
 [ext_resource type="Script" path="res://DebugMessageContainer.gd" id="2_n2sie"]
 [ext_resource type="PackedScene" uid="uid://b5jq1hyurpv6l" path="res://debug_messages.tscn" id="3_o0xii"]
 [ext_resource type="Script" path="res://VersionLabel.gd" id="4_5o7bk"]
@@ -11,6 +12,8 @@ _data = [Vector2(0, 0), 0.0, 0.76295, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="UI" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_xy1r8")
 
 [node name="DeathRect" type="ColorRect" parent="."]
 anchors_preset = 15

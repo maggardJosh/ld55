@@ -38,7 +38,6 @@ func enter_water():
 	else:
 		swim_target_angle = 0
 		swim_angle = 0
-	animation_player.play("swim")
 	float_component.set_in_water(true)
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	floor_constant_speed = false
@@ -89,7 +88,10 @@ func _physics_process(delta):
 			if velocity.y > max_fall_speed:
 				velocity.y = max_fall_speed
 		else:
-			animation_player.play("idle")
+			if direction_input:
+				animation_player.play("walk")
+			else:
+				animation_player.play("idle")
 
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_vel
@@ -129,7 +131,9 @@ func _physics_process(delta):
 			velocity.y = move_toward(velocity.y, 0, water_friction_speed * delta)
 		if direction_input:
 			swim_target_angle = direction_input.angle()
-		swim_angle = rotate_toward(swim_angle, swim_target_angle, swim_rotation_speed * delta)
+		else:
+			swim_target_angle =  0 if sprite.scale.x == -1 else PI
+		swim_angle = lerp_angle(swim_angle, swim_target_angle, .1)
 		GameEvents.add_debug_obj.emit("swim_angle", swim_angle)
 		var currently_flipped = sprite.scale.x == -1
 		var dot_value = Vector2.RIGHT.dot(Vector2.from_angle(swim_angle))
@@ -137,6 +141,10 @@ func _physics_process(delta):
 		GameEvents.add_debug_obj.emit("is_flipped", is_flipped)
 		sprite.rotation = swim_angle if is_flipped else swim_angle + PI
 		sprite.scale.x = -1 if is_flipped else 1
+		if direction_input:
+			animation_player.play("swim")
+		else:
+			animation_player.play("swim_idle")
 		
 		
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mnaxd41w2loc"]
+[gd_scene load_steps=14 format=3 uid="uid://mnaxd41w2loc"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b3cg5"]
 [ext_resource type="Texture2D" uid="uid://c4etptninfkid" path="res://player.png" id="2_7u1va"]
@@ -29,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(30, 2, 20, 21)]
+"values": [Rect2(41, 46, 17, 21)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -41,11 +41,11 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 0.5)]
+"values": [Vector2(1.5, 0.5)]
 }
 
 [sub_resource type="Animation" id="Animation_vou52"]
-length = 0.1
+length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -53,10 +53,10 @@ tracks/0/path = NodePath("Sprite:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.45, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Rect2(2, 2, 26, 21)]
+"values": [Rect2(26, 22, 22, 18), Rect2(26, 2, 23, 18), Rect2(2, 2, 22, 19), Rect2(51, 2, 23, 18)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -65,16 +65,73 @@ tracks/1/path = NodePath("Sprite:offset")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.45, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(3, 0.5)]
+"values": [Vector2(2, -1), Vector2(2.5, 0), Vector2(2, -0.5), Vector2(2.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dnhxd"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(77, 2, 17, 22), Rect2(21, 64, 17, 20), Rect2(50, 22, 17, 22), Rect2(21, 42, 18, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 1), Vector2(0.5, 1), Vector2(0.5, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_krkgp"]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(2, 47, 17, 21), Rect2(2, 23, 17, 22), Rect2(60, 50, 17, 21), Rect2(69, 26, 17, 22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 0.5), Vector2(1.5, 2), Vector2(1.5, 0.5), Vector2(1.5, 2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_781fc"]
 _data = {
 "idle": SubResource("Animation_woum7"),
-"swim": SubResource("Animation_vou52")
+"swim": SubResource("Animation_vou52"),
+"swim_idle": SubResource("Animation_krkgp"),
+"walk": SubResource("Animation_dnhxd")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -144,3 +201,4 @@ float_target = NodePath("../Sprite")
 libraries = {
 "": SubResource("AnimationLibrary_781fc")
 }
+autoplay = "idle"
