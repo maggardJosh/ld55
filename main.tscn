@@ -1,12 +1,72 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=7 format=3 uid="uid://c1e2254bs6m3e"]
 
-[ext_resource type="Texture2D" uid="uid://b060e3ix7lvyg" path="res://icon.svg" id="1_m8stv"]
+[ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
+[ext_resource type="PackedScene" uid="uid://cjiok5o0qam3w" path="res://ui.tscn" id="3_0cdyn"]
+[ext_resource type="Script" path="res://WaterArea.gd" id="3_58cow"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sylxd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mb8yo"]
+size = Vector2(800, 300)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t5me4"]
+size = Vector2(16, 16)
 
 [node name="Main" type="Node2D"]
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Water" type="Polygon2D" parent="."]
+modulate = Color(0.356863, 0.431373, 0.882353, 0.498039)
+z_index = 1
+material = SubResource("ShaderMaterial_sylxd")
+color = Color(0.356863, 0.431373, 0.882353, 1)
+polygon = PackedVector2Array(4050, 0, -2686, 0, -3110, 3000, 4967, 3000)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("1_m8stv")
+[node name="WaterBG" type="Polygon2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_sylxd")
+color = Color(0.356863, 0.431373, 0.882353, 1)
+polygon = PackedVector2Array(4050, 0, -2686, 0, -3110, 3000, 4967, 3000)
 
-[node name="Camera2D" type="Camera2D" parent="Node2D"]
+[node name="Player" parent="." instance=ExtResource("1_rotku")]
+position = Vector2(-93, -40)
+
+[node name="WaterArea" type="Area2D" parent="."]
+gravity_space_override = 2
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+linear_damp_space_override = 2
+linear_damp = 0.5
+script = ExtResource("3_58cow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
+position = Vector2(0, 150)
+shape = SubResource("RectangleShape2D_mb8yo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-234, 25)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-209, 72)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(2, 60)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-3, 12)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(-285, 94)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(-303, -1)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="UI" parent="." instance=ExtResource("3_0cdyn")]
+
+[connection signal="body_entered" from="WaterArea" to="WaterArea" method="_on_body_entered"]
+[connection signal="body_exited" from="WaterArea" to="WaterArea" method="_on_body_exited"]
