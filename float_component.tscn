@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c515veavly2w0"]
+
+[ext_resource type="Script" path="res://FloatComponent.gd" id="1_oncev"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4exyn"]
+noise_type = 3
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eelr5"]
+seamless = true
+noise = SubResource("FastNoiseLite_4exyn")
+
+[node name="FloatComponent" type="Node"]
+script = ExtResource("1_oncev")
+float_noise = SubResource("NoiseTexture2D_eelr5")
+float_effect_magnitude = 8.0

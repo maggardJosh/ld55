@@ -1,15 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://mnaxd41w2loc"]
+[gd_scene load_steps=5 format=3 uid="uid://mnaxd41w2loc"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b3cg5"]
 [ext_resource type="Texture2D" uid="uid://c4etptninfkid" path="res://player.png" id="2_7u1va"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_4exyn"]
-noise_type = 3
-frequency = 0.1
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eelr5"]
-seamless = true
-noise = SubResource("FastNoiseLite_4exyn")
+[ext_resource type="PackedScene" uid="uid://c515veavly2w0" path="res://float_component.tscn" id="3_a6bku"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rnvbg"]
 radius = 7.0
@@ -30,8 +23,6 @@ ground_friction_speed = 500.0
 water_accel = 250.0
 water_speed = 150.0
 water_friction_speed = 150.0
-float_noise = SubResource("NoiseTexture2D_eelr5")
-float_effect_magnitude = 8.0
 metadata/_edit_horizontal_guides_ = [-29.0]
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -51,3 +42,6 @@ drag_left_margin = 0.05
 drag_top_margin = 0.05
 drag_right_margin = 0.05
 drag_bottom_margin = 0.05
+
+[node name="FloatComponent" parent="." node_paths=PackedStringArray("float_target") instance=ExtResource("3_a6bku")]
+float_target = NodePath("../Sprite")

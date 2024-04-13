@@ -18,29 +18,26 @@ extends CharacterBody2D
 @export var water_speed: float = 200
 @export var water_friction_speed: float = 10
 
-@export_group("Float")
-@export var float_noise: NoiseTexture2D
-@export var float_effect_magnitude: float = 3.0
-
 @onready var sprite: Sprite2D = %Sprite
-
+@onready var float_component: FloatComponent = $FloatComponent
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water: bool = false
 
 func enter_water():
+	float_component.set_in_water(true)
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	floor_constant_speed = false
 	is_in_water = true
 	velocity.y *= .5
 
 func exit_water():
+	float_component.set_in_water(false)
 	motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
 	floor_constant_speed = true
 	is_in_water = false
 	velocity.y *= 2
 
-var noise_count: float = 0
 func _physics_process(delta):
 	GameEvents.add_debug_obj.emit("in_water", is_in_water)
 	GameEvents.add_debug_obj.emit("grounded", is_on_floor())
@@ -52,7 +49,6 @@ func _physics_process(delta):
 	GameEvents.add_debug_obj.emit("direction_input", direction_input)
 	
 	if not is_in_water:
-		sprite.position = sprite.position.move_toward(Vector2.ZERO, delta*10)
 		if not is_on_floor():
 			velocity.y += gravity * delta
 			if velocity.y > max_fall_speed:
@@ -73,10 +69,6 @@ func _physics_process(delta):
 			else:
 				velocity.x = move_toward(velocity.x, 0, air_friction_speed * delta)
 	else:
-		noise_count += delta
-		var x_disp = float_noise.noise.get_noise_2d(noise_count, 0) * float_effect_magnitude
-		var y_disp = float_noise.noise.get_noise_2d(0, noise_count) * float_effect_magnitude
-		sprite.position = sprite.position.move_toward(Vector2(x_disp, y_disp), delta)
 		
 		var x_input = direction_input.x
 		var y_input = direction_input.y
@@ -104,8 +96,6 @@ func _physics_process(delta):
 	if move_and_slide():
 		if is_in_water:
 			var collision_data: KinematicCollision2D = get_last_slide_collision()
-			GameEvents.add_debug_obj.emit("norm", collision_data.get_normal())
-			velocity = velocity.bounce(collision_data.get_normal()) * .8
-			
+			velocity = velocity.slide(collision_data.get_normal())
 
-	GameEvents.add_debug_obj.emit("post-velocity", velocity)
+	GameEvents.add_debug_obj.emit("post-slide-velocity", velocity)

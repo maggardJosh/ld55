@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://s6lkr5v083iq"]
+
+[ext_resource type="PackedScene" uid="uid://c515veavly2w0" path="res://float_component.tscn" id="1_rqy4v"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t5me4"]
+size = Vector2(16, 16)
+
+[node name="PlaceholderSprite" type="Node2D"]
+position = Vector2(79, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="FloatComponent" parent="Sprite2D" node_paths=PackedStringArray("float_target") instance=ExtResource("1_rqy4v")]
+float_target = NodePath("..")
+max_float_speed = 20.0
+max_unfloat_speed = 30.0
+float_effect_magnitude = 20.0
+is_in_water = true
