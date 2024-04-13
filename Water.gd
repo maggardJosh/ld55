@@ -18,7 +18,6 @@ func _ready():
 	current_biome = default_biome
 
 func on_enter_new_biome(new_biome: Biome):
-	print(new_biome)
 	if new_biome == current_biome:
 		return
 	count = biome_transition_time

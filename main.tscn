@@ -25,7 +25,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb8yo"]
-size = Vector2(20240, 7052)
+size = Vector2(20240, 7046)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t5me4"]
 size = Vector2(16, 16)
@@ -36,6 +36,7 @@ size = Vector2(80, 16)
 [node name="Main" type="Node2D"]
 
 [node name="Biomes" type="Node2D" parent="."]
+visible = false
 z_index = 1
 
 [node name="NormalBiome" parent="Biomes" instance=ExtResource("5_18gyt")]
@@ -94,9 +95,10 @@ color = Color(0.356863, 0.431373, 0.882353, 1)
 polygon = PackedVector2Array(4050, 0, -2686, 0, -3110, 3000, 4967, 3000)
 
 [node name="Player" parent="." instance=ExtResource("1_rotku")]
-position = Vector2(-1186, 2333)
+position = Vector2(-128, -40)
 
 [node name="WaterArea" type="Area2D" parent="."]
+visible = false
 gravity_space_override = 2
 gravity_point_center = Vector2(0, 0)
 gravity_direction = Vector2(0, 0)
@@ -105,7 +107,8 @@ linear_damp = 0.5
 script = ExtResource("3_58cow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
-position = Vector2(2428, 3533)
+z_index = 1
+position = Vector2(2418, 3531)
 shape = SubResource("RectangleShape2D_mb8yo")
 
 [node name="Placeholder Sprites" type="Node2D" parent="."]
@@ -233,16 +236,13 @@ texture = SubResource("PlaceholderTexture2D_t5me4")
 [node name="StartingIsland" type="StaticBody2D" parent="."]
 position = Vector2(-110, -8)
 
-[node name="Sprite2D" type="Sprite2D" parent="StartingIsland"]
-texture = SubResource("PlaceholderTexture2D_mk1d2")
-
 [node name="Polygon2D" type="Polygon2D" parent="StartingIsland"]
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(39, -8, 64, 11, 91, 47, 84, 77, 42, 79, -31, 57, -62, 95, -13, 233, -131, 779, -357, 968, -323, 1727, -908, 2114, -786, 5, -695, -463, -372, -460, -288, -73, -192, -2, -101, -8, -39, -8)
+polygon = PackedVector2Array(25, 0, 81, 33, 79, 45, 72, 67, 42, 79, -5, 65, -59, 57, -123, 69, -184, 110, -249, 168, -251, 228, -186, 225, -105, 182, -71, 195, -33, 243, -131, 779, -357, 968, -323, 1727, -908, 2114, -786, 5, -695, -463, -372, -460, -288, -73, -262, -36, -192, -2, -110, -4)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StartingIsland"]
 visible = false
-polygon = PackedVector2Array(39, -8, 64, 11, 91, 47, 84, 77, 42, 79, -31, 57, -62, 95, -13, 233, -131, 779, -357, 968, -323, 1727, -908, 2114, -786, 5, -695, -463, -372, -460, -288, -73, -192, -2, -101, -8, -39, -8)
+polygon = PackedVector2Array(25, 0, 81, 33, 79, 45, 72, 67, 42, 79, -5, 65, -59, 57, -123, 69, -184, 110, -249, 168, -251, 228, -186, 225, -105, 182, -71, 195, -33, 243, -131, 779, -357, 968, -323, 1727, -908, 2114, -786, 5, -695, -463, -372, -460, -288, -73, -262, -36, -192, -2, -110, -4)
 
 [node name="MiddleSeparator" type="StaticBody2D" parent="."]
 position = Vector2(2240, 2)
