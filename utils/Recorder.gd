@@ -25,7 +25,7 @@ var is_saving = false
 var did_loop = false
 
 
-func _process(delta):
+func _process(_delta):
 	if is_saving or (not OS.has_feature("gif_recording") and not OS.has_feature("editor")):
 		return
 	if Input.is_action_just_pressed("Record"):
@@ -38,7 +38,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("reset_recording"):
 		start_recording()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if is_saving or (not OS.has_feature("gif_recording") and not OS.has_feature("editor")):
 		return

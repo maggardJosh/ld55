@@ -1,19 +1,23 @@
 class_name Player
 extends CharacterBody2D
 
-@export_category("Air")
+@export var spawn_point: Marker2D
+
+
+@export_group("Physics")
+@export_subgroup("Air")
 @export var air_accel = 200.0
 @export var air_speed = 300.0
 @export var air_friction_speed = 20
 @export var max_fall_speed = 500.0
 
-@export_category("Ground")
+@export_subgroup("Ground")
 @export var ground_accel = 200.0
 @export var ground_speed = 300.0
 @export var ground_friction_speed = 300.0
 @export var jump_vel = -200.0
 
-@export_category("Water")
+@export_subgroup("Water")
 @export var water_accel: float = 20
 @export var water_speed: float = 200
 @export var water_friction_speed: float = 10
@@ -21,6 +25,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = %Sprite
 @onready var float_component: FloatComponent = $FloatComponent
 @onready var oxygen_component: OxygenComponent = $OxygenComponent
+
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water: bool = false
@@ -32,6 +37,8 @@ func enter_water():
 	is_in_water = true
 	if Input.is_action_pressed("move_up"):
 		velocity.y *= .1
+	else:
+		velocity.y *= .5
 
 func exit_water():
 	float_component.set_in_water(false)
@@ -40,9 +47,13 @@ func exit_water():
 	is_in_water = false
 	if velocity.y > -20:
 		velocity.y = 0
-	
+
+func die():
+	global_position = spawn_point.global_position
 	
 func set_in_oxygen(is_in_oxygen):
+	if is_in_oxygen:
+		GameEvents.player_enter_air.emit()
 	oxygen_component.set_is_in_water(not is_in_oxygen)
 
 func _physics_process(delta):

@@ -15,7 +15,7 @@ func _ready() -> void:
 var count: float = 0
 var is_showing: bool = false
 
-func on_bar_value_changed(value):
+func on_bar_value_changed(_value):
 	update_visiblity_values()
 	
 func on_bar_settings_changed():
