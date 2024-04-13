@@ -38,10 +38,10 @@ size = Vector2(80, 16)
 [node name="Main" type="Node2D"]
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-124, -36)
+position = Vector2(-124, -22)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rotku")]
-position = Vector2(-74, -109)
+position = Vector2(-124, -21)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Biomes" type="Node2D" parent="."]

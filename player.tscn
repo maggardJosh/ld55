@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://mnaxd41w2loc"]
+[gd_scene load_steps=12 format=3 uid="uid://mnaxd41w2loc"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b3cg5"]
 [ext_resource type="Texture2D" uid="uid://c4etptninfkid" path="res://player.png" id="2_7u1va"]
@@ -16,6 +16,66 @@ point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rnvbg"]
 radius = 7.0
+
+[sub_resource type="Animation" id="Animation_woum7"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(30, 2, 20, 21)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_vou52"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(2, 2, 26, 21)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_781fc"]
+_data = {
+"idle": SubResource("Animation_woum7"),
+"swim": SubResource("Animation_vou52")
+}
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-112, -37)
@@ -59,6 +119,9 @@ replenish_rate = 15.0
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("2_7u1va")
+offset = Vector2(1, 0.5)
+region_enabled = true
+region_rect = Rect2(30, 2, 20, 21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
@@ -76,3 +139,8 @@ drag_bottom_margin = 0.05
 
 [node name="FloatComponent" parent="." node_paths=PackedStringArray("float_target") instance=ExtResource("3_a6bku")]
 float_target = NodePath("../Sprite")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_781fc")
+}

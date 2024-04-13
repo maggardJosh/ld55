@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 @export var spawn_point: Marker2D
-
+@export var swim_rotation_speed: float = 5;
 
 @export_group("Physics")
 @export_subgroup("Air")
@@ -25,12 +25,14 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = %Sprite
 @onready var float_component: FloatComponent = $FloatComponent
 @onready var oxygen_component: OxygenComponent = $OxygenComponent
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water: bool = false
 
 func enter_water():
+	animation_player.play("swim")
 	float_component.set_in_water(true)
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	floor_constant_speed = false
@@ -41,6 +43,12 @@ func enter_water():
 		velocity.y *= .5
 
 func exit_water():
+	if sprite.scale.x == 1:
+		swim_target_angle = -PI
+		swim_angle = -PI
+	else:
+		swim_target_angle = 0
+		swim_angle = 0
 	float_component.set_in_water(false)
 	motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
 	floor_constant_speed = true
@@ -56,6 +64,8 @@ func set_in_oxygen(is_in_oxygen):
 		GameEvents.player_enter_air.emit()
 	oxygen_component.set_is_in_water(not is_in_oxygen)
 
+var swim_angle: float = 0
+var swim_target_angle: float =0
 func _physics_process(delta):
 	GameEvents.add_debug_obj.emit("in_water", is_in_water)
 	GameEvents.add_debug_obj.emit("grounded", is_on_floor())
@@ -67,10 +77,13 @@ func _physics_process(delta):
 	GameEvents.add_debug_obj.emit("direction_input", direction_input)
 	
 	if not is_in_water:
+		sprite.rotation = 0
 		if not is_on_floor():
 			velocity.y += gravity * delta
 			if velocity.y > max_fall_speed:
 				velocity.y = max_fall_speed
+		else:
+			animation_player.play("idle")
 
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_vel
@@ -86,6 +99,10 @@ func _physics_process(delta):
 				velocity.x = move_toward(velocity.x, x_input * air_speed, air_accel * delta)
 			else:
 				velocity.x = move_toward(velocity.x, 0, air_friction_speed * delta)
+		if direction_input.x > 0:
+			sprite.scale.x = -1
+		if direction_input.x < 0:
+			sprite.scale.x = 1
 	else:
 		
 		var x_input = direction_input.x
@@ -104,11 +121,17 @@ func _physics_process(delta):
 			velocity.y = move_toward(velocity.y, y_input * water_speed, accel_value * delta)
 		else:
 			velocity.y = move_toward(velocity.y, 0, water_friction_speed * delta)
-	
-	if direction_input.x > 0:
-		sprite.flip_h = true
-	if direction_input.x < 0:
-		sprite.flip_h = false
+		if direction_input:
+			swim_target_angle = direction_input.angle()
+		swim_angle = rotate_toward(swim_angle, swim_target_angle, swim_rotation_speed * delta)
+		GameEvents.add_debug_obj.emit("swim_angle", swim_angle)
+		var is_flipped = Vector2.RIGHT.dot(Vector2.from_angle(swim_angle)) > 0
+		GameEvents.add_debug_obj.emit("is_flipped", is_flipped)
+		sprite.rotation = swim_angle if is_flipped else swim_angle + PI
+		sprite.scale.x = -1 if is_flipped else 1
+		
+		
+		
 	GameEvents.add_debug_obj.emit("disp", sprite.position)
 	GameEvents.add_debug_obj.emit("velocity", velocity)
 	if move_and_slide():
