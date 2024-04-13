@@ -29,10 +29,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water: bool = false
 
 func enter_water():
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	floor_constant_speed = false
 	is_in_water = true
 	velocity.y *= .5
 
 func exit_water():
+	motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
+	floor_constant_speed = true
 	is_in_water = false
 	velocity.y *= 2
 
@@ -97,5 +101,11 @@ func _physics_process(delta):
 		sprite.flip_h = false
 	GameEvents.add_debug_obj.emit("disp", sprite.position)
 	GameEvents.add_debug_obj.emit("velocity", velocity)
-	move_and_slide()
+	if move_and_slide():
+		if is_in_water:
+			var collision_data: KinematicCollision2D = get_last_slide_collision()
+			GameEvents.add_debug_obj.emit("norm", collision_data.get_normal())
+			velocity = velocity.bounce(collision_data.get_normal()) * .8
+			
 
+	GameEvents.add_debug_obj.emit("post-velocity", velocity)

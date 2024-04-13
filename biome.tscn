@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1tw6cgdbe6r7"]
+
+[ext_resource type="Script" path="res://Biome.gd" id="1_nuv4q"]
+
+[node name="Biome" type="Area2D"]
+script = ExtResource("1_nuv4q")
+water_bg_color = Color(0.356863, 0.431373, 0.882353, 1)
+water_color = Color(0.262745, 0.317647, 0.768627, 0.501961)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
