@@ -19,6 +19,7 @@ script = ExtResource("2_caifj")
 inventory_item = ExtResource("3_601cy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_4m02g")
 

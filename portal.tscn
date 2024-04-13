@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpdlhgmmoy15j"]
+[gd_scene load_steps=9 format=3 uid="uid://bpdlhgmmoy15j"]
 
+[ext_resource type="Script" path="res://portal.gd" id="1_gin5e"]
 [ext_resource type="Texture2D" uid="uid://jhqp07488shd" path="res://portal.png" id="1_ouc00"]
+[ext_resource type="Resource" uid="uid://d14afxbanphdh" path="res://items/upgrades/otherwordlyTank.tres" id="2_8o5r2"]
+[ext_resource type="Texture2D" uid="uid://de5frxv42b7n7" path="res://addons/aseprite_importer/interface/icons/light_icon.png" id="2_jao6e"]
+[ext_resource type="Texture2D" uid="uid://bbiyi08usjejr" path="res://e_key_prompt.png" id="5_25y0e"]
 
 [sub_resource type="Animation" id="Animation_tfgl8"]
 length = 0.5
@@ -35,11 +39,18 @@ _data = {
 "idle": SubResource("Animation_tfgl8")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omgtu"]
+size = Vector2(74, 73)
+
 [node name="Portal" type="Node2D"]
 z_index = -1
 position = Vector2(-222, -26)
+script = ExtResource("1_gin5e")
+current_upgrade = ExtResource("2_8o5r2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(2, 2)
 texture = ExtResource("1_ouc00")
 offset = Vector2(0.5, 1.5)
 region_enabled = true
@@ -50,3 +61,105 @@ libraries = {
 "": SubResource("AnimationLibrary_83tn8")
 }
 autoplay = "idle"
+
+[node name="UI" type="ColorRect" parent="."]
+offset_left = -84.0
+offset_top = -69.0
+offset_right = 86.0
+offset_bottom = -5.0
+color = Color(0, 0, 0, 0.65098)
+
+[node name="UpgradeTitle" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_top = 12.0
+offset_right = 49.0
+offset_bottom = 25.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Otherworldly O2 tank"
+
+[node name="Requires" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -6.5
+offset_right = 17.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Requires"
+
+[node name="UpgradeImage" type="TextureRect" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 15.0
+grow_horizontal = 2
+texture = ExtResource("2_jao6e")
+
+[node name="RequirementsHBox" type="HBoxContainer" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="e_prompt" type="TextureRect" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -8.0
+offset_right = -37.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_25y0e")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="UI/e_prompt"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 1.0
+offset_right = 60.0
+offset_bottom = 14.0
+text = "Summon"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, -7.5)
+shape = SubResource("RectangleShape2D_omgtu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

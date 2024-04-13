@@ -13,8 +13,20 @@ func _ready() -> void:
 	GameEvents.inventory_settings_updated.emit(max_inventory_size)
 	emit_inventory_signals()
 	GameEvents.drop_item_index.connect(_on_drop_item_index)
+	GameEvents.get_upgrade.connect(_on_get_upgrade)
+	
+func _on_get_upgrade(upgrade: UpgradeResource):
+	for req in upgrade.requirements:
+		for i in items.size():
+			if items[i] == req:
+				items[i] = null
+				break
+	emit_inventory_signals()
 
 func _on_drop_item_index(item_index: int):
+	var instantiated_obj:ItemPickup = load(items[item_index].scenePath).instantiate()
+	get_tree().root.add_child(instantiated_obj)
+	instantiated_obj.drop(owner.global_position)
 	items[item_index] = null
 	emit_inventory_signals()
 	

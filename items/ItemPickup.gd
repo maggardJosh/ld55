@@ -14,6 +14,14 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		
 func enter_water() -> void:
 	linear_velocity *= .4
-		
+
+const MIN_DROP_VEL:float = 200
+const MAX_DROP_VEL:float = 300
+
+func drop(global_pos: Vector2):
+	global_position = global_pos
+	freeze = false
+	linear_velocity = Vector2.UP.rotated(randf_range(-PI/4, PI/4)) * randf_range(MIN_DROP_VEL,MAX_DROP_VEL)
+	
 func pickup():
 	queue_free()

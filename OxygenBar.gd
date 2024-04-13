@@ -11,6 +11,7 @@ func _ready() -> void:
 	changed.connect(on_bar_settings_changed)
 	value_changed.connect(on_bar_value_changed)
 	modulate.a = 0
+	GameEvents.oxygen_updated.connect(_on_oxygen_updated)
 	
 var count: float = 0
 var is_showing: bool = false
@@ -41,3 +42,7 @@ func _process(delta: float) -> void:
 			count -= delta
 			var t = count/disappear_time
 			modulate.a = disappear_curve.sample(1.0-t)
+			
+func _on_oxygen_updated(current_seconds, max_seconds):
+	max_value = max_seconds
+	value = current_seconds

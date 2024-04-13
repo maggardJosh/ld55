@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=18 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b1tw6cgdbe6r7" path="res://biome.tscn" id="5_18gyt"]
 [ext_resource type="PackedScene" uid="uid://bpdlhgmmoy15j" path="res://portal.tscn" id="5_ekxwn"]
 [ext_resource type="Script" path="res://OxygenArea.gd" id="5_ghrk7"]
-[ext_resource type="PackedScene" uid="uid://s6lkr5v083iq" path="res://placeholder_sprite.tscn" id="6_bw7w6"]
 [ext_resource type="PackedScene" uid="uid://ba5qec1sf8vey" path="res://items/coral_pickup.tscn" id="9_6hed1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
@@ -43,10 +42,10 @@ size = Vector2(80, 16)
 visible = false
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-213, -28)
+position = Vector2(-170, -27)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rotku")]
-position = Vector2(-212, -30)
+position = Vector2(-170, -30)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Biomes" type="Node2D" parent="."]
@@ -54,6 +53,8 @@ visible = false
 z_index = 1
 
 [node name="NormalBiome" parent="Biomes" instance=ExtResource("5_18gyt")]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Biomes/NormalBiome"]
 position = Vector2(1826, 189)
@@ -62,6 +63,8 @@ debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 
 [node name="DarkBiome" parent="Biomes" instance=ExtResource("5_18gyt")]
 position = Vector2(-282, 917)
+collision_layer = 0
+collision_mask = 2
 water_bg_color = Color(0.235294, 0.290196, 0.721569, 1)
 water_color = Color(0.184314, 0.223529, 0.592157, 0.682353)
 
@@ -72,6 +75,8 @@ debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 
 [node name="DarkBiome2" parent="Biomes" instance=ExtResource("5_18gyt")]
 position = Vector2(-282, 917)
+collision_layer = 0
+collision_mask = 2
 water_bg_color = Color(0.160784, 0.2, 0.537255, 1)
 water_color = Color(0.12549, 0.152941, 0.435294, 0.784314)
 
@@ -82,6 +87,8 @@ debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 
 [node name="SecretBiome1" parent="Biomes" instance=ExtResource("5_18gyt")]
 position = Vector2(-1769, 2007)
+collision_layer = 0
+collision_mask = 2
 water_bg_color = Color(0.0980392, 0.529412, 0.396078, 1)
 water_color = Color(0.054902, 0.403922, 0.352941, 0.662745)
 
@@ -114,6 +121,7 @@ color = Color(0.203922, 0.317647, 0.34902, 1)
 polygon = PackedVector2Array(1185, 126, -411, 325, -255, 1751, 1588, 1799, 1921, 892)
 
 [node name="Portal" parent="." instance=ExtResource("5_ekxwn")]
+position = Vector2(-225, -37)
 
 [node name="Areas" type="Node2D" parent="."]
 visible = false
@@ -149,61 +157,6 @@ script = ExtResource("5_ghrk7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/OxygenArea2"]
 position = Vector2(335, -765)
 shape = SubResource("RectangleShape2D_jdpq8")
-
-[node name="Placeholder Sprites" type="Node2D" parent="."]
-
-[node name="PlaceholderSprite" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-
-[node name="PlaceholderSprite2" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(164, 53)
-
-[node name="PlaceholderSprite3" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(-339, 193)
-
-[node name="PlaceholderSprite4" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(-320, 201)
-
-[node name="PlaceholderSprite5" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(-319, 177)
-
-[node name="PlaceholderSprite6" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(-136, 90)
-
-[node name="PlaceholderSprite7" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(-45, 187)
-
-[node name="PlaceholderSprite8" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(177, 231)
-
-[node name="PlaceholderSprite9" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(502, 78)
-
-[node name="PlaceholderSprite10" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(516, 216)
-
-[node name="PlaceholderSprite11" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(328, 140)
-
-[node name="PlaceholderSprite12" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(304, 316)
-
-[node name="PlaceholderSprite13" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(-90, 414)
-
-[node name="PlaceholderSprite14" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(193, 579)
-
-[node name="PlaceholderSprite15" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(638, 60)
-
-[node name="PlaceholderSprite16" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(727, 105)
-
-[node name="PlaceholderSprite17" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(782, 191)
-
-[node name="PlaceholderSprite18" parent="Placeholder Sprites" instance=ExtResource("6_bw7w6")]
-position = Vector2(637, 174)
 
 [node name="World" type="Node2D" parent="."]
 
@@ -243,39 +196,36 @@ polygon = PackedVector2Array(808, -4029, 646, -752, -112, -636, -399, -924, 456,
 visible = false
 polygon = PackedVector2Array(808, -4029, 646, -752, -112, -636, -399, -924, 456, -1587, 365, -2017, -70, -2215, -769, -2296, -1374, -2019, -1447, -1203, -855, -1116, -598.32, -912.526, -472, -557, 727, -25, 2729, 11, 6109, -117, 5384, -2715, 6305, -5010, 10941, 170, 5928, 2662, -1246, 2435, -2484, -4436)
 
-[node name="Coral" parent="." instance=ExtResource("9_6hed1")]
-position = Vector2(19, -83)
-
 [node name="Coral2" parent="." instance=ExtResource("9_6hed1")]
-position = Vector2(-358, 215)
+position = Vector2(-364, 222)
 rotation = 0.265163
 
 [node name="Coral3" parent="." instance=ExtResource("9_6hed1")]
-position = Vector2(-356, 187)
+position = Vector2(-362, 194)
 rotation = 1.57079
 
 [node name="Coral4" parent="." instance=ExtResource("9_6hed1")]
-position = Vector2(-112, -17)
+position = Vector2(-65, 68)
+rotation = 2.88673
 
 [node name="Coral5" parent="." instance=ExtResource("9_6hed1")]
-position = Vector2(-148, -16)
+position = Vector2(-54, 10)
 rotation = 0.265163
 
 [node name="Coral6" parent="." instance=ExtResource("9_6hed1")]
-position = Vector2(-169, -13)
-rotation = 1.57079
+position = Vector2(-68, 6)
+rotation = 0.411058
 
 [node name="Coral7" parent="." instance=ExtResource("9_6hed1")]
-position = Vector2(-97, -15.1831)
-
-[node name="Coral8" parent="." instance=ExtResource("9_6hed1")]
-position = Vector2(-92, -73)
-rotation = 0.265163
-freeze = false
+position = Vector2(-60, 9)
 
 [node name="Coral9" parent="." instance=ExtResource("9_6hed1")]
-position = Vector2(-154, -11.1831)
-rotation = 1.57079
+position = Vector2(-268, 83)
+rotation = 2.9962
+
+[node name="Coral10" parent="." instance=ExtResource("9_6hed1")]
+position = Vector2(-298, 103)
+rotation = 2.40323
 
 [connection signal="body_entered" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_exited"]

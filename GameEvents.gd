@@ -9,6 +9,8 @@ signal inventory_updated(inventory_items: Array[InventoryItem], max_inventory_si
 signal inventory_settings_updated(inventory_size: int)
 signal inventory_full_changed(is_full: bool)
 signal drop_item_index(index: int)
+signal get_upgrade(upgrade: UpgradeResource)
+signal oxygen_updated(current_seconds: float, max_oxygen_seconds: float)
 
 func add_message_emit(message):
 	add_message.emit(message)
