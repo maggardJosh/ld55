@@ -16,14 +16,17 @@ radius = 7.07107
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-112, -37)
+safe_margin = 1.0
 script = ExtResource("1_b3cg5")
 air_accel = 20.0
 air_speed = 200.0
-ground_speed = 200.0
-ground_friction_speed = 200.0
-water_accel = 175.0
+max_fall_speed = 300.0
+ground_accel = 500.0
+ground_speed = 100.0
+ground_friction_speed = 500.0
+water_accel = 250.0
 water_speed = 150.0
-water_friction_speed = 175.0
+water_friction_speed = 150.0
 float_noise = SubResource("NoiseTexture2D_eelr5")
 float_effect_magnitude = 8.0
 
@@ -37,7 +40,6 @@ shape = SubResource("CircleShape2D_rnvbg")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 process_callback = 0
-position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.05

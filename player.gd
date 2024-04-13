@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var air_accel = 200.0
 @export var air_speed = 300.0
 @export var air_friction_speed = 20
+@export var max_fall_speed = 500.0
 
 @export_category("Ground")
 @export var ground_accel = 200.0
@@ -46,8 +47,11 @@ func _physics_process(delta):
 	var direction_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	GameEvents.add_debug_obj.emit("direction_input", direction_input)
 	if not is_in_water:
+		sprite.position = Vector2.ZERO
 		if not is_on_floor():
 			velocity.y += gravity * delta
+			if velocity.y > max_fall_speed:
+				velocity.y = max_fall_speed
 
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_vel
@@ -71,12 +75,18 @@ func _physics_process(delta):
 		
 		var x_input = direction_input.x
 		var y_input = direction_input.y
+		var accel_value = water_accel
 		if x_input:
-			velocity.x = move_toward(velocity.x, x_input * water_speed, water_accel * delta)
+			if sign(x_input) != sign(velocity.x):
+				accel_value *= 2
+			velocity.x = move_toward(velocity.x, x_input * water_speed, accel_value * delta)
 		else:
 			velocity.x = move_toward(velocity.x, 0, water_friction_speed * delta)
+		accel_value = water_accel
 		if y_input:
-			velocity.y = move_toward(velocity.y, y_input * water_speed, water_accel * delta)
+			if sign(y_input) != sign(velocity.y):
+				accel_value *= 2
+			velocity.y = move_toward(velocity.y, y_input * water_speed, accel_value * delta)
 		else:
 			velocity.y = move_toward(velocity.y, 0, water_friction_speed * delta)
 	
