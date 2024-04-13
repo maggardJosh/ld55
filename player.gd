@@ -46,8 +46,9 @@ func _physics_process(delta):
 	
 	var direction_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	GameEvents.add_debug_obj.emit("direction_input", direction_input)
+	
 	if not is_in_water:
-		sprite.position = Vector2.ZERO
+		sprite.position = sprite.position.move_toward(Vector2.ZERO, delta*10)
 		if not is_on_floor():
 			velocity.y += gravity * delta
 			if velocity.y > max_fall_speed:
@@ -71,7 +72,7 @@ func _physics_process(delta):
 		noise_count += delta
 		var x_disp = float_noise.noise.get_noise_2d(noise_count, 0) * float_effect_magnitude
 		var y_disp = float_noise.noise.get_noise_2d(0, noise_count) * float_effect_magnitude
-		sprite.position = Vector2(x_disp, y_disp)
+		sprite.position = sprite.position.move_toward(Vector2(x_disp, y_disp), delta)
 		
 		var x_input = direction_input.x
 		var y_input = direction_input.y
@@ -94,7 +95,7 @@ func _physics_process(delta):
 		sprite.flip_h = true
 	if direction_input.x < 0:
 		sprite.flip_h = false
-		
+	GameEvents.add_debug_obj.emit("disp", sprite.position)
 	GameEvents.add_debug_obj.emit("velocity", velocity)
 	move_and_slide()
 
