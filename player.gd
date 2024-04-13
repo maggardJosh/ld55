@@ -35,7 +35,11 @@ func exit_water():
 	is_in_water = false
 	velocity.y *= 2
 
+var noise_count: float = 0
 func _physics_process(delta):
+	GameEvents.add_debug_obj.emit("in_water", is_in_water)
+	GameEvents.add_debug_obj.emit("grounded", is_on_floor())
+	GameEvents.add_debug_obj.emit("pos", global_position)
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
 	
@@ -60,6 +64,10 @@ func _physics_process(delta):
 			else:
 				velocity.x = move_toward(velocity.x, 0, air_friction_speed * delta)
 	else:
+		noise_count += delta
+		var x_disp = float_noise.noise.get_noise_2d(noise_count, 0) * float_effect_magnitude
+		var y_disp = float_noise.noise.get_noise_2d(0, noise_count) * float_effect_magnitude
+		sprite.position = Vector2(x_disp, y_disp)
 		
 		var x_input = direction_input.x
 		var y_input = direction_input.y

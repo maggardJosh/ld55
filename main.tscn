@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sylxd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb8yo"]
-size = Vector2(800, 300)
+size = Vector2(4927, 1943)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t5me4"]
 size = Vector2(16, 16)
@@ -39,34 +39,132 @@ linear_damp = 0.5
 script = ExtResource("3_58cow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
-position = Vector2(0, 150)
+position = Vector2(493.5, 971.5)
 shape = SubResource("RectangleShape2D_mb8yo")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="UI" parent="." instance=ExtResource("3_0cdyn")]
+
+[node name="Placeholder stuff" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Placeholder stuff"]
 position = Vector2(-234, 25)
 texture = SubResource("PlaceholderTexture2D_t5me4")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="Placeholder stuff"]
 position = Vector2(-209, 72)
 texture = SubResource("PlaceholderTexture2D_t5me4")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
+[node name="Sprite2D3" type="Sprite2D" parent="Placeholder stuff"]
 position = Vector2(2, 60)
 texture = SubResource("PlaceholderTexture2D_t5me4")
 
-[node name="Sprite2D4" type="Sprite2D" parent="."]
+[node name="Sprite2D4" type="Sprite2D" parent="Placeholder stuff"]
 position = Vector2(-3, 12)
 texture = SubResource("PlaceholderTexture2D_t5me4")
 
-[node name="Sprite2D5" type="Sprite2D" parent="."]
+[node name="Sprite2D5" type="Sprite2D" parent="Placeholder stuff"]
 position = Vector2(-285, 94)
 texture = SubResource("PlaceholderTexture2D_t5me4")
 
-[node name="Sprite2D6" type="Sprite2D" parent="."]
+[node name="Sprite2D6" type="Sprite2D" parent="Placeholder stuff"]
 position = Vector2(-303, -1)
 texture = SubResource("PlaceholderTexture2D_t5me4")
 
-[node name="UI" parent="." instance=ExtResource("3_0cdyn")]
+[node name="Sprite2D7" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(183, 151)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(208, 198)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(419, 186)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(414, 138)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(132, 220)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(114, 125)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-51, 84)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-26, 131)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(185, 119)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(180, 71)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-102, 153)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-120, 58)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-522, 58)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-497, 105)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D21" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-286, 93)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D22" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-291, 45)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D23" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-573, 127)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D24" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-591, 32)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D25" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-348, 277)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D26" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-323, 324)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D27" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-112, 312)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D28" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-117, 264)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D29" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-399, 346)
+texture = SubResource("PlaceholderTexture2D_t5me4")
+
+[node name="Sprite2D30" type="Sprite2D" parent="Placeholder stuff"]
+position = Vector2(-417, 251)
+texture = SubResource("PlaceholderTexture2D_t5me4")
 
 [connection signal="body_entered" from="WaterArea" to="WaterArea" method="_on_body_entered"]
 [connection signal="body_exited" from="WaterArea" to="WaterArea" method="_on_body_exited"]
