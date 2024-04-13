@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjiok5o0qam3w"]
+[gd_scene load_steps=4 format=3 uid="uid://cjiok5o0qam3w"]
 
 [ext_resource type="Script" path="res://DebugLabel.gd" id="1_f57q1"]
+[ext_resource type="Script" path="res://DebugMessageContainer.gd" id="2_n2sie"]
+[ext_resource type="PackedScene" uid="uid://b5jq1hyurpv6l" path="res://debug_messages.tscn" id="3_o0xii"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -25,3 +27,10 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Test"
 script = ExtResource("1_f57q1")
+
+[node name="DebugMessagesContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+script = ExtResource("2_n2sie")
+label_scene = ExtResource("3_o0xii")

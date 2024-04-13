@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5jq1hyurpv6l"]
+
+[ext_resource type="Script" path="res://DebugMessage.gd" id="1_0ysux"]
+
+[sub_resource type="Curve" id="Curve_6bs4t"]
+_data = [Vector2(0.502058, 1), 0.0, -3.78297, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="DebugMessages" type="Label"]
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Test"
+script = ExtResource("1_0ysux")
+alpha_curve = SubResource("Curve_6bs4t")
