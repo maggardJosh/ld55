@@ -20,6 +20,7 @@ extends CharacterBody2D
 
 @onready var sprite: Sprite2D = %Sprite
 @onready var float_component: FloatComponent = $FloatComponent
+@onready var oxygen_component: OxygenComponent = $OxygenComponent
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water: bool = false
@@ -37,6 +38,9 @@ func exit_water():
 	floor_constant_speed = true
 	is_in_water = false
 	velocity.y *= 2
+	
+func set_in_oxygen(is_in_oxygen):
+	oxygen_component.set_is_in_water(not is_in_oxygen)
 
 func _physics_process(delta):
 	GameEvents.add_debug_obj.emit("in_water", is_in_water)

@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://mnaxd41w2loc"]
+[gd_scene load_steps=9 format=3 uid="uid://mnaxd41w2loc"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b3cg5"]
 [ext_resource type="Texture2D" uid="uid://c4etptninfkid" path="res://player.png" id="2_7u1va"]
+[ext_resource type="Script" path="res://OxygenBar.gd" id="2_ccr6u"]
 [ext_resource type="PackedScene" uid="uid://c515veavly2w0" path="res://float_component.tscn" id="3_a6bku"]
+[ext_resource type="Script" path="res://OxygenComponent.gd" id="4_qxc6h"]
+
+[sub_resource type="Curve" id="Curve_b2lt3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_7b2ex"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rnvbg"]
 radius = 7.0
@@ -24,6 +34,26 @@ water_accel = 250.0
 water_speed = 150.0
 water_friction_speed = 150.0
 metadata/_edit_horizontal_guides_ = [-29.0]
+
+[node name="OxygenBar" type="ProgressBar" parent="."]
+z_index = 1
+offset_left = -12.0
+offset_top = -15.0
+offset_right = 11.0
+offset_bottom = -11.0
+max_value = 20.0
+value = 20.0
+show_percentage = false
+script = ExtResource("2_ccr6u")
+disappear_time = 1.0
+disappear_curve = SubResource("Curve_b2lt3")
+appear_threshold = 0.5
+appear_curve = SubResource("Curve_7b2ex")
+
+[node name="OxygenComponent" type="Node" parent="." node_paths=PackedStringArray("oxygen_bar")]
+script = ExtResource("4_qxc6h")
+oxygen_bar = NodePath("../OxygenBar")
+replenish_rate = 15.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true

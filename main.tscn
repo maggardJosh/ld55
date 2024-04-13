@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=17 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
 [ext_resource type="PackedScene" uid="uid://cjiok5o0qam3w" path="res://ui.tscn" id="3_0cdyn"]
 [ext_resource type="Script" path="res://WaterArea.gd" id="3_58cow"]
 [ext_resource type="PackedScene" uid="uid://b1tw6cgdbe6r7" path="res://biome.tscn" id="5_18gyt"]
+[ext_resource type="Script" path="res://OxygenArea.gd" id="5_ghrk7"]
 [ext_resource type="PackedScene" uid="uid://s6lkr5v083iq" path="res://placeholder_sprite.tscn" id="6_bw7w6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
@@ -25,13 +26,19 @@ size = Vector2(787, 626)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mb8yo"]
-size = Vector2(20240, 7046)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xvdo"]
+size = Vector2(5029, 735)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdpq8"]
+size = Vector2(1969, 1262)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mk1d2"]
 size = Vector2(80, 16)
 
 [node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_rotku")]
+position = Vector2(169, -104)
 
 [node name="Biomes" type="Node2D" parent="."]
 visible = false
@@ -80,23 +87,27 @@ debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 z_index = 1
 material = SubResource("ShaderMaterial_sylxd")
 color = Color(0.262745, 0.317647, 0.768627, 0.501961)
-polygon = PackedVector2Array(4050, 0, -2686, 0, -3110, 3000, 4967, 3000)
+polygon = PackedVector2Array(4050, 0, -1157, 0, -917, 216, -1210, 1808, -4435, 1808, -3691, 3363, 4967, 3000)
 script = ExtResource("2_imxiw")
 default_biome = NodePath("../Biomes/NormalBiome")
 biome_transition_time = 3.0
 biome_transition_curve = SubResource("Curve_0m4yk")
 
 [node name="WaterBG" type="Polygon2D" parent="Water"]
-z_index = -1
+z_index = -2
 material = SubResource("ShaderMaterial_sylxd")
 color = Color(0.356863, 0.431373, 0.882353, 1)
-polygon = PackedVector2Array(4050, 0, -2686, 0, -3110, 3000, 4967, 3000)
+polygon = PackedVector2Array(4050, 0, -1157, 0, -917, 216, -1210, 1808, -4435, 1808, -3691, 3363, 4967, 3000)
 
-[node name="Player" parent="." instance=ExtResource("1_rotku")]
-position = Vector2(-128, -40)
+[node name="WaterBG2" type="Polygon2D" parent="Water"]
+z_index = -3
+material = SubResource("ShaderMaterial_sylxd")
+position = Vector2(-2963, 131)
+color = Color(0.203922, 0.317647, 0.34902, 1)
+polygon = PackedVector2Array(1185, 126, 197, 630, 358, 1849, 1588, 1799, 1921, 892)
 
 [node name="WaterArea" type="Area2D" parent="."]
-visible = false
+position = Vector2(0, 7)
 gravity_space_override = 2
 gravity_point_center = Vector2(0, 0)
 gravity_direction = Vector2(0, 0)
@@ -104,10 +115,24 @@ linear_damp_space_override = 2
 linear_damp = 0.5
 script = ExtResource("3_58cow")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
-z_index = 1
-position = Vector2(2418, 3531)
-shape = SubResource("RectangleShape2D_mb8yo")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterArea"]
+polygon = PackedVector2Array(4050, 0, -2686, 0, -917, 216, -1210, 1808, -2435, 1808, -2077, 3080, 4967, 3000)
+
+[node name="OxygenArea" type="Area2D" parent="."]
+script = ExtResource("5_ghrk7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OxygenArea"]
+position = Vector2(1494.5, -367.5)
+shape = SubResource("RectangleShape2D_8xvdo")
+
+[node name="OxygenArea2" type="Area2D" parent="."]
+z_index = 3
+position = Vector2(-2552, 1939)
+script = ExtResource("5_ghrk7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OxygenArea2"]
+position = Vector2(443.5, -767)
+shape = SubResource("RectangleShape2D_jdpq8")
 
 [node name="Placeholder Sprites" type="Node2D" parent="."]
 
