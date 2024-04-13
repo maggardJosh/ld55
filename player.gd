@@ -28,10 +28,18 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var pickup_component: PickupComponent = $PickupComponent
 @onready var inventory_component: InventoryComponent = $InventoryComponent
+@onready var tank_sprite: Sprite2D = %TankSprite
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water: bool = false
+
+func _ready() -> void:
+	GameEvents.get_upgrade.connect(_on_get_upgrade)
+
+func _on_get_upgrade(upgrade: UpgradeResource):
+	if upgrade.upgrade_id == "tank":
+		tank_sprite.visible = true
 
 func pickup_update_range(in_range: bool, pickup: ItemPickup):
 	if in_range:
