@@ -10,7 +10,9 @@ var count: float = 0
 func _ready() -> void:
 	GameEvents.enter_death_buffer.connect(_on_enter_death_buffer)
 	GameEvents.player_enter_air.connect(_on_exit_death_buffer)
-	modulate.a = 0
+	count = show_time
+	modulate.a = 1
+	is_showing = false
 	
 func _on_enter_death_buffer():
 	is_showing = true
