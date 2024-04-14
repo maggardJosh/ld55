@@ -45,7 +45,7 @@ visible = false
 position = Vector2(-170, -27)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rotku")]
-position = Vector2(-146, -24)
+position = Vector2(-145, -19)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Biomes" type="Node2D" parent="."]
@@ -101,7 +101,7 @@ debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 z_index = 1
 material = SubResource("ShaderMaterial_sylxd")
 color = Color(0.262745, 0.317647, 0.768627, 0.501961)
-polygon = PackedVector2Array(4050, 0, -5857, 0, -6180, 675, -5440, 3257, -2795, 3363, 4967, 3000, 4062, -29, 1885, 600, 2226, 800, 1442, 800, 1378, 684, 1561, 598, 1885, 602)
+polygon = PackedVector2Array(1920, 0, 1463, -10, -5857, 0, -6180, 675, -5440, 3257, -2795, 3363, 4967, 3000, 3840, -64, 1920, 0, 1886, 606, 2218, 800, 1446, 800, 1381, 689, 1562, 596, 1886, 606)
 script = ExtResource("2_imxiw")
 default_biome = NodePath("../Biomes/NormalBiome")
 biome_transition_time = 3.0
@@ -111,7 +111,7 @@ biome_transition_curve = SubResource("Curve_0m4yk")
 z_index = -2
 material = SubResource("ShaderMaterial_sylxd")
 color = Color(0.356863, 0.431373, 0.882353, 1)
-polygon = PackedVector2Array(4050, 0, -5857, 0, -6180, 675, -5440, 3257, -2795, 3363, 4967, 3000, 4062, -29, 1885, 600, 2226, 800, 1442, 800, 1378, 684, 1561, 598, 1885, 602)
+polygon = PackedVector2Array(1920, 0, 1463, -10, -5857, 0, -6180, 675, -5440, 3257, -2795, 3363, 4967, 3000, 3840, -64, 1920, 0, 1886, 606, 2218, 800, 1446, 800, 1381, 689, 1562, 596, 1886, 606)
 
 [node name="AirBG" type="Polygon2D" parent="Water"]
 z_index = -3
@@ -198,7 +198,7 @@ physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
 [node name="Polygon2D" type="Polygon2D" parent="World/Island3"]
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(28, -112, 193, -257, 345, -267, 712, -261, 822, -176, 1142, 40, 1150, 309, 1079, 389, 984, 242, 965, 52, 827, -29, 318, -91, -6, 14)
+polygon = PackedVector2Array(28, -112, 193, -257, 345, -267, 712, -261, 822, -176, 1142, 40, 1150, 309, 1079, 389, 1040, 181, 947, 75, 739, 67, 626, 51, 563, 18, 318, -91, -6, 14)
 script = ExtResource("8_w2ktp")
 
 [node name="Island6" type="StaticBody2D" parent="World"]
