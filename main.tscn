@@ -318,8 +318,10 @@ position = Vector2(-110, -8)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
 [node name="Polygon2D" type="Polygon2D" parent="World/Collision/StartingIsland"]
+texture_filter = 1
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(25, 0, 81, 33, 79, 45, 72, 67, 42, 79, -5, 65, -59, 57, -123, 69, -184, 110, -237, 121, -269, 98, -285, 64, -255, 19, -183, 0)
+uv = PackedVector2Array(40, 8, 64, 0, 504, 8, 504, 88, 504, 152, 512, 216, 512, 400, 512, 504, 280, 512, 8, 512, 8, 208, -63.9999, 0, 0, 0, 16, 8)
 script = ExtResource("8_w2ktp")
 
 [node name="Island2" type="StaticBody2D" parent="World/Collision"]
