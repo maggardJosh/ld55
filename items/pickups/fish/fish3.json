@@ -1,0 +1,45 @@
+{ "frames": {
+   "fish3 0.aseprite": {
+    "frame": { "x": 31, "y": 2, "w": 22, "h": 22 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 8, "y": 5, "w": 18, "h": 18 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 250
+   },
+   "fish3 1.aseprite": {
+    "frame": { "x": 2, "y": 25, "w": 19, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 10, "y": 6, "w": 15, "h": 17 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 250
+   },
+   "fish3 2.aseprite": {
+    "frame": { "x": 2, "y": 2, "w": 27, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 6, "w": 23, "h": 17 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 250
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.6-x64",
+  "image": "fish3.png",
+  "format": "RGBA8888",
+  "size": { "w": 55, "h": 48 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 0, "direction": "forward", "color": "#000000ff" },
+   { "name": "wind_up", "from": 1, "to": 1, "direction": "forward", "color": "#000000ff" },
+   { "name": "zoom", "from": 2, "to": 2, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

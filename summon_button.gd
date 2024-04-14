@@ -74,3 +74,4 @@ func update_can_summon(inventory_items: Array[InventoryItem]):
 func update_ui():
 	can_summon_label.modulate = can_summon_color if can_summon else cannot_summon_color
 	can_summon_label.text = "Can Summon" if can_summon else "Missing Ingredients"
+	texture_rect.self_modulate.a = 1.0 if can_summon else .5

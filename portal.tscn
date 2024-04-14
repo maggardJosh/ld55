@@ -48,7 +48,7 @@ size = Vector2(74, 73)
 z_index = -1
 position = Vector2(-222, -26)
 script = ExtResource("1_gin5e")
-summon_button_containers = [NodePath("UI/SummonMenu/VBoxContainer/MaterialsContainer"), NodePath("UI/SummonMenu/VBoxContainer/UpgradesContainer"), NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer3"), NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer4")]
+summon_button_containers = [NodePath("UI/SummonMenu/VBoxContainer/MaterialsContainer"), NodePath("UI/SummonMenu/VBoxContainer/UpgradesContainer"), NodePath("UI/SummonMenu/VBoxContainer/AdvancedMaterialsContainer")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
@@ -65,11 +65,11 @@ libraries = {
 autoplay = "idle"
 
 [node name="UI" type="ColorRect" parent="."]
-z_index = 1
-offset_left = -84.0
-offset_top = -93.0
-offset_right = 86.0
-offset_bottom = -5.0
+z_index = 2
+offset_left = -170.0
+offset_top = -188.0
+offset_bottom = -100.0
+scale = Vector2(2, 2)
 mouse_filter = 2
 color = Color(0, 0, 0, 0.65098)
 
@@ -95,10 +95,11 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_left = 5.0
 offset_top = 14.0
-offset_right = 105.0
+offset_right = 166.0
 offset_bottom = 81.0
 mouse_filter = 2
 theme_override_constants/separation = 1
+alignment = 1
 
 [node name="MaterialsContainer" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
 layout_mode = 2
@@ -118,6 +119,15 @@ item = ExtResource("5_xneja")
 layout_mode = 2
 item = ExtResource("4_wkb07")
 
+[node name="AdvancedMaterialsContainer" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/AdvancedMaterialsContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "Advanced"
+
 [node name="UpgradesContainer" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
@@ -134,24 +144,6 @@ item = ExtResource("6_qu4o5")
 [node name="SummonButton3" parent="UI/SummonMenu/VBoxContainer/UpgradesContainer" instance=ExtResource("7_yaqxb")]
 layout_mode = 2
 item = ExtResource("7_6oinr")
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-text = "???"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/HBoxContainer4"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-text = "#$@!$%"
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false

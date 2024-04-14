@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://mafc8o4e3kxa"]
+
+[ext_resource type="Texture2D" uid="uid://8bsmshjcfh5k" path="res://items/pickups/fish/fish_3_inventory_image.png" id="1_5eg15"]
+[ext_resource type="Script" path="res://items/InventoryItem.gd" id="2_la0iq"]
+
+[resource]
+script = ExtResource("2_la0iq")
+inventory_image = ExtResource("1_5eg15")
+title = "Red Fish"
+description = "Cute?"
+scenePath = "res://items/pickups/fish/red_fish.tscn"

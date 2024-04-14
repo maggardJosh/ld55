@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://btgsom7dis0lc"]
+[gd_scene load_steps=11 format=3 uid="uid://df5bp6u57j3ny"]
 
-[ext_resource type="Script" path="res://items/pickups/fish/fish.gd" id="1_nnonf"]
-[ext_resource type="Resource" uid="uid://bcfm6adtv1lts" path="res://items/raw_material/fish2.tres" id="2_0cwtb"]
-[ext_resource type="Texture2D" uid="uid://b5l0xbdmsiyya" path="res://items/pickups/fish/fish2.png" id="3_1doxk"]
-[ext_resource type="PackedScene" uid="uid://c515veavly2w0" path="res://float_component.tscn" id="4_0hj4f"]
+[ext_resource type="Script" path="res://items/pickups/fish/fish.gd" id="1_41vl0"]
+[ext_resource type="Resource" uid="uid://mafc8o4e3kxa" path="res://items/raw_material/fish3.tres" id="2_fqere"]
+[ext_resource type="Texture2D" uid="uid://cnudjjmovuotm" path="res://items/pickups/fish/fish3.png" id="3_ky4k7"]
+[ext_resource type="PackedScene" uid="uid://c515veavly2w0" path="res://float_component.tscn" id="4_hlk8c"]
 
 [sub_resource type="Animation" id="Animation_s6hjj"]
 length = 0.25
@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(23, 2, 14, 16)]
+"values": [Rect2(31, 2, 22, 22)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -29,7 +29,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(1, -2)]
 }
 
 [sub_resource type="Animation" id="Animation_n3w1m"]
@@ -44,7 +44,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(2, 20, 12, 18)]
+"values": [Rect2(2, 25, 19, 21)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -56,7 +56,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 0)]
+"values": [Vector2(1.5, -1.5)]
 }
 
 [sub_resource type="Animation" id="Animation_7dtu8"]
@@ -71,7 +71,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(2, 2, 19, 16)]
+"values": [Rect2(2, 2, 27, 21)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -83,7 +83,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.5, 0)]
+"values": [Vector2(-1.5, -1.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lysdg"]
@@ -94,34 +94,36 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4vt0f"]
-radius = 4.0
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7sqle"]
 radius = 17.0
 
-[node name="PurpleFish" type="RigidBody2D"]
-position = Vector2(1, 0)
+[node name="RedFish" type="RigidBody2D"]
 collision_layer = 4
 mass = 0.3
 lock_rotation = true
 linear_damp_mode = 1
 angular_damp = 0.1
-script = ExtResource("1_nnonf")
+script = ExtResource("1_41vl0")
 should_flip = true
-min_angle_turn_toward_origin_degrees = 45.0
-max_angle_turn_toward_origin_degrees = 90.0
+max_dist_from_origin_sqr = 900.0
+min_angle_turn_toward_origin_degrees = 10.0
+max_angle_turn_toward_origin_degrees = 30.0
 min_idle_time = 1.0
 max_idle_time = 3.0
-thrust_vel = 100.0
-wind_up_time = 0.7
-turn_speed = 0.1
-inventory_item = ExtResource("2_0cwtb")
+thrust_vel = 20.0
+wind_up_time = 0.4
+turn_speed = 0.05
+thrust_anim_time = 1.0
+inventory_item = ExtResource("2_fqere")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(-1, 1)
-texture = ExtResource("3_1doxk")
+texture = ExtResource("3_ky4k7")
+offset = Vector2(1, -2)
 region_enabled = true
-region_rect = Rect2(23, 2, 14, 16)
+region_rect = Rect2(31, 2, 22, 22)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -139,7 +141,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_7sqle")
 
-[node name="FloatComponent" parent="." node_paths=PackedStringArray("float_target") instance=ExtResource("4_0hj4f")]
+[node name="FloatComponent" parent="." node_paths=PackedStringArray("float_target") instance=ExtResource("4_hlk8c")]
 float_target = NodePath("../Sprite2D")
 is_in_water = true
 

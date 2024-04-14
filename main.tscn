@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=21 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://InnerAirArea.gd" id="8_7dvb7"]
 [ext_resource type="Script" path="res://PolygonWithCollision.gd" id="8_w2ktp"]
 [ext_resource type="PackedScene" uid="uid://daco7mvhk2p22" path="res://items/pickups/fish/orange_fish.tscn" id="9_najt1"]
+[ext_resource type="PackedScene" uid="uid://df5bp6u57j3ny" path="res://items/pickups/fish/red_fish.tscn" id="12_tt2ek"]
 [ext_resource type="PackedScene" uid="uid://b440huetpsjvh" path="res://items/pickups/flower_pickup.tscn" id="13_e6f26"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
@@ -255,6 +256,9 @@ rotation = 2.87979
 [node name="Flower3" parent="World/Fauna" instance=ExtResource("13_e6f26")]
 position = Vector2(-690, 171)
 rotation = 3.12723
+
+[node name="RedFish" parent="." instance=ExtResource("12_tt2ek")]
+position = Vector2(28, 21)
 
 [connection signal="body_entered" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_exited"]
