@@ -63,7 +63,7 @@ enum FishState {
 var current_state: FishState = FishState.IDLE
 
 func _physics_process(delta: float) -> void:
-	if not in_water:
+	if not in_water or not is_spawned_currently:
 		return
 		
 	match(current_state):

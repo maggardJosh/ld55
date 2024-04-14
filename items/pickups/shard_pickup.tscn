@@ -18,6 +18,7 @@ script = ExtResource("1_uk88u")
 inventory_item = ExtResource("2_wyjo1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_2lpni")
@@ -27,6 +28,7 @@ position = Vector2(0, -2)
 texture = ExtResource("3_5518p")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 gravity_point_center = Vector2(0, -1)

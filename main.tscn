@@ -1,16 +1,26 @@
-[gd_scene load_steps=28 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=38 format=3 uid="uid://c1e2254bs6m3e"]
 
+[ext_resource type="Script" path="res://ResourceSpawnManager.gd" id="1_7jq02"]
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
+[ext_resource type="Resource" uid="uid://deery3yh4y3io" path="res://items/raw_material/copper.tres" id="2_8o5vw"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
 [ext_resource type="PackedScene" uid="uid://cjiok5o0qam3w" path="res://ui.tscn" id="3_0cdyn"]
 [ext_resource type="Script" path="res://WaterArea.gd" id="3_58cow"]
+[ext_resource type="Resource" uid="uid://buujnokf8u7ei" path="res://items/raw_material/silver.tres" id="3_sag4w"]
+[ext_resource type="Resource" uid="uid://cccvsrjmbfrt2" path="res://items/raw_material/gold.tres" id="4_u4mso"]
+[ext_resource type="Resource" uid="uid://dcorhwv3uco24" path="res://items/raw_material/coral.tres" id="5_7apka"]
 [ext_resource type="PackedScene" uid="uid://b1tw6cgdbe6r7" path="res://biome.tscn" id="5_18gyt"]
 [ext_resource type="PackedScene" uid="uid://bpdlhgmmoy15j" path="res://portal.tscn" id="5_ekxwn"]
 [ext_resource type="Script" path="res://OxygenArea.gd" id="5_ghrk7"]
+[ext_resource type="Resource" uid="uid://rbw08l4h5jir" path="res://items/raw_material/flower.tres" id="6_2h81h"]
+[ext_resource type="Resource" uid="uid://c1a3igbsujtvc" path="res://items/raw_material/shards.tres" id="7_kq8tb"]
 [ext_resource type="Script" path="res://InnerAirArea.gd" id="8_7dvb7"]
+[ext_resource type="Resource" uid="uid://dbar0iep4nnvp" path="res://items/raw_material/fish.tres" id="8_tbvrt"]
 [ext_resource type="Script" path="res://PolygonWithCollision.gd" id="8_w2ktp"]
+[ext_resource type="Resource" uid="uid://bcfm6adtv1lts" path="res://items/raw_material/fish2.tres" id="9_8j8wn"]
 [ext_resource type="PackedScene" uid="uid://daco7mvhk2p22" path="res://items/pickups/fish/orange_fish.tscn" id="9_najt1"]
 [ext_resource type="PackedScene" uid="uid://btgsom7dis0lc" path="res://items/pickups/fish/fast_fish.tscn" id="10_ki5cb"]
+[ext_resource type="Resource" uid="uid://mafc8o4e3kxa" path="res://items/raw_material/fish3.tres" id="10_m37i2"]
 [ext_resource type="PackedScene" uid="uid://df5bp6u57j3ny" path="res://items/pickups/fish/red_fish.tscn" id="12_eofuo"]
 [ext_resource type="PackedScene" uid="uid://b440huetpsjvh" path="res://items/pickups/flower_pickup.tscn" id="13_e6f26"]
 [ext_resource type="PackedScene" uid="uid://da7n1mecu53jy" path="res://items/pickups/copper_pickup.tscn" id="13_qekb3"]
@@ -45,6 +55,27 @@ rough = true
 [node name="Main" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [950.0]
 
+[node name="ResourceSpawnManager" type="Node" parent="." node_paths=PackedStringArray("fauna_container", "fish_container")]
+script = ExtResource("1_7jq02")
+num_copper = 4
+num_gold = 5
+num_flower = 10
+copper_res = ExtResource("2_8o5vw")
+silver_res = ExtResource("3_sag4w")
+gold_res = ExtResource("4_u4mso")
+coral_res = ExtResource("5_7apka")
+flower_res = ExtResource("6_2h81h")
+shards_res = ExtResource("7_kq8tb")
+fish_1_res = ExtResource("8_tbvrt")
+fish_2_res = ExtResource("9_8j8wn")
+fish_3_res = ExtResource("10_m37i2")
+fauna_container = NodePath("../World/Fauna")
+fish_container = NodePath("../World/Fish")
+
+[node name="CheckSpawnTimer" type="Timer" parent="ResourceSpawnManager"]
+wait_time = 15.0
+autostart = true
+
 [node name="UI" parent="." instance=ExtResource("3_0cdyn")]
 visible = false
 
@@ -53,7 +84,7 @@ position = Vector2(-170, -27)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rotku")]
 z_index = 1
-position = Vector2(-3065, 2519)
+position = Vector2(-4706, 67)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Biomes" type="Node2D" parent="."]
@@ -539,6 +570,9 @@ position = Vector2(829, 293)
 [node name="Fish12" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
 position = Vector2(826, 141)
 
+[node name="Fish19" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(464, 120)
+
 [node name="Biome2" type="Node2D" parent="World/Fish"]
 
 [node name="PurpleFish" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
@@ -628,39 +662,6 @@ position = Vector2(234, 1235)
 [node name="RedFish10" parent="World/Fish/Biome3" instance=ExtResource("12_eofuo")]
 position = Vector2(63, 1430)
 
-[node name="OrangeFish" parent="World/Fish/Biome3" instance=ExtResource("9_najt1")]
-position = Vector2(-721, -877)
-
-[node name="OrangeFish2" parent="World/Fish/Biome3" instance=ExtResource("9_najt1")]
-position = Vector2(-489, -927)
-
-[node name="OrangeFish3" parent="World/Fish/Biome3" instance=ExtResource("9_najt1")]
-position = Vector2(882, -967)
-
-[node name="OrangeFish4" parent="World/Fish/Biome3" instance=ExtResource("9_najt1")]
-position = Vector2(796, -791)
-
-[node name="OrangeFish5" parent="World/Fish/Biome3" instance=ExtResource("9_najt1")]
-position = Vector2(1053, -761)
-
-[node name="OrangeFish6" parent="World/Fish/Biome3" instance=ExtResource("9_najt1")]
-position = Vector2(680, -968)
-
-[node name="PurpleFish" parent="World/Fish/Biome3" instance=ExtResource("10_ki5cb")]
-position = Vector2(122, 585)
-
-[node name="PurpleFish2" parent="World/Fish/Biome3" instance=ExtResource("10_ki5cb")]
-position = Vector2(-436, 1446)
-
-[node name="PurpleFish3" parent="World/Fish/Biome3" instance=ExtResource("10_ki5cb")]
-position = Vector2(-974, 1298)
-
-[node name="PurpleFish4" parent="World/Fish/Biome3" instance=ExtResource("10_ki5cb")]
-position = Vector2(-1411, -108)
-
-[node name="PurpleFish5" parent="World/Fish/Biome3" instance=ExtResource("10_ki5cb")]
-position = Vector2(-597, -801)
-
 [node name="Fauna" type="Node2D" parent="World"]
 
 [node name="Biome1" type="Node2D" parent="World/Fauna"]
@@ -668,6 +669,62 @@ position = Vector2(-597, -801)
 [node name="Flower" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
 position = Vector2(-237, 63)
 rotation = 2.61799
+
+[node name="Flower17" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-334, 107)
+rotation = 2.99185
+
+[node name="Flower18" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-321, 108)
+rotation = 2.99185
+
+[node name="Flower19" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-201, 346)
+rotation = 6.12222
+
+[node name="Flower20" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-191, 347)
+rotation = 6.12222
+
+[node name="Flower21" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-178, 347)
+rotation = 6.12222
+
+[node name="Flower22" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-168, 346)
+rotation = 6.12222
+
+[node name="Flower23" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-140, 342)
+rotation = 6.12222
+
+[node name="Flower24" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-155, 347)
+rotation = 6.12222
+
+[node name="Flower25" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-124, 333)
+rotation = 6.12222
+
+[node name="Flower26" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(65, 276)
+rotation = 6.02138
+
+[node name="Flower27" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(82, 273)
+rotation = 6.02138
+
+[node name="Flower28" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(96, 273)
+rotation = 6.12222
+
+[node name="Flower29" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(105, 272)
+rotation = 6.12222
+
+[node name="Flower30" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(117, 268)
+rotation = 6.12222
 
 [node name="Flower14" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
 position = Vector2(-206, 54)
@@ -738,7 +795,67 @@ position = Vector2(-1936, 94.9999)
 rotation = -2.25802
 
 [node name="Copper3" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
-position = Vector2(-1984, 129)
+position = Vector2(-1971, 120)
+rotation = -2.54134
+
+[node name="Copper5" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-1960, 111)
+rotation = -2.54134
+
+[node name="Copper6" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-1984, 209)
+rotation = -2.54134
+
+[node name="Copper7" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-295, 102)
+rotation = -2.54134
+
+[node name="Copper8" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-268, 82)
+rotation = -2.54134
+
+[node name="Copper15" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(1263, 87)
+rotation = -2.54134
+
+[node name="Copper16" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(1268, 99)
+rotation = -2.54134
+
+[node name="Copper17" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(1270, 107)
+rotation = -2.54134
+
+[node name="Copper18" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(807, 333)
+rotation = -2.54134
+
+[node name="Copper19" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(808, 358)
+rotation = -2.54134
+
+[node name="Copper9" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-131, 56)
+rotation = -2.54134
+
+[node name="Copper10" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-80, 67)
+rotation = -2.54134
+
+[node name="Copper11" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-102, 61)
+rotation = -2.54134
+
+[node name="Copper12" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(245, 320)
+rotation = -2.54134
+
+[node name="Copper13" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(334, 322)
+rotation = -2.54134
+
+[node name="Copper14" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-538, 353)
 rotation = -2.54134
 
 [node name="Copper4" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
@@ -794,6 +911,14 @@ rotation = 2.44417
 [node name="Coral26" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
 position = Vector2(-188, 524)
 rotation = 2.44417
+
+[node name="Coral27" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-132, 478)
+rotation = 2.64746
+
+[node name="Coral28" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-67, 475)
+rotation = 3.47079
 
 [node name="Coral21" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
 position = Vector2(-1662, 1160)
@@ -866,6 +991,58 @@ rotation = 0.515564
 [node name="Silver10" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
 position = Vector2(-191, 1660)
 rotation = 0.515564
+
+[node name="Silver13" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-36, 1620)
+rotation = 1.40865
+
+[node name="Silver14" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-26, 1621)
+rotation = 1.40865
+
+[node name="Silver15" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-18, 1623)
+rotation = 1.40865
+
+[node name="Silver16" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-13, 1627)
+rotation = 1.40865
+
+[node name="Silver17" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1255, 1865)
+rotation = 1.40865
+
+[node name="Silver18" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1547, 992)
+rotation = 1.40865
+
+[node name="Silver19" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1437, 1027)
+rotation = 1.40865
+
+[node name="Silver20" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1445, 1026)
+rotation = 1.40865
+
+[node name="Silver21" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1428, 1024)
+rotation = 1.40865
+
+[node name="Silver22" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1550, 975)
+rotation = 1.40865
+
+[node name="Silver23" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1286, 1045)
+rotation = 1.40865
+
+[node name="Silver24" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1293, 1053)
+rotation = 1.40865
+
+[node name="Silver25" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1882, 714)
+rotation = 1.40865
 
 [node name="Silver11" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
 position = Vector2(-1889, 718)
@@ -950,20 +1127,28 @@ position = Vector2(-2882, 2123)
 rotation = 4.14593
 
 [node name="Shard7" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3592, 820)
-rotation = 2.72469
+position = Vector2(-3743, 1019)
+rotation = 3.26242
 
 [node name="Shard8" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3544, 803)
-rotation = 2.72469
+position = Vector2(-4763, 580)
+rotation = 2.99046
 
 [node name="Shard9" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3489, 788)
-rotation = 2.84201
+position = Vector2(-4740, 573)
+rotation = 2.99046
 
 [node name="Shard10" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3505, 794)
-rotation = 2.84201
+position = Vector2(-4782, 585)
+rotation = 2.99046
+
+[node name="Shard14" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
+position = Vector2(-4622, 591)
+rotation = 3.71874
+
+[node name="Shard15" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
+position = Vector2(-4638, 587)
+rotation = 3.71874
 
 [node name="Shard11" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
 position = Vector2(-3688, 998)
@@ -974,32 +1159,12 @@ position = Vector2(-3679, 973)
 rotation = 2.02533
 
 [node name="Shard13" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3192, 797)
-rotation = 3.43623
-
-[node name="Shard14" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3219, 788)
-rotation = 3.43623
-
-[node name="Shard15" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3249, 779)
-rotation = 3.43623
-
-[node name="Shard16" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3263, 775)
-rotation = 3.43623
-
-[node name="Shard17" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3326, 756)
-rotation = 3.43623
-
-[node name="Shard18" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3320, 758)
+position = Vector2(-3071, 1095)
 rotation = 3.43623
 
 [node name="Shard19" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
-position = Vector2(-3307, 763)
-rotation = 3.43623
+position = Vector2(-3126, 1047)
+rotation = 3.92102
 
 [node name="Shard20" parent="World/Fauna/Biome3" instance=ExtResource("16_vr302")]
 position = Vector2(-3106, 1089)
@@ -1010,6 +1175,7 @@ position = Vector2(-3007, 1105)
 rotation = 2.99634
 
 [node name="Deco" type="Node2D" parent="World"]
+visible = false
 
 [node name="Seaweed" type="Line2D" parent="World/Deco"]
 position = Vector2(-137, 358)
@@ -1266,5 +1432,6 @@ position = Vector2(-4775, 6245)
 [node name="divedepth1" type="Marker2D" parent="."]
 position = Vector2(227, 950)
 
+[connection signal="timeout" from="ResourceSpawnManager/CheckSpawnTimer" to="ResourceSpawnManager" method="_on_check_spawn_timer_timeout"]
 [connection signal="body_entered" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_exited"]
