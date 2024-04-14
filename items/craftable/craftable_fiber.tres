@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CraftableInventoryItem" load_steps=5 format=3 uid="uid://dtncpslua7qng"]
+
+[ext_resource type="Texture2D" uid="uid://dx68lnjpd7sts" path="res://items/craftable/fiber.png" id="1_t7cnd"]
+[ext_resource type="Resource" uid="uid://b2k1tbq58w01i" path="res://items/craftable/fiber.tres" id="2_geeg1"]
+[ext_resource type="Resource" uid="uid://rbw08l4h5jir" path="res://items/raw_material/flower.tres" id="3_v57um"]
+[ext_resource type="Script" path="res://items/craftable/CraftableInventoryItem.gd" id="5_5igps"]
+
+[resource]
+script = ExtResource("5_5igps")
+inventory_item = ExtResource("2_geeg1")
+title = "Fiber"
+image = ExtResource("1_t7cnd")
+description = "Rough and strong"
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("3_v57um"), ExtResource("3_v57um")])

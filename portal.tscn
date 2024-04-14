@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpdlhgmmoy15j"]
+[gd_scene load_steps=10 format=3 uid="uid://bpdlhgmmoy15j"]
 
 [ext_resource type="Script" path="res://portal.gd" id="1_gin5e"]
 [ext_resource type="Texture2D" uid="uid://jhqp07488shd" path="res://portal.png" id="1_ouc00"]
 [ext_resource type="Resource" uid="uid://d14afxbanphdh" path="res://items/upgrades/otherwordlyTank.tres" id="2_8o5r2"]
 [ext_resource type="Resource" uid="uid://jelef2wcbg1y" path="res://items/craftable/craftable_glass.tres" id="4_wkb07"]
+[ext_resource type="Resource" uid="uid://dtncpslua7qng" path="res://items/craftable/craftable_fiber.tres" id="5_xneja"]
 [ext_resource type="PackedScene" uid="uid://dtntstrceesaa" path="res://summon_button.tscn" id="7_yaqxb"]
 
 [sub_resource type="Animation" id="Animation_tfgl8"]
@@ -46,7 +47,7 @@ size = Vector2(74, 73)
 z_index = -1
 position = Vector2(-222, -26)
 script = ExtResource("1_gin5e")
-summon_button_containers = [NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer"), NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer2"), NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer3"), NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer4")]
+summon_button_containers = [NodePath("UI/SummonMenu/VBoxContainer/MaterialsContainer"), NodePath("UI/SummonMenu/VBoxContainer/UpgradesContainer"), NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer3"), NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer4")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
@@ -98,30 +99,34 @@ offset_bottom = 81.0
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
+[node name="MaterialsContainer" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/MaterialsContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "Materials"
 vertical_alignment = 1
 
-[node name="SummonButton3" parent="UI/SummonMenu/VBoxContainer/HBoxContainer" instance=ExtResource("7_yaqxb")]
+[node name="SummonButton3" parent="UI/SummonMenu/VBoxContainer/MaterialsContainer" instance=ExtResource("7_yaqxb")]
 layout_mode = 2
 item = ExtResource("4_wkb07")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
+[node name="SummonButton4" parent="UI/SummonMenu/VBoxContainer/MaterialsContainer" instance=ExtResource("7_yaqxb")]
+layout_mode = 2
+item = ExtResource("5_xneja")
+
+[node name="UpgradesContainer" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/UpgradesContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "Upgrades"
 
-[node name="SummonButton2" parent="UI/SummonMenu/VBoxContainer/HBoxContainer2" instance=ExtResource("7_yaqxb")]
+[node name="SummonButton2" parent="UI/SummonMenu/VBoxContainer/UpgradesContainer" instance=ExtResource("7_yaqxb")]
 layout_mode = 2
 item = ExtResource("2_8o5r2")
 

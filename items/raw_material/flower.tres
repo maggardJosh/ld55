@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://rbw08l4h5jir"]
+
+[ext_resource type="Texture2D" uid="uid://bv01hqg41q42j" path="res://items/raw_material/flower.png" id="1_n0xwg"]
+[ext_resource type="Script" path="res://items/InventoryItem.gd" id="2_sfhmo"]
+
+[resource]
+script = ExtResource("2_sfhmo")
+inventory_image = ExtResource("1_n0xwg")
+title = "Flower"
+description = "Can be crafted into fiber"
+scenePath = "res://items/pickups/flower_pickup.tscn"
