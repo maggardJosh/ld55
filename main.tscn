@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=28 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
@@ -15,8 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://b440huetpsjvh" path="res://items/pickups/flower_pickup.tscn" id="13_e6f26"]
 [ext_resource type="PackedScene" uid="uid://da7n1mecu53jy" path="res://items/pickups/copper_pickup.tscn" id="13_qekb3"]
 [ext_resource type="PackedScene" uid="uid://c0kqrk3vva1y1" path="res://world/deco/seaweed.tscn" id="14_8talo"]
+[ext_resource type="PackedScene" uid="uid://ba5qec1sf8vey" path="res://items/pickups/coral_pickup.tscn" id="15_1y350"]
 [ext_resource type="PackedScene" uid="uid://daahkbyc5olew" path="res://items/pickups/gold_pickup.tscn" id="15_x3d57"]
+[ext_resource type="PackedScene" uid="uid://cfty03o4bgxy2" path="res://items/pickups/silver_pickup.tscn" id="16_nbxcd"]
 [ext_resource type="PackedScene" uid="uid://drhq5o870i1ub" path="res://items/pickups/shard_pickup.tscn" id="16_vr302"]
+[ext_resource type="Script" path="res://decoration_line.gd" id="20_hpkv7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
 size = Vector2(6439, 416)
@@ -49,6 +52,7 @@ visible = false
 position = Vector2(-170, -27)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rotku")]
+z_index = 1
 position = Vector2(-158, -66)
 spawn_point = NodePath("../SpawnPoint")
 
@@ -110,7 +114,7 @@ shape = SubResource("RectangleShape2D_qby36")
 debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 
 [node name="Water" type="Polygon2D" parent="." node_paths=PackedStringArray("default_biome")]
-z_index = 1
+z_index = 3
 material = SubResource("ShaderMaterial_sylxd")
 color = Color(0.262745, 0.317647, 0.768627, 0.501961)
 polygon = PackedVector2Array(-8135, 0, -8109.02, 973.453, -3666, 950, -3599, 820, -3348, 750, -3179, 801, -3146, 950, -3666, 950, -8109, 973, -8081, 2023, -4981, 2181, -4988, 2156, -4968, 2108, -4852, 2122, -4780, 2182, -4981, 2181, -8081, 2023, -8081, 2373, -11498, 3127, -14243, 7325, -12573, 10747, -7746, 12203, 6859, 7142, 5662, 4399, -2340, 4928, -5441, 4928, -5081, 4555, -4309, 4160, -3393, 4142, -2531, 4609, -2340, 4928, 5662, 4399, 4429, 1576, 2388, 1772, 2054, 1772, 2088, 1643, 2253, 1603, 2381, 1697, 2388, 1772, 4429, 1576, 4367, 1410, -1005, 1780, -1316, 1780, -1338, 1772, -1374, 1701, -1301, 1603, -1210, 1563, -1024, 1573, -928, 1663, -938, 1739, -1005, 1780, 4367, 1410, 4149, 832, 69, 1074, -366, 1074, -357, 1047, -261, 945, -114, 934, -1, 1002, 69, 1074, 4149, 832, 3840, 0)
@@ -120,55 +124,55 @@ biome_transition_time = 3.0
 biome_transition_curve = SubResource("Curve_0m4yk")
 
 [node name="WaterBG" type="Polygon2D" parent="Water"]
-z_index = -2
+z_index = -3
 material = SubResource("ShaderMaterial_sylxd")
 color = Color(0.356863, 0.431373, 0.882353, 1)
 polygon = PackedVector2Array(-8135, 0, -8109.02, 973.453, -3666, 950, -3599, 820, -3348, 750, -3179, 801, -3146, 950, -3666, 950, -8109, 973, -8081, 2023, -4981, 2181, -4988, 2156, -4968, 2108, -4852, 2122, -4780, 2182, -4981, 2181, -8081, 2023, -8081, 2373, -11498, 3127, -14243, 7325, -12573, 10747, -7746, 12203, 6859, 7142, 5662, 4399, -2340, 4928, -5441, 4928, -5081, 4555, -4309, 4160, -3393, 4142, -2531, 4609, -2340, 4928, 5662, 4399, 4429, 1576, 2388, 1772, 2054, 1772, 2088, 1643, 2253, 1603, 2381, 1697, 2388, 1772, 4429, 1576, 4367, 1410, -1005, 1780, -1316, 1780, -1338, 1772, -1374, 1701, -1301, 1603, -1210, 1563, -1024, 1573, -928, 1663, -938, 1739, -1005, 1780, 4367, 1410, 4149, 832, 69, 1074, -366, 1074, -357, 1047, -261, 945, -114, 934, -1, 1002, 69, 1074, 4149, 832, 3840, 0)
 
 [node name="AirBG" type="Polygon2D" parent="Water"]
-z_index = -3
+z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-1865, 305)
 color = Color(0.286275, 0.215686, 0.192157, 1)
 polygon = PackedVector2Array(1464, 792, 1497, 691, 1588, 605, 1780, 605, 1982, 782)
 
 [node name="AirBG7" type="Polygon2D" parent="Water"]
-z_index = -3
+z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-6468, -894)
 color = Color(0.286275, 0.215686, 0.192157, 1)
 polygon = PackedVector2Array(1497, 474, 2052, 285, 2752, 545, 2926, 769, 3045, 925, 1470, 976)
 
 [node name="AirBG2" type="Polygon2D" parent="Water"]
-z_index = -3
+z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-2846, 1005)
 color = Color(0.333333, 0.25098, 0.227451, 1)
 polygon = PackedVector2Array(1464, 792, 1451, 687, 1555, 537, 1836, 532, 1979, 639, 1907, 789)
 
 [node name="AirBG3" type="Polygon2D" parent="Water"]
-z_index = -3
+z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(525, 1000)
 color = Color(0.333333, 0.25098, 0.227451, 1)
 polygon = PackedVector2Array(1464, 792, 1451, 687, 1555, 537, 1836, 532, 1979, 639, 1907, 789)
 
 [node name="AirBG5" type="Polygon2D" parent="Water"]
-z_index = -3
+z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-6655, 1415)
 color = Color(0.333333, 0.25098, 0.227451, 1)
 polygon = PackedVector2Array(1649, 776, 1679, 671, 1785, 646, 1892, 725, 1907, 789)
 
 [node name="AirBG6" type="Polygon2D" parent="Water"]
-z_index = -3
+z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-5202, 177)
 color = Color(0.333333, 0.25098, 0.227451, 1)
 polygon = PackedVector2Array(1518, 781, 1582, 623, 1885, 552, 2052, 613, 2066, 790)
 
 [node name="AirBG4" type="Polygon2D" parent="Water"]
-z_index = -3
+z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-6048, 3909)
 color = Color(0.556863, 0.286275, 0.603922, 1)
@@ -325,7 +329,7 @@ physics_material_override = SubResource("PhysicsMaterial_ywnst")
 [node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island2"]
 position = Vector2(-68, -5)
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(-123, 69, -284, 141, -402, 194, -425, 160, -490, 163, -562, 221, -546, 293, -671, 342, -724, 296, -741, 192, -713, 65, -635, -10, -510, 31, -398, -34, -225, -49, -163, -51, -108, -19)
+polygon = PackedVector2Array(-123, 69, -284, 141, -402, 194, -425, 160, -490, 163, -562, 221, -546, 293, -671, 342, -724, 296, -741, 192, -713, 65, -630, 20, -510, 31, -398, -34, -225, -49, -163, -51, -108, -19)
 script = ExtResource("8_w2ktp")
 
 [node name="Island3" type="StaticBody2D" parent="World/Collision"]
@@ -335,7 +339,7 @@ physics_material_override = SubResource("PhysicsMaterial_ywnst")
 [node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island3"]
 position = Vector2(122, 306)
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(379, -171, 346, -362, 526, -428, 707, -428, 821, -300, 822, -176, 793, 28, 636, 250, 511, 317, 303, 380, 276, 239, 308, 9)
+polygon = PackedVector2Array(379, -171, 346, -362, 526, -428, 707, -428, 825, -361, 822, -176, 793, 28, 636, 250, 511, 317, 303, 380, 276, 239, 308, 9)
 script = ExtResource("8_w2ktp")
 
 [node name="Island8" type="StaticBody2D" parent="World/Collision"]
@@ -454,7 +458,7 @@ physics_material_override = SubResource("PhysicsMaterial_ywnst")
 [node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island6"]
 position = Vector2(91, -494)
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(-65, -168, -8, -287, 107, -615, 421, -1305, 1472, -1348, 2390, 1226, 4135, 4608, 3487, 6860, -142, 7445, -5116, 11066, -11199, 11192, -13931, 9947, -14854, 6880, -9177, 6748, -8525, 7146, -7829, 7226, -6724, 6979, -6004, 6435, -5881, 5473, -5702, 4768, -5577, 4610, -5013, 4597, -4411, 4821, -3734, 5420, -2711, 5584, -1956, 5448, -718, 5425, 15, 5576, 581, 5305, 755, 5120, 902, 4609, 860, 4183, 898, 4085, 1136, 3838, 1061, 3529, 638, 3265, 275, 3333, -140, 3453, -480, 3257, -684, 3061, -601, 2917, -427, 2887, -170, 2887, 313, 2879, 789, 2895, 1363, 2932, 1449, 2635, 1072, 1613, 1058, 1460, 930, 1366, 765, 1406, 715, 1599, 487, 1700, 295, 1543, 265, 800, 289, 234, 92, 162, -6, 14)
+polygon = PackedVector2Array(-65, -168, -8, -287, 107, -615, 421, -1305, 1472, -1348, 2390, 1226, 4135, 4608, 3487, 6860, -142, 7445, -5116, 11066, -11199, 11192, -13931, 9947, -14854, 6880, -7086, 6555, -6537, 6596, -6135, 6388, -5897, 6060, -5937, 5084, -5822, 4766, -5577, 4610, -5013, 4597, -4411, 4821, -3734, 5420, -2711, 5584, -1956, 5448, -718, 5425, 15, 5576, 581, 5305, 755, 5120, 902, 4609, 860, 4183, 898, 4085, 1136, 3838, 1061, 3529, 638, 3265, 275, 3333, -140, 3453, -480, 3257, -684, 3061, -601, 2917, -427, 2887, -170, 2887, 313, 2879, 789, 2895, 1363, 2932, 1449, 2635, 1072, 1613, 1058, 1460, 930, 1366, 765, 1406, 715, 1599, 487, 1700, 295, 1543, 265, 800, 289, 234, 92, 162, -6, 14)
 script = ExtResource("8_w2ktp")
 
 [node name="Island4" type="StaticBody2D" parent="World/Collision"]
@@ -472,7 +476,7 @@ physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
 [node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island10"]
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(-381, 90, -499, 184, -518, 489, -357, 848, 24, 1110, 417, 1118, 772, 891, 1036, 982, 1308, 1223, 1221, 1386, 1077, 1511, 1047, 1692, 1145, 2010, 836, 2576, 369, 2755, -106, 2653, -1655, 2721, -2562, 2818, -3109, 2416, -3486, 1787, -4348, 1320, -5264, 1338, -6036, 1733, -6503, 2218, -6850, 2412, -7717, 2601, -8469, 2801, -9037, 3177, -9149, 3705, -8809, 4163, -14486, 4295, -12303, 1109, -8515, 225, -8222, -3591, -6430, -4327, -5183, -3961, -4346, -3494, -4160, -3180, -4175, -2942, -4202, -2771, -4345, -2708, -4462, -2794, -4745, -3104, -5432, -3382, -5872, -3189, -5881, -2825, -5871, -2796, -5950, -2774, -5985, -2731, -5997, -2679, -5942, -2594, -5847, -2562, -5700, -2548, -5689, -2250, -5741, -2233, -5842, -2026, -5951, -1820, -6002, -1602, -5913, -1304, -5758, -1266, -5756, -1040, -5662, -644, -5717, -624, -5807, -700, -5923, -714, -5943, -666, -5917, -573, -5917, -516, -5928, -376, -5866, -192, -5725, -45, -5510, 93, -5196, 147, -4161, 19, -3808, -208, -3720, -411, -3612, -419, -3474, -309, -3300, -369, -3215, -483, -3158, -975, -2895, -1017, -2553, -754, -2182, -689, -1818, -689, -1662, -362, -1362, 95, -938, 79, -723, -19, -512, -32, -398, -34, -225, -49, -101, -61, -75, 43, -177, 89)
+polygon = PackedVector2Array(-381, 90, -499, 184, -518, 489, -357, 848, 24, 1110, 417, 1118, 772, 891, 1036, 982, 1308, 1223, 1221, 1386, 1077, 1511, 1047, 1692, 1145, 2010, 836, 2576, 369, 2755, -106, 2653, -1655, 2721, -2562, 2818, -3109, 2416, -3486, 1787, -4348, 1320, -5264, 1338, -6036, 1733, -6503, 2218, -6793, 2535, -7065, 2770, -7178, 3411, -6922, 3766, -6718, 3970, -14486, 4295, -12303, 1109, -8515, 225, -8222, -3591, -6430, -4327, -5183, -3961, -4346, -3494, -4160, -3180, -4175, -2942, -4202, -2771, -4345, -2708, -4462, -2794, -4745, -3104, -5432, -3382, -5872, -3189, -5881, -2825, -5871, -2796, -5950, -2774, -5985, -2731, -5997, -2679, -5942, -2594, -5847, -2562, -5700, -2548, -5689, -2250, -5741, -2233, -5842, -2026, -5951, -1820, -6002, -1602, -5913, -1304, -5758, -1266, -5756, -1040, -5662, -644, -5717, -624, -5807, -700, -5923, -714, -5943, -666, -5917, -573, -5917, -516, -5928, -376, -5866, -192, -5725, -45, -5510, 93, -5196, 147, -4161, 19, -3808, -208, -3720, -411, -3612, -419, -3474, -309, -3300, -369, -3215, -483, -3158, -975, -2895, -1017, -2553, -754, -2182, -689, -1818, -689, -1662, -362, -1362, 95, -938, 79, -723, -19, -512, -32, -398, -34, -225, -49, -101, -61, -75, 43, -177, 89)
 script = ExtResource("8_w2ktp")
 
 [node name="Fish" type="Node2D" parent="World"]
@@ -587,7 +591,7 @@ position = Vector2(358, 1547)
 position = Vector2(-1927, 1174)
 
 [node name="PurpleFish12" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
-position = Vector2(-1695, 608)
+position = Vector2(-1708, 726)
 
 [node name="Biome3" type="Node2D" parent="World/Fish"]
 position = Vector2(-3332, 1089)
@@ -741,6 +745,158 @@ rotation = -3.0342
 
 [node name="Biome2" type="Node2D" parent="World/Fauna"]
 
+[node name="Coral" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1690, 999)
+rotation = 5.20755
+
+[node name="Coral12" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1630, 1147)
+rotation = 3.58506
+
+[node name="Coral13" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1615, 1149)
+rotation = 3.58506
+
+[node name="Coral14" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1604, 1154)
+rotation = 3.58506
+
+[node name="Coral15" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1595, 1157)
+rotation = 3.58506
+
+[node name="Coral16" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1586, 1158)
+rotation = 3.58506
+
+[node name="Coral17" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1576, 1162)
+rotation = 3.58506
+
+[node name="Coral18" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1563, 1165)
+rotation = 3.58506
+
+[node name="Coral19" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1547, 1169)
+rotation = 3.58506
+
+[node name="Coral20" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1652, 1153)
+rotation = 2.44417
+
+[node name="Coral25" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-203, 535)
+rotation = 2.44417
+
+[node name="Coral26" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-188, 524)
+rotation = 2.44417
+
+[node name="Coral21" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1662, 1160)
+rotation = 2.47339
+
+[node name="Coral22" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1672, 1170)
+rotation = 2.47339
+
+[node name="Coral23" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1683, 1178)
+rotation = 2.47339
+
+[node name="Coral24" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1640, 1144)
+rotation = 3.03305
+
+[node name="Coral2" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1698, 1013)
+rotation = 5.20755
+
+[node name="Coral3" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1713, 1042)
+rotation = 5.20755
+
+[node name="Coral10" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1708, 1036)
+rotation = 5.20755
+
+[node name="Coral11" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1702, 1021)
+rotation = 5.20755
+
+[node name="Coral4" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1706, 1030)
+rotation = 5.20755
+
+[node name="Coral5" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1723, 1059)
+rotation = 5.20755
+
+[node name="Coral6" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1737, 1070)
+rotation = 5.78802
+
+[node name="Coral7" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1752, 1078)
+rotation = 5.87285
+
+[node name="Coral8" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1745, 1075)
+rotation = 5.87285
+
+[node name="Coral9" parent="World/Fauna/Biome2" instance=ExtResource("15_1y350")]
+position = Vector2(-1729, 1065)
+rotation = 5.87285
+
+[node name="Silver" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-182, 1640)
+rotation = 1.18472
+
+[node name="Silver8" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-161, 1637)
+rotation = 1.18472
+
+[node name="Silver9" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-188, 1649)
+rotation = 0.515564
+
+[node name="Silver10" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-191, 1660)
+rotation = 0.515564
+
+[node name="Silver11" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1889, 718)
+rotation = 0.515564
+
+[node name="Silver12" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-1633, 649)
+rotation = 0.931402
+
+[node name="Silver2" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(-171, 1638)
+rotation = 1.18472
+
+[node name="Silver3" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(1039, 1447)
+rotation = 0.897331
+
+[node name="Silver4" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(1121, 1418)
+rotation = 1.3382
+
+[node name="Silver5" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(903, 1446)
+rotation = 2.62535
+
+[node name="Silver6" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(853, 1354)
+rotation = 2.62535
+
+[node name="Silver7" parent="World/Fauna/Biome2" instance=ExtResource("16_nbxcd")]
+position = Vector2(873, 1390)
+rotation = 2.62535
+
 [node name="Biome3" type="Node2D" parent="World/Fauna"]
 
 [node name="Gold" parent="World/Fauna/Biome3" instance=ExtResource("15_x3d57")]
@@ -853,245 +1009,173 @@ rotation = 2.99634
 
 [node name="Deco" type="Node2D" parent="World"]
 
-[node name="Seaweed" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-151, 348)
-rotation = 0.0343135
+[node name="Seaweed" type="Line2D" parent="World/Deco"]
+position = Vector2(-137, 358)
+points = PackedVector2Array(-1850, -115, -1810, -45, -1721, 15, -1519, 15, -1385, -49, -1293, -182, -1086, -232, -945, -192, -774, -160, -552, -112, -398, -34)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed17" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-126, 334)
-rotation = -0.525219
+[node name="Seaweed2" type="Line2D" parent="World/Deco"]
+position = Vector2(358, 320)
+points = PackedVector2Array(-713, 65, -630, 20, -510, 31, -398, -34, -225, -49, -163, -51, -108, -19)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed18" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-112, 323)
-rotation = -0.525219
+[node name="Seaweed3" type="Line2D" parent="World/Deco"]
+position = Vector2(1045, 236)
+points = PackedVector2Array(-713, 65, -533, 3, -351, 1, -233, 67)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed19" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-99, 318)
-rotation = -0.525219
+[node name="Seaweed4" type="Line2D" parent="World/Deco"]
+position = Vector2(322, 756)
+points = PackedVector2Array(-753, 105, -674, 54, -575, 15, -444, 10, -313, 28, -205, 110)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed20" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-78, 308)
-rotation = -0.525219
+[node name="Seaweed5" type="Line2D" parent="World/Deco"]
+position = Vector2(427, 1259)
+points = PackedVector2Array(-813, 198, -753, 112, -639, 92, -579, 17, -409, 2, -311, 29, -242, 69)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed21" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-64, 298)
-rotation = -0.525219
+[node name="Seaweed6" type="Line2D" parent="World/Deco"]
+position = Vector2(358, 1902)
+points = PackedVector2Array(-866, 224, -829, 128, -622, -86, -335, -119, -241, -87, 514, 272, 1267, 306, 1560, 148, 1721, 141)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed22" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-55, 287)
-rotation = -0.525219
+[node name="Seaweed13" type="Line2D" parent="World/Deco"]
+position = Vector2(-649, 2664)
+points = PackedVector2Array(103, 36, 242, 256, 667, 242, 885, 141, 1086, 129, 1209, 127, 1500, 101)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed23" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-170, 344)
-rotation = 0.476013
+[node name="Seaweed14" type="Line2D" parent="World/Deco"]
+position = Vector2(960, 3032)
+points = PackedVector2Array(-238, 126, -62, 97, 671, 85, 1103, 102, 1729, 138)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed24" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-184, 338)
-rotation = 0.476013
+[node name="Seaweed15" type="Line2D" parent="World/Deco"]
+position = Vector2(712, 3595)
+points = PackedVector2Array(-114, 77, 263, 337, 662, 352, 1015, 123, 1285, 211, 1542, 450)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed25" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-208, 329)
-rotation = 0.476013
+[node name="Seaweed17" type="Line2D" parent="World/Deco"]
+position = Vector2(127, 5202)
+points = PackedVector2Array(-3110, -42, -2539, 462, -1526, 624, -760, 488, 477, 466, 1210, 612, 1777, 347, 1954, 159)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed26" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-221, 327)
-rotation = 0.476013
+[node name="Seaweed18" type="Line2D" parent="World/Deco"]
+position = Vector2(-3929, 6130)
+points = PackedVector2Array(-2242, 194, -2045, 456, -1836, 673, -1282, 706, -871, 499, -642, 174)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed27" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-254, 316)
-rotation = 0.476013
+[node name="Seaweed16" type="Line2D" parent="World/Deco"]
+position = Vector2(-4223, 2690)
+points = PackedVector2Array(-691, -62, -552, 88, -336, 229, -19, 283, 1020, 151, 1374, -73, 1458, -277, 1564, -283, 1704, -178, 1880, -234, 1963, -347)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed28" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-272, 309)
-rotation = 0.220384
+[node name="Seaweed19" type="Line2D" parent="World/Deco"]
+position = Vector2(-4577, 1698)
+points = PackedVector2Array(356, 403, 400, 284, 449, 261, 566, 299, 678, 291, 754, 197)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed29" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-286, 323)
-rotation = -0.329936
+[node name="Seaweed20" type="Line2D" parent="World/Deco"]
+position = Vector2(-4223, 1356)
+points = PackedVector2Array(400, 356, 518, 252, 753, 312)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed31" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-312, 347)
-rotation = -0.329936
+[node name="Seaweed21" type="Line2D" parent="World/Deco"]
+position = Vector2(-5074, 790)
+points = PackedVector2Array(476, 294, 825, 282, 1034, 242)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed32" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-329, 363)
-rotation = -0.329936
+[node name="Seaweed22" type="Line2D" parent="World/Deco"]
+position = Vector2(-5592, 1191)
+points = PackedVector2Array(597, 220, 627, 331, 784, 369)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed33" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-30, 283)
-rotation = -0.0701862
+[node name="Seaweed28" type="Line2D" parent="World/Deco"]
+position = Vector2(-4797, 358)
+points = PackedVector2Array(490, 214, 587, 381, 713, 487)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed34" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-6, 277)
-rotation = -0.0701862
+[node name="Seaweed23" type="Line2D" parent="World/Deco"]
+position = Vector2(-5547, 13)
+points = PackedVector2Array(520, 162, 555, 220, 654, 250, 802, 265, 866, 256, 943, 224, 992, 74)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed35" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(9, 280)
-rotation = -0.0701862
+[node name="Seaweed24" type="Line2D" parent="World/Deco"]
+position = Vector2(-4231, 41)
+points = PackedVector2Array(384, 513, 515, 376, 645, 355, 773, 461, 985, 387, 1062, 169, 1157, 109, 1305, 127)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed36" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(25, 279)
-rotation = -0.0701862
+[node name="Seaweed25" type="Line2D" parent="World/Deco"]
+position = Vector2(-3382, 293)
+points = PackedVector2Array(743, 747, 850, 460, 1299, 129)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed37" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(43, 272)
-rotation = -0.0701862
+[node name="Seaweed26" type="Line2D" parent="World/Deco"]
+position = Vector2(-3857, 113)
+points = PackedVector2Array(802, 493, 834, 578, 989, 667)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed38" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(57, 277)
-rotation = -0.0701862
+[node name="Seaweed27" type="Line2D" parent="World/Deco"]
+position = Vector2(-3684, 907)
+points = PackedVector2Array(805, 775, 841, 661, 1008, 474)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed39" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(78, 269)
-rotation = -0.0701862
+[node name="Seaweed7" type="Line2D" parent="World/Deco"]
+position = Vector2(1638, 1064)
+points = PackedVector2Array(-866, 224, -757, 86, -464, 46, -266, 160)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed40" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(95, 270)
-rotation = -0.0701862
+[node name="Seaweed8" type="Line2D" parent="World/Deco"]
+position = Vector2(-549, 1356)
+points = PackedVector2Array(-906, 238, -851, 168, -736, 144, -679, 69, -511, 52, -338, 125, -323, 180)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed41" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(110, 271)
-rotation = -0.0701862
+[node name="Seaweed9" type="Line2D" parent="World/Deco"]
+position = Vector2(-1252, 1603)
+points = PackedVector2Array(-950, 243, -689, 207, -346, 478, 30, 530, 390, 527)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed42" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(129, 267)
-rotation = -0.0701862
+[node name="Seaweed10" type="Line2D" parent="World/Deco"]
+position = Vector2(-1004, 686)
+points = PackedVector2Array(-541, 313, -431, 348, -343, 255, -241, 234)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed43" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(149, 267)
-rotation = -0.0701862
+[node name="Seaweed11" type="Line2D" parent="World/Deco"]
+position = Vector2(-1267, 444)
+points = PackedVector2Array(-456, 358, -355, 320, -309, 366)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
-[node name="Seaweed44" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(171, 267)
-rotation = -0.0701862
-
-[node name="Seaweed45" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(187, 266)
-rotation = -0.0701862
-
-[node name="Seaweed46" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(202, 272)
-rotation = 0.395431
-
-[node name="Seaweed47" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(216, 278)
-rotation = 0.395431
-
-[node name="Seaweed48" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(234, 288)
-rotation = 0.395431
-
-[node name="Seaweed30" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-303, 335)
-rotation = -0.329936
-
-[node name="Seaweed2" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-849, 212)
-rotation = 0.258746
-
-[node name="Seaweed3" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-869, 208)
-rotation = 0.258746
-
-[node name="Seaweed4" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-814, 220)
-rotation = 0.258746
-
-[node name="Seaweed5" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-790, 226)
-rotation = 0.258746
-
-[node name="Seaweed6" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-768, 230)
-rotation = 0.258746
-
-[node name="Seaweed49" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1939, 320)
-rotation = 0.258746
-
-[node name="Seaweed50" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1926, 329)
-rotation = 0.334898
-
-[node name="Seaweed51" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1915, 338)
-rotation = 0.258746
-
-[node name="Seaweed52" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1902, 344)
-rotation = 0.258746
-
-[node name="Seaweed53" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1895, 355)
-rotation = 0.258746
-
-[node name="Seaweed54" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1884, 355)
-rotation = 0.258746
-
-[node name="Seaweed55" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1871, 365)
-rotation = 0.258746
-
-[node name="Seaweed56" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1859, 376)
-rotation = 0.155347
-
-[node name="Seaweed57" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1848, 374)
-rotation = 0.155347
-
-[node name="Seaweed58" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1842, 374)
-rotation = 0.155347
-
-[node name="Seaweed59" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1830, 376)
-rotation = 0.155347
-
-[node name="Seaweed60" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-1817, 372)
-rotation = 0.155347
-
-[node name="Seaweed7" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-738, 234)
-rotation = 0.258746
-
-[node name="Seaweed8" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-709, 244)
-rotation = 0.258746
-
-[node name="Seaweed9" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-689, 250)
-rotation = 0.258746
-
-[node name="Seaweed10" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-915, 200)
-rotation = 0.258746
-
-[node name="Seaweed11" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-964, 190)
-rotation = 0.258746
-
-[node name="Seaweed12" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-954, 194)
-rotation = 0.258746
-
-[node name="Seaweed13" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-943, 195)
-rotation = 0.258746
-
-[node name="Seaweed14" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-925, 197)
-rotation = 0.258746
-
-[node name="Seaweed15" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-905, 204)
-rotation = 0.258746
-
-[node name="Seaweed16" parent="World/Deco" instance=ExtResource("14_8talo")]
-position = Vector2(-886, 205)
-rotation = 0.258746
+[node name="Seaweed12" type="Line2D" parent="World/Deco"]
+position = Vector2(-1403, 820)
+points = PackedVector2Array(-456, 358, -397, 292, -320, 249, -289, 204)
+script = ExtResource("20_hpkv7")
+decoration = ExtResource("14_8talo")
 
 [node name="divedepth1" type="Marker2D" parent="."]
 position = Vector2(227, 950)

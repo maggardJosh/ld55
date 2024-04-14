@@ -11,6 +11,7 @@ size = Vector2(12, 6)
 radius = 16.0312
 
 [node name="Flower" type="RigidBody2D"]
+z_index = 2
 collision_layer = 4
 mass = 0.3
 freeze = true

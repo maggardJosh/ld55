@@ -14,6 +14,7 @@ script = ExtResource("2_uk71n")
 max_y_scale = 4.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
+z_index = 1
 material = SubResource("ShaderMaterial_1awf7")
 position = Vector2(0, -7)
 texture = ExtResource("1_ywu6d")

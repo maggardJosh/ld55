@@ -20,6 +20,7 @@ inventory_item = ExtResource("2_n5a45")
 random_rotation_on_drop = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 z_index = 1
 shape = SubResource("CircleShape2D_4m02g")
 
@@ -27,6 +28,7 @@ shape = SubResource("CircleShape2D_4m02g")
 texture = ExtResource("3_lhngg")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 gravity_point_center = Vector2(0, -1)
