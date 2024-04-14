@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=5 format=3 uid="uid://1080fr85t8t5"]
+
+[ext_resource type="Texture2D" uid="uid://conv25r6q830b" path="res://items/upgrades/flipper.png" id="1_dpktw"]
+[ext_resource type="Resource" uid="uid://c1a3igbsujtvc" path="res://items/raw_material/shards.tres" id="2_vat1h"]
+[ext_resource type="Resource" uid="uid://deery3yh4y3io" path="res://items/raw_material/copper.tres" id="3_nocv6"]
+[ext_resource type="Script" path="res://items/upgrades/upgradeResource.gd" id="4_umlu6"]
+
+[resource]
+script = ExtResource("4_umlu6")
+upgrade_id = "flippers"
+upgrade_value = 2.0
+title = "Flippers Upgrade 2"
+image = ExtResource("1_dpktw")
+description = "Increase Swim Speed"
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("2_vat1h"), ExtResource("3_nocv6")])

@@ -18,9 +18,11 @@ extends CharacterBody2D
 @export var jump_vel = -200.0
 
 @export_subgroup("Water")
-@export var water_accel: float = 20
-@export var water_speed: float = 200
-@export var water_friction_speed: float = 10
+@export var water_friction_speed: float = 150
+@export var water_accels: Array[float] = [250]
+@export var water_speeds: Array[float] = [75]
+
+var current_water_speed_level: int = 0
 
 @onready var sprite: Sprite2D = %Sprite
 @onready var float_component: FloatComponent = $FloatComponent
@@ -29,6 +31,7 @@ extends CharacterBody2D
 @onready var pickup_component: PickupComponent = $PickupComponent
 @onready var inventory_component: InventoryComponent = $InventoryComponent
 @onready var tank_sprite: Sprite2D = %TankSprite
+@onready var flippers_sprite: Sprite2D = %FlippersSprite
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -40,6 +43,13 @@ func _ready() -> void:
 func _on_get_upgrade(upgrade: UpgradeResource):
 	if upgrade.upgrade_id == "tank":
 		tank_sprite.visible = true
+	if upgrade.upgrade_id == "flippers":
+		flippers_sprite.visible = true
+		update_speed(upgrade.upgrade_value)
+
+
+func update_speed(upgrade_value: float):
+	current_water_speed_level = roundi(upgrade_value)
 
 func pickup_update_range(in_range: bool, pickup: ItemPickup):
 	if in_range:
@@ -88,6 +98,8 @@ func set_in_oxygen(is_in_oxygen):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		pickup_component.try_pickup(inventory_component)
+	if event.is_action_pressed("cheat_1"):
+		current_water_speed_level += 1
 		
 		
 var swim_angle: float = 0
@@ -136,18 +148,19 @@ func _physics_process(delta):
 		
 		var x_input = direction_input.x
 		var y_input = direction_input.y
-		var accel_value = water_accel
+		
+		var accel_value = water_accels[current_water_speed_level]
 		if x_input:
 			if sign(x_input) != sign(velocity.x):
 				accel_value *= 2
-			velocity.x = move_toward(velocity.x, x_input * water_speed, accel_value * delta)
+			velocity.x = move_toward(velocity.x, x_input * water_speeds[current_water_speed_level], accel_value * delta)
 		else:
 			velocity.x = move_toward(velocity.x, 0, water_friction_speed * delta)
-		accel_value = water_accel
+		accel_value = water_accels[current_water_speed_level]
 		if y_input:
 			if sign(y_input) != sign(velocity.y):
 				accel_value *= 2
-			velocity.y = move_toward(velocity.y, y_input * water_speed, accel_value * delta)
+			velocity.y = move_toward(velocity.y, y_input * water_speeds[current_water_speed_level], accel_value * delta)
 		else:
 			velocity.y = move_toward(velocity.y, 0, water_friction_speed * delta)
 		if direction_input:

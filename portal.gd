@@ -23,7 +23,8 @@ func summon(item: CraftableResource):
 
 func _on_inventory_updated(inventory_items: Array[InventoryItem]):
 	for child in summon_buttons:
-		child.update_can_summon(inventory_items)
+		if is_instance_valid(child):
+			child.update_can_summon(inventory_items)
 
 
 

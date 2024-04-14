@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("2_v0kbx")
 inventory_image = ExtResource("1_c6k46")
-title = "Fish"
+title = "Orange Fish"
 description = "Smelly boi"
-scenePath = "res://items/pickups/fish/fish.tscn"
+scenePath = "res://items/pickups/fish/orange_fish.tscn"

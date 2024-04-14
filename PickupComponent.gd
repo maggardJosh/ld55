@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 		break_label.visible = false
 		pickup_label.visible = not is_full
 		inventory_full_label.visible = is_full
-		pickup_label.text = "pickusp " + closest_item.inventory_item.title
+		pickup_label.text = "pickup " + closest_item.inventory_item.title
 		
 
 func _sort_by_dist_to_player(a: ItemPickup, b: ItemPickup):

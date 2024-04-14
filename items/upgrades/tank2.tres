@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=5 format=3 uid="uid://d14afxbanphdh"]
+
+[ext_resource type="Texture2D" uid="uid://dkug7majfvqnw" path="res://items/upgrades/tank_upgrade_2.png" id="1_ybg5a"]
+[ext_resource type="Resource" uid="uid://dcorhwv3uco24" path="res://items/raw_material/coral.tres" id="2_ax7m5"]
+[ext_resource type="Resource" uid="uid://cnn7fbtlxt5a" path="res://items/craftable/glass.tres" id="3_jx5qc"]
+[ext_resource type="Script" path="res://items/upgrades/upgradeResource.gd" id="4_4ducs"]
+
+[resource]
+script = ExtResource("4_4ducs")
+upgrade_id = "tank"
+upgrade_value = 40.0
+title = "Tank Upgrade 2"
+image = ExtResource("1_ybg5a")
+description = "Increase O2 to 40 seconds"
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("2_ax7m5"), ExtResource("2_ax7m5"), ExtResource("3_jx5qc")])

@@ -20,12 +20,21 @@ func _input(event: InputEvent) -> void:
 	if ui.visible and event is InputEventMouseButton and event.is_pressed() and can_summon:
 		if event.button_index == 1:
 			summon.emit()
+			if item is UpgradeResource:
+				if is_instance_valid(item.next_upgrade):
+					_set_item(item.next_upgrade)
+				else:
+					queue_free()
 
 func _ready():
 	ui.visible = false
-	if item == null:
+	_set_item(item)
+
+func _set_item(new_item: CraftableResource):
+	if new_item == null:
 		visible = false
 		return
+	item = new_item
 	texture_rect.texture = item.image
 	upgrade_title.text = item.title
 	upgrade_description.text = item.description
@@ -47,6 +56,7 @@ func _on_mouse_exited() -> void:
 	ui.visible = false
 
 func update_can_summon(inventory_items: Array[InventoryItem]):
+	can_summon = false
 	if item == null:
 		return
 	var inventory_items_copy = inventory_items.duplicate()
@@ -62,6 +72,5 @@ func update_can_summon(inventory_items: Array[InventoryItem]):
 	update_ui()
 	
 func update_ui():
-	
 	can_summon_label.modulate = can_summon_color if can_summon else cannot_summon_color
 	can_summon_label.text = "Can Summon" if can_summon else "Missing Ingredients"

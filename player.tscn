@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://mnaxd41w2loc"]
+[gd_scene load_steps=19 format=3 uid="uid://mnaxd41w2loc"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b3cg5"]
 [ext_resource type="Texture2D" uid="uid://c4etptninfkid" path="res://player.png" id="2_7u1va"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bbiyi08usjejr" path="res://e_key_prompt.png" id="6_d0b6w"]
 [ext_resource type="Script" path="res://InventoryComponent.gd" id="6_ln2tb"]
 [ext_resource type="Texture2D" uid="uid://ciodcpkov6n6m" path="res://tank.png" id="8_1i6di"]
+[ext_resource type="Texture2D" uid="uid://v1upy5pq1ex5" path="res://flippers.png" id="9_uomt8"]
 
 [sub_resource type="Curve" id="Curve_b2lt3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -71,6 +72,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(9, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/FlippersSprite:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(2, 12, 17, 7)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/FlippersSprite:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.5, 7.5)]
+}
 
 [sub_resource type="Animation" id="Animation_vou52"]
 length = 0.9
@@ -121,6 +146,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(3.5, -0.5), Vector2(3.5, 0.5), Vector2(3.5, -0.5), Vector2(3.5, 0.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/FlippersSprite:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.45, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(30, 11, 10, 12), Rect2(2, 21, 9, 9), Rect2(42, 11, 9, 13), Rect2(53, 23, 9, 8)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/FlippersSprite:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.45, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 2), Vector2(11.5, 3.5), Vector2(10.5, 2.5), Vector2(12.5, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_dnhxd"]
@@ -174,6 +223,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(7, 1), Vector2(7.5, 1.5), Vector2(7.5, 1), Vector2(8, 1.5)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/FlippersSprite:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(64, 24, 10, 7), Rect2(30, 2, 25, 7), Rect2(53, 13, 14, 8), Rect2(2, 2, 26, 8)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/FlippersSprite:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8.5), Vector2(0.5, 7.5), Vector2(-1, 9), Vector2(0, 7)]
+}
 
 [sub_resource type="Animation" id="Animation_krkgp"]
 length = 1.6
@@ -225,6 +298,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(4.5, 1), Vector2(4.5, 2), Vector2(4.5, 1), Vector2(4.5, 2)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/FlippersSprite:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(57, 2, 17, 9), Rect2(13, 21, 8, 9), Rect2(57, 2, 17, 9), Rect2(70, 13, 10, 9)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/FlippersSprite:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 9.5), Vector2(1, 11.5), Vector2(1.5, 10.5), Vector2(1, 11.5)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_781fc"]
 _data = {
@@ -248,9 +345,8 @@ max_fall_speed = 300.0
 ground_accel = 500.0
 ground_speed = 100.0
 ground_friction_speed = 500.0
-water_accel = 250.0
-water_speed = 150.0
-water_friction_speed = 150.0
+water_accels = Array[float]([250.0, 300.0])
+water_speeds = Array[float]([75.0, 125.0])
 metadata/_edit_horizontal_guides_ = [-29.0]
 
 [node name="PickupComponent" type="Node2D" parent="."]
@@ -343,12 +439,19 @@ offset = Vector2(9, 1)
 region_enabled = true
 region_rect = Rect2(21, 18, 8, 14)
 
+[node name="FlippersSprite" type="Sprite2D" parent="Sprite"]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("9_uomt8")
+offset = Vector2(-0.5, 7.5)
+region_enabled = true
+region_rect = Rect2(2, 12, 17, 7)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
 shape = SubResource("CircleShape2D_rnvbg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 process_callback = 0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
