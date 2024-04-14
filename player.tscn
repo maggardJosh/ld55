@@ -451,7 +451,8 @@ z_index = 1
 script = ExtResource("2_588dk")
 
 [node name="PickupPrompt" type="Node2D" parent="PickupComponent"]
-position = Vector2(-15, 8)
+position = Vector2(-60, 11)
+scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="PickupComponent/PickupPrompt"]
 position = Vector2(0, -25)

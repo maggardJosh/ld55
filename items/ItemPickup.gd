@@ -3,6 +3,7 @@ extends RigidBody2D
 
 @export var inventory_item: InventoryItem
 @export var random_rotation_on_drop: bool = false
+
 const random_rotation_range = PI/10
 
 func _ready() -> void:
