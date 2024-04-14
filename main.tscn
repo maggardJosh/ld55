@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1tw6cgdbe6r7" path="res://biome.tscn" id="5_18gyt"]
 [ext_resource type="PackedScene" uid="uid://bpdlhgmmoy15j" path="res://portal.tscn" id="5_ekxwn"]
 [ext_resource type="Script" path="res://OxygenArea.gd" id="5_ghrk7"]
-[ext_resource type="PackedScene" uid="uid://ba5qec1sf8vey" path="res://items/coral_pickup.tscn" id="9_6hed1"]
+[ext_resource type="PackedScene" uid="uid://ba5qec1sf8vey" path="res://items/pickups/coral_pickup.tscn" id="9_6hed1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
 size = Vector2(4246, 378)

@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/munro.ttf-30a64a7e8c1b6ece6de0c75e0185460e.fo
 [params]
 
 Rendering=null
-antialiasing=2
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
@@ -31,7 +31,8 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0)
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
 }]
 language_support={}
 script_support={}

@@ -14,6 +14,7 @@ func _ready() -> void:
 	emit_inventory_signals()
 	GameEvents.drop_item_index.connect(_on_drop_item_index)
 	GameEvents.get_upgrade.connect(_on_get_upgrade)
+	GameEvents.get_item.connect(_on_get_item)
 	
 func _on_get_upgrade(upgrade: UpgradeResource):
 	for req in upgrade.requirements:
@@ -23,6 +24,15 @@ func _on_get_upgrade(upgrade: UpgradeResource):
 				break
 	emit_inventory_signals()
 
+func _on_get_item(item: CraftableInventoryItem):
+	for req in item.requirements:
+		for i in items.size():
+			if items[i] == req:
+				items[i] = null
+				break
+	try_get_inventory_item(item.inventory_item)
+	
+
 func _on_drop_item_index(item_index: int):
 	var instantiated_obj:ItemPickup = load(items[item_index].scenePath).instantiate()
 	get_tree().root.add_child(instantiated_obj)
@@ -31,12 +41,16 @@ func _on_drop_item_index(item_index: int):
 	emit_inventory_signals()
 	
 func try_pickup(item_pickup: ItemPickup):
+	if try_get_inventory_item(item_pickup.inventory_item):
+		item_pickup.pickup()
+
+func try_get_inventory_item(inventory_item: InventoryItem) -> bool:
 	for i in max_inventory_size:
 		if items[i] == null:
-			items[i] = item_pickup.inventory_item
+			items[i] = inventory_item
 			emit_inventory_signals()
-			item_pickup.pickup()
-			return
+			return true
+	return false
 
 func emit_inventory_signals():
 	GameEvents.inventory_updated.emit(items)

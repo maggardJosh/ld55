@@ -37,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -59,6 +60,7 @@ script = ExtResource("4_5o7bk")
 
 [node name="DebugUI" type="Control" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="DebugLabel" type="Label" parent="MarginContainer/DebugUI"]
 layout_mode = 2
@@ -73,6 +75,7 @@ script = ExtResource("1_f57q1")
 
 [node name="InventoryUI" type="Control" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("7_4mbgn")
 
 [node name="InventoryGridContainer" type="GridContainer" parent="MarginContainer/InventoryUI"]

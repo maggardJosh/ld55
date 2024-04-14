@@ -8,4 +8,4 @@ script = ExtResource("1_xycoy")
 inventory_image = ExtResource("1_fvboe")
 title = "Coral"
 description = "Right Click To Drop"
-scenePath = "res://items/coral_pickup.tscn"
+scenePath = "res://items/pickups/coral_pickup.tscn"

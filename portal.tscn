@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpdlhgmmoy15j"]
+[gd_scene load_steps=9 format=3 uid="uid://bpdlhgmmoy15j"]
 
 [ext_resource type="Script" path="res://portal.gd" id="1_gin5e"]
 [ext_resource type="Texture2D" uid="uid://jhqp07488shd" path="res://portal.png" id="1_ouc00"]
 [ext_resource type="Resource" uid="uid://d14afxbanphdh" path="res://items/upgrades/otherwordlyTank.tres" id="2_8o5r2"]
-[ext_resource type="Texture2D" uid="uid://de5frxv42b7n7" path="res://addons/aseprite_importer/interface/icons/light_icon.png" id="2_jao6e"]
-[ext_resource type="Texture2D" uid="uid://b8frlh3w52834" path="res://items/coral.png" id="2_ovb61"]
-[ext_resource type="Texture2D" uid="uid://bbiyi08usjejr" path="res://e_key_prompt.png" id="5_25y0e"]
+[ext_resource type="Resource" uid="uid://jelef2wcbg1y" path="res://items/craftable/craftable_glass.tres" id="4_wkb07"]
+[ext_resource type="PackedScene" uid="uid://dtntstrceesaa" path="res://summon_button.tscn" id="7_yaqxb"]
 
 [sub_resource type="Animation" id="Animation_tfgl8"]
 length = 0.5
@@ -43,11 +42,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omgtu"]
 size = Vector2(74, 73)
 
-[node name="Portal" type="Node2D"]
+[node name="Portal" type="Node2D" node_paths=PackedStringArray("summon_button_containers")]
 z_index = -1
 position = Vector2(-222, -26)
 script = ExtResource("1_gin5e")
-current_upgrade = ExtResource("2_8o5r2")
+summon_button_containers = [NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer"), NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer2"), NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer3"), NodePath("UI/SummonMenu/VBoxContainer/HBoxContainer4")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
@@ -64,132 +63,85 @@ libraries = {
 autoplay = "idle"
 
 [node name="UI" type="ColorRect" parent="."]
+z_index = 1
 offset_left = -84.0
-offset_top = -69.0
+offset_top = -93.0
 offset_right = 86.0
 offset_bottom = -5.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0.65098)
 
-[node name="UpgradeTitle" type="Label" parent="UI"]
-unique_name_in_owner = true
+[node name="SummonMenu" type="Control" parent="UI"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -20.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Otherworldly O2 tank"
-horizontal_alignment = 1
-
-[node name="UpgradeDescription" type="Label" parent="UI"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -8.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "get some more 02 bruh"
-horizontal_alignment = 1
-
-[node name="Requires" type="Label" parent="UI"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -17.0
-offset_top = 17.0
-offset_right = 17.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Summon Recipe"
-
-[node name="UpgradeImage" type="TextureRect" parent="UI"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = -25.0
-offset_right = 20.0
-offset_bottom = 15.0
-grow_horizontal = 2
-texture = ExtResource("2_jao6e")
-
-[node name="RequirementsHBox" type="HBoxContainer" parent="UI"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -30.0
-offset_bottom = -12.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = -3
-alignment = 1
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI/RequirementsHBox"]
-layout_mode = 2
-texture = ExtResource("2_ovb61")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="TextureRect2" type="TextureRect" parent="UI/RequirementsHBox"]
-layout_mode = 2
-texture = ExtResource("2_ovb61")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="TextureRect3" type="TextureRect" parent="UI/RequirementsHBox"]
-layout_mode = 2
-texture = ExtResource("2_ovb61")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="e_prompt" type="TextureRect" parent="UI"]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="UI/SummonMenu"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = -8.0
-offset_right = -37.0
-offset_bottom = 10.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("5_25y0e")
-expand_mode = 3
-stretch_mode = 4
+offset_bottom = 13.0
+grow_horizontal = 2
+text = "Summon Recipes"
+horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="UI/e_prompt"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SummonMenu"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 1.0
-offset_right = 60.0
-offset_bottom = 14.0
-text = "Summon"
+offset_left = 5.0
+offset_top = 14.0
+offset_right = 105.0
+offset_bottom = 81.0
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "Materials"
+vertical_alignment = 1
+
+[node name="SummonButton3" parent="UI/SummonMenu/VBoxContainer/HBoxContainer" instance=ExtResource("7_yaqxb")]
+layout_mode = 2
+item = ExtResource("4_wkb07")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "Upgrades"
+
+[node name="SummonButton2" parent="UI/SummonMenu/VBoxContainer/HBoxContainer2" instance=ExtResource("7_yaqxb")]
+layout_mode = 2
+item = ExtResource("2_8o5r2")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "???"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/SummonMenu/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "#$@!$%"
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
