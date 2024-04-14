@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp5ylxfo3plu1"]
+
+[ext_resource type="Script" path="res://items/ItemPickup.gd" id="1_77nrx"]
+[ext_resource type="Resource" uid="uid://dmollf7h74fs2" path="res://items/craftable/glass_plus.tres" id="2_de7mk"]
+[ext_resource type="Texture2D" uid="uid://cvv4rj470cxy" path="res://items/craftable/glass_plus.png" id="3_7snw6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4m02g"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wbb2"]
+radius = 16.0312
+
+[node name="GlassPlus" type="RigidBody2D"]
+collision_layer = 4
+mass = 0.3
+freeze = true
+angular_damp = 11.312
+script = ExtResource("1_77nrx")
+inventory_item = ExtResource("2_de7mk")
+random_rotation_on_drop = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_4m02g")
+
+[node name="Glass" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("3_7snw6")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+collision_layer = 0
+collision_mask = 2
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+linear_damp = 17.195
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_5wbb2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

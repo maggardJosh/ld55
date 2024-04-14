@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CraftableInventoryItem" load_steps=6 format=3 uid="uid://c8mwfknfyiak1"]
+
+[ext_resource type="Texture2D" uid="uid://bj8pujwjlfgyc" path="res://items/craftable/fiber_glass.png" id="1_aaqo2"]
+[ext_resource type="Resource" uid="uid://bvdnd87huhc3r" path="res://items/craftable/fiber_glass.tres" id="2_22622"]
+[ext_resource type="Resource" uid="uid://lhq7a1famv6o" path="res://items/craftable/fiber_plus.tres" id="3_5euyu"]
+[ext_resource type="Resource" uid="uid://dmollf7h74fs2" path="res://items/craftable/glass_plus.tres" id="4_4jl12"]
+[ext_resource type="Script" path="res://items/craftable/CraftableInventoryItem.gd" id="4_svjh6"]
+
+[resource]
+script = ExtResource("4_svjh6")
+inventory_item = ExtResource("2_22622")
+title = "Fiber Glass"
+image = ExtResource("1_aaqo2")
+description = "The ultimate crafting material"
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("3_5euyu"), ExtResource("4_4jl12")])

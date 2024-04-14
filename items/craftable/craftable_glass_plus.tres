@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CraftableInventoryItem" load_steps=6 format=3 uid="uid://m36ajpsksv30"]
+
+[ext_resource type="Texture2D" uid="uid://cvv4rj470cxy" path="res://items/craftable/glass_plus.png" id="1_igcmc"]
+[ext_resource type="Resource" uid="uid://cnn7fbtlxt5a" path="res://items/craftable/glass.tres" id="2_56fe1"]
+[ext_resource type="Resource" uid="uid://dmollf7h74fs2" path="res://items/craftable/glass_plus.tres" id="2_xtwli"]
+[ext_resource type="Resource" uid="uid://c1a3igbsujtvc" path="res://items/raw_material/shards.tres" id="3_wqd8e"]
+[ext_resource type="Script" path="res://items/craftable/CraftableInventoryItem.gd" id="5_lny4a"]
+
+[resource]
+script = ExtResource("5_lny4a")
+inventory_item = ExtResource("2_xtwli")
+title = "Glass+"
+image = ExtResource("1_igcmc")
+description = "Smoother and clearer"
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("2_56fe1"), ExtResource("3_wqd8e")])

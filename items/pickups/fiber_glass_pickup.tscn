@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjciwnhq4hi0v"]
+
+[ext_resource type="Script" path="res://items/ItemPickup.gd" id="1_rl5qe"]
+[ext_resource type="Resource" uid="uid://bvdnd87huhc3r" path="res://items/craftable/fiber_glass.tres" id="2_75gye"]
+[ext_resource type="Texture2D" uid="uid://bj8pujwjlfgyc" path="res://items/craftable/fiber_glass.png" id="3_xvuw6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jo87k"]
+radius = 6.5192
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wbb2"]
+radius = 16.0312
+
+[node name="FiberGlass" type="RigidBody2D"]
+collision_layer = 4
+mass = 0.3
+freeze = true
+angular_damp = 11.312
+script = ExtResource("1_rl5qe")
+inventory_item = ExtResource("2_75gye")
+random_rotation_on_drop = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_jo87k")
+
+[node name="Fiber" type="Sprite2D" parent="."]
+position = Vector2(0.5, 0)
+rotation = 0.785398
+texture = ExtResource("3_xvuw6")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+collision_layer = 0
+collision_mask = 2
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+linear_damp = 17.195
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_5wbb2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpdlhgmmoy15j"]
+[gd_scene load_steps=14 format=3 uid="uid://bpdlhgmmoy15j"]
 
 [ext_resource type="Script" path="res://portal.gd" id="1_gin5e"]
 [ext_resource type="Texture2D" uid="uid://jhqp07488shd" path="res://portal.png" id="1_ouc00"]
 [ext_resource type="Resource" uid="uid://jelef2wcbg1y" path="res://items/craftable/craftable_glass.tres" id="4_wkb07"]
 [ext_resource type="Resource" uid="uid://dtncpslua7qng" path="res://items/craftable/craftable_fiber.tres" id="5_xneja"]
+[ext_resource type="Resource" uid="uid://dqrryio8vayk3" path="res://items/craftable/craftable_fiber_plus.tres" id="6_egu8q"]
 [ext_resource type="Resource" uid="uid://c37trtlbwvuqw" path="res://items/upgrades/tank1.tres" id="6_qu4o5"]
 [ext_resource type="Resource" uid="uid://sq48gs8mkgt1" path="res://items/upgrades/speed1.tres" id="7_6oinr"]
+[ext_resource type="Resource" uid="uid://m36ajpsksv30" path="res://items/craftable/craftable_glass_plus.tres" id="7_b8jhj"]
 [ext_resource type="PackedScene" uid="uid://dtntstrceesaa" path="res://summon_button.tscn" id="7_yaqxb"]
+[ext_resource type="Resource" uid="uid://c8mwfknfyiak1" path="res://items/craftable/craftable_fiber_glass.tres" id="8_lbr7f"]
 
 [sub_resource type="Animation" id="Animation_tfgl8"]
 length = 0.5
@@ -127,6 +130,18 @@ mouse_filter = 2
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "Advanced"
+
+[node name="SummonButton5" parent="UI/SummonMenu/VBoxContainer/AdvancedMaterialsContainer" instance=ExtResource("7_yaqxb")]
+layout_mode = 2
+item = ExtResource("6_egu8q")
+
+[node name="SummonButton6" parent="UI/SummonMenu/VBoxContainer/AdvancedMaterialsContainer" instance=ExtResource("7_yaqxb")]
+layout_mode = 2
+item = ExtResource("7_b8jhj")
+
+[node name="SummonButton7" parent="UI/SummonMenu/VBoxContainer/AdvancedMaterialsContainer" instance=ExtResource("7_yaqxb")]
+layout_mode = 2
+item = ExtResource("8_lbr7f")
 
 [node name="UpgradesContainer" type="HBoxContainer" parent="UI/SummonMenu/VBoxContainer"]
 layout_mode = 2

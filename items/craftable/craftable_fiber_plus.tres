@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CraftableInventoryItem" load_steps=5 format=3 uid="uid://dqrryio8vayk3"]
+
+[ext_resource type="Texture2D" uid="uid://bjxjgpea5kd52" path="res://items/craftable/fiber_plus.png" id="1_meoed"]
+[ext_resource type="Resource" uid="uid://b2k1tbq58w01i" path="res://items/craftable/fiber.tres" id="2_gyalk"]
+[ext_resource type="Resource" uid="uid://buujnokf8u7ei" path="res://items/raw_material/silver.tres" id="3_b5bmy"]
+[ext_resource type="Script" path="res://items/craftable/CraftableInventoryItem.gd" id="4_ld4ul"]
+
+[resource]
+script = ExtResource("4_ld4ul")
+inventory_item = ExtResource("2_gyalk")
+title = "Fiber+"
+image = ExtResource("1_meoed")
+description = "Rougher and stronger"
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("2_gyalk"), ExtResource("3_b5bmy")])
