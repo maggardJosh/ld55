@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=23 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://ba5qec1sf8vey" path="res://items/pickups/coral_pickup.tscn" id="9_6hed1"]
 [ext_resource type="PackedScene" uid="uid://cyx2ogpbol255" path="res://items/pickups/rock_break_interact.tscn" id="10_j5waq"]
 [ext_resource type="PackedScene" uid="uid://drhq5o870i1ub" path="res://items/pickups/shard_pickup.tscn" id="10_mgcnv"]
+[ext_resource type="PackedScene" uid="uid://daco7mvhk2p22" path="res://items/pickups/fish/fish.tscn" id="11_6rdvy"]
+[ext_resource type="PackedScene" uid="uid://btgsom7dis0lc" path="res://items/pickups/fish/fish2.tscn" id="12_u7rgs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
 size = Vector2(4246, 378)
@@ -50,7 +52,7 @@ visible = false
 position = Vector2(-170, -27)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rotku")]
-position = Vector2(-170, -30)
+position = Vector2(160, -20)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Biomes" type="Node2D" parent="."]
@@ -266,6 +268,36 @@ rotation = 2.35619
 [node name="Shard2" parent="." instance=ExtResource("10_mgcnv")]
 position = Vector2(-325, 130)
 rotation = 2.61211
+
+[node name="Fish" parent="." instance=ExtResource("11_6rdvy")]
+position = Vector2(507, 132)
+
+[node name="Fish8" parent="." instance=ExtResource("11_6rdvy")]
+position = Vector2(507, 132)
+
+[node name="Fish2" parent="." instance=ExtResource("11_6rdvy")]
+position = Vector2(718, 113)
+
+[node name="Fish3" parent="." instance=ExtResource("11_6rdvy")]
+position = Vector2(660, 116)
+
+[node name="Fish4" parent="." instance=ExtResource("11_6rdvy")]
+position = Vector2(695, 163)
+
+[node name="Fish5" parent="." instance=ExtResource("11_6rdvy")]
+position = Vector2(789, 139)
+
+[node name="Fish6" parent="." instance=ExtResource("11_6rdvy")]
+position = Vector2(720, 221)
+
+[node name="Fish7" parent="." instance=ExtResource("12_u7rgs")]
+position = Vector2(288, 121)
+
+[node name="Fish9" parent="." instance=ExtResource("12_u7rgs")]
+position = Vector2(271, 145)
+
+[node name="Fish10" parent="." instance=ExtResource("12_u7rgs")]
+position = Vector2(290, 156)
 
 [connection signal="body_entered" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_exited"]

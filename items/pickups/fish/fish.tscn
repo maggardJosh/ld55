@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=3 uid="uid://daco7mvhk2p22"]
+
+[ext_resource type="Script" path="res://items/pickups/fish/fish.gd" id="1_20nee"]
+[ext_resource type="Texture2D" uid="uid://1vdbbonpesf0" path="res://items/pickups/fish/fish1.png" id="1_tu30m"]
+[ext_resource type="Resource" uid="uid://dbar0iep4nnvp" path="res://items/raw_material/fish.tres" id="2_ahlp1"]
+[ext_resource type="PackedScene" uid="uid://c515veavly2w0" path="res://float_component.tscn" id="4_sfsiu"]
+
+[sub_resource type="Animation" id="Animation_s6hjj"]
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(25, 2, 17, 19)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.5, -0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_n3w1m"]
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(44, 2, 16, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_7dtu8"]
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(2, 2, 21, 19)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lysdg"]
+_data = {
+"idle": SubResource("Animation_s6hjj"),
+"wind_up": SubResource("Animation_n3w1m"),
+"zoom": SubResource("Animation_7dtu8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vt0f"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7sqle"]
+radius = 17.0
+
+[node name="Fish" type="RigidBody2D"]
+collision_layer = 4
+mass = 0.3
+linear_damp_mode = 1
+angular_damp = 0.1
+script = ExtResource("1_20nee")
+min_idle_time = 0.5
+max_idle_time = 3.0
+thrust_vel = 20.0
+wind_up_time = 0.4
+turn_speed = 0.05
+thrust_anim_time = 1.0
+inventory_item = ExtResource("2_ahlp1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 2.87979
+texture = ExtResource("1_tu30m")
+offset = Vector2(-0.5, -0.5)
+region_enabled = true
+region_rect = Rect2(25, 2, 17, 19)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lysdg")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4vt0f")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7sqle")
+
+[node name="FloatComponent" parent="." node_paths=PackedStringArray("float_target") instance=ExtResource("4_sfsiu")]
+float_target = NodePath("../Sprite2D")
+is_in_water = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
