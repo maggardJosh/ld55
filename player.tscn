@@ -442,8 +442,8 @@ max_fall_speed = 300.0
 ground_accel = 500.0
 ground_speed = 100.0
 ground_friction_speed = 500.0
-water_accels = Array[float]([250.0, 300.0])
-water_speeds = Array[float]([75.0, 125.0])
+water_accels = Array[float]([250.0, 300.0, 500.0, 500.0])
+water_speeds = Array[float]([75.0, 125.0, 250.0, 350.0])
 metadata/_edit_horizontal_guides_ = [-29.0]
 
 [node name="PickupComponent" type="Node2D" parent="."]

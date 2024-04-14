@@ -1,15 +1,18 @@
-[gd_resource type="Resource" script_class="UpgradeResource" load_steps=5 format=3 uid="uid://1080fr85t8t5"]
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=7 format=3 uid="uid://1080fr85t8t5"]
 
-[ext_resource type="Texture2D" uid="uid://conv25r6q830b" path="res://items/upgrades/flipper.png" id="1_dpktw"]
-[ext_resource type="Resource" uid="uid://c1a3igbsujtvc" path="res://items/raw_material/shards.tres" id="2_vat1h"]
-[ext_resource type="Resource" uid="uid://deery3yh4y3io" path="res://items/raw_material/copper.tres" id="3_nocv6"]
+[ext_resource type="Texture2D" uid="uid://iqmcb1g0ed31" path="res://items/upgrades/flipper2.png" id="1_hi1pm"]
+[ext_resource type="Resource" uid="uid://kgoj0mkx46ev" path="res://items/upgrades/speed3.tres" id="2_r54bi"]
+[ext_resource type="Resource" uid="uid://bcfm6adtv1lts" path="res://items/raw_material/fish2.tres" id="3_tre8f"]
+[ext_resource type="Resource" uid="uid://lhq7a1famv6o" path="res://items/craftable/fiber_plus.tres" id="4_nho2g"]
 [ext_resource type="Script" path="res://items/upgrades/upgradeResource.gd" id="4_umlu6"]
+[ext_resource type="Resource" uid="uid://dcorhwv3uco24" path="res://items/raw_material/coral.tres" id="5_6dc4u"]
 
 [resource]
 script = ExtResource("4_umlu6")
 upgrade_id = "flippers"
 upgrade_value = 2.0
+next_upgrade = ExtResource("2_r54bi")
 title = "Flippers Upgrade 2"
-image = ExtResource("1_dpktw")
+image = ExtResource("1_hi1pm")
 description = "Increase Swim Speed"
-requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("2_vat1h"), ExtResource("3_nocv6")])
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("3_tre8f"), ExtResource("4_nho2g"), ExtResource("5_6dc4u")])
