@@ -12,10 +12,11 @@ func _ready():
 		for child in cont.get_children():
 			if child is SummonButton:
 				summon_buttons.append(child)
-				child.summon.connect(summon.bind(child.item))
+				child.summon.connect(summon.bind(child))
 	
 
-func summon(item: CraftableResource):
+func summon(button: SummonButton):
+	var item = button.item
 	if item is UpgradeResource:
 		GameEvents.get_upgrade.emit(item)
 	if item is CraftableInventoryItem:

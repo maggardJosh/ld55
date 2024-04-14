@@ -165,10 +165,6 @@ item = ExtResource("7_6oinr")
 layout_mode = 2
 item = ExtResource("11_1e8j0")
 
-[node name="SummonButton5" parent="UI/SummonMenu/VBoxContainer/UpgradesContainer" instance=ExtResource("7_yaqxb")]
-layout_mode = 2
-item = ExtResource("11_1e8j0")
-
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
 collision_layer = 0

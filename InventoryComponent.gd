@@ -24,6 +24,7 @@ func _on_get_upgrade(upgrade: UpgradeResource):
 				break
 	if upgrade.upgrade_id == "pack":
 		max_inventory_size = roundi(upgrade.upgrade_value)
+		print(max_inventory_size)
 		for i in max_inventory_size - items.size():
 			items.append(null)
 		GameEvents.inventory_settings_updated.emit(max_inventory_size)
