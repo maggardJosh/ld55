@@ -7,9 +7,12 @@ extends Node2D
 @export var max_y_scale: float = 2.0
 @export var rand_rotation_degrees:float = 15
 @onready var sprite: Sprite2D = $Sprite
+@export var can_flip: bool = true
 
 func _ready() -> void:
 	(sprite.material as ShaderMaterial).set_shader_parameter("offset", randf_range(0, 100))
+	if can_flip:
+		scale.x = 1 if randf() < .5 else -1
 	if keep_aspect:
 		scale = Vector2.ONE * randf_range(min_x_scale, max_x_scale)
 	else:

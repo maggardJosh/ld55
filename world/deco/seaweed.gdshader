@@ -4,7 +4,7 @@ uniform float offset = 0.0;
 
 void vertex() {
 	
-	VERTEX.x +=  sin(TIME+offset) * 5.0 * (1.0-UV.y);
+	VERTEX.x +=  sin(TIME+offset) * 3.0 * (1.0-UV.y);
 }
 
 void fragment() {

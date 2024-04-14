@@ -159,7 +159,7 @@ func _physics_process(delta):
 		
 		var x_input = direction_input.x
 		var y_input = direction_input.y
-		
+		current_water_speed_level = clamp(current_water_speed_level, 0, water_accels.size()-1)
 		var accel_value = water_accels[current_water_speed_level]
 		if x_input:
 			if sign(x_input) != sign(velocity.x):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=21 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
@@ -18,11 +18,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
 size = Vector2(3343, 416)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxn7y"]
-size = Vector2(4543, 1464)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wau00"]
-size = Vector2(787, 626)
+size = Vector2(6057, 4378)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sylxd"]
 
@@ -45,11 +42,10 @@ visible = false
 position = Vector2(-170, -27)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rotku")]
-position = Vector2(-760, 182)
+position = Vector2(-2413, 5290)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Biomes" type="Node2D" parent="."]
-visible = false
 z_index = 1
 
 [node name="NormalBiome" parent="Biomes" instance=ExtResource("5_18gyt")]
@@ -68,10 +64,8 @@ collision_mask = 2
 water_bg_color = Color(0.235294, 0.290196, 0.721569, 1)
 water_color = Color(0.184314, 0.223529, 0.592157, 0.682353)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Biomes/DarkBiome"]
-position = Vector2(751.5, 528)
-shape = SubResource("RectangleShape2D_hxn7y")
-debug_color = Color(0.666667, 0.933333, 1, 0.419608)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Biomes/DarkBiome"]
+polygon = PackedVector2Array(2335, -224, -1354, -204, -1727, 874, -1284, 1509, 309, 2356, 3484, 1257)
 
 [node name="DarkBiome2" parent="Biomes" instance=ExtResource("5_18gyt")]
 position = Vector2(-576, 1864)
@@ -81,17 +75,17 @@ water_bg_color = Color(0.160784, 0.2, 0.537255, 1)
 water_color = Color(0.12549, 0.152941, 0.435294, 0.784314)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Biomes/DarkBiome2"]
-polygon = PackedVector2Array(2731, 594, 3287, 544, 3893, 2062, 3909, 3186, -181, 2684, 705, 1275, 1229, 955, 2126, 944)
+polygon = PackedVector2Array(2731, 594, 3287, 544, 3893, 2062, 3909, 3186, 2351, 4272, 23, 4649, -181, 2684, 705, 1275, 1229, 955, 2126, 944)
 
 [node name="SecretBiome1" parent="Biomes" instance=ExtResource("5_18gyt")]
-position = Vector2(-4252, 1741)
+position = Vector2(-6174, 3791)
 collision_layer = 0
 collision_mask = 2
-water_bg_color = Color(0.0980392, 0.529412, 0.396078, 1)
-water_color = Color(0.054902, 0.403922, 0.352941, 0.662745)
+water_bg_color = Color(0.639216, 0.313726, 0.619608, 1)
+water_color = Color(0.529412, 0.164706, 0.52549, 0.439216)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Biomes/SecretBiome1"]
-position = Vector2(-226.5, 37)
+position = Vector2(2079.5, 3063)
 shape = SubResource("RectangleShape2D_wau00")
 debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 
@@ -99,7 +93,7 @@ debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 z_index = 1
 material = SubResource("ShaderMaterial_sylxd")
 color = Color(0.262745, 0.317647, 0.768627, 0.501961)
-polygon = PackedVector2Array(-10911, 0, -10526, 7326, -4756, 9815, 6859, 7142, 4429, 1576, 2388, 1772, 2054, 1772, 2088, 1643, 2253, 1603, 2381, 1697, 2388, 1772, 4429, 1576, 4367, 1410, -1005, 1780, -1316, 1780, -1338, 1772, -1374, 1701, -1301, 1603, -1210, 1563, -1024, 1573, -928, 1663, -938, 1739, -1005, 1780, 4367, 1410, 4149, 832, 69, 1074, -366, 1074, -357, 1047, -261, 945, -114, 934, -1, 1002, 69, 1074, 4149, 832, 3840, 0)
+polygon = PackedVector2Array(-16100, 0, -17119, 8056, -7746, 12203, 6859, 7142, 5662, 4399, -2340, 4928, -5441, 4928, -5081, 4555, -4309, 4160, -3393, 4142, -2531, 4609, -2340, 4928, 5662, 4399, 4429, 1576, 2388, 1772, 2054, 1772, 2088, 1643, 2253, 1603, 2381, 1697, 2388, 1772, 4429, 1576, 4367, 1410, -1005, 1780, -1316, 1780, -1338, 1772, -1374, 1701, -1301, 1603, -1210, 1563, -1024, 1573, -928, 1663, -938, 1739, -1005, 1780, 4367, 1410, 4149, 832, 69, 1074, -366, 1074, -357, 1047, -261, 945, -114, 934, -1, 1002, 69, 1074, 4149, 832, 3840, 0)
 script = ExtResource("2_imxiw")
 default_biome = NodePath("../Biomes/NormalBiome")
 biome_transition_time = 3.0
@@ -109,7 +103,7 @@ biome_transition_curve = SubResource("Curve_0m4yk")
 z_index = -2
 material = SubResource("ShaderMaterial_sylxd")
 color = Color(0.356863, 0.431373, 0.882353, 1)
-polygon = PackedVector2Array(-10911, 0, -10526, 7326, -4756, 9815, 6859, 7142, 4429, 1576, 2388, 1772, 2054, 1772, 2088, 1643, 2253, 1603, 2381, 1697, 2388, 1772, 4429, 1576, 4367, 1410, -1005, 1780, -1316, 1780, -1338, 1772, -1374, 1701, -1301, 1603, -1210, 1563, -1024, 1573, -928, 1663, -938, 1739, -1005, 1780, 4367, 1410, 4149, 832, 69, 1074, -366, 1074, -357, 1047, -261, 945, -114, 934, -1, 1002, 69, 1074, 4149, 832, 3840, 0)
+polygon = PackedVector2Array(-16100, 0, -17119, 8056, -7746, 12203, 6859, 7142, 5662, 4399, -2340, 4928, -5441, 4928, -5081, 4555, -4309, 4160, -3393, 4142, -2531, 4609, -2340, 4928, 5662, 4399, 4429, 1576, 2388, 1772, 2054, 1772, 2088, 1643, 2253, 1603, 2381, 1697, 2388, 1772, 4429, 1576, 4367, 1410, -1005, 1780, -1316, 1780, -1338, 1772, -1374, 1701, -1301, 1603, -1210, 1563, -1024, 1573, -928, 1663, -938, 1739, -1005, 1780, 4367, 1410, 4149, 832, 69, 1074, -366, 1074, -357, 1047, -261, 945, -114, 934, -1, 1002, 69, 1074, 4149, 832, 3840, 0)
 
 [node name="AirBG" type="Polygon2D" parent="Water"]
 z_index = -3
@@ -132,11 +126,17 @@ position = Vector2(525, 1000)
 color = Color(0.333333, 0.25098, 0.227451, 1)
 polygon = PackedVector2Array(1464, 792, 1451, 687, 1555, 537, 1836, 532, 1979, 639, 1907, 789)
 
+[node name="AirBG4" type="Polygon2D" parent="Water"]
+z_index = -3
+material = SubResource("ShaderMaterial_sylxd")
+position = Vector2(-6048, 3909)
+color = Color(0.556863, 0.286275, 0.603922, 1)
+polygon = PackedVector2Array(384, 1074, 852, 431, 1751, 196, 2710, 188, 3783, 699, 4177, 1093)
+
 [node name="Portal" parent="." instance=ExtResource("5_ekxwn")]
 position = Vector2(-207, -33)
 
 [node name="Areas" type="Node2D" parent="."]
-visible = false
 
 [node name="WaterArea" type="Area2D" parent="Areas"]
 position = Vector2(0, 7)
@@ -211,6 +211,23 @@ script = ExtResource("8_7dvb7")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/InnerAirArea3"]
 polygon = PackedVector2Array(16, 65, 16, -8, 100, -94, 279, -92, 416, -52, 462, 65)
 
+[node name="OxygenArea6" type="Area2D" parent="Areas"]
+position = Vector2(-3091, 4877)
+collision_mask = 2
+script = ExtResource("5_ghrk7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/OxygenArea6"]
+position = Vector2(-1, -3)
+polygon = PackedVector2Array(-2498, 55, -2306, -458, -1376, -735, -672, -789, 279, -741, 1272, 55)
+
+[node name="InnerAirArea4" type="Area2D" parent="Areas"]
+position = Vector2(-3311, 4855)
+collision_mask = 2
+script = ExtResource("8_7dvb7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/InnerAirArea4"]
+polygon = PackedVector2Array(-2241, 65, -2081, -561, -1243, -855, 33, -876, 829, -433, 1101, 65)
+
 [node name="World" type="Node2D" parent="."]
 
 [node name="Collision" type="Node2D" parent="World"]
@@ -264,6 +281,15 @@ color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(276, -181, 329, -238, 622, -276, 695, -246, 821, -160, 857.752, -49.6971, 829, 80, 762, 158, 660, 139, 632, 72, 574, 34, 486, 64, 465, 122, 491, 251, 435, 344, 332, 344, 271, 338, 248, 305, 283, 246, 351, 65, 300, -28, 235, -37, 212, -93)
 script = ExtResource("8_w2ktp")
 
+[node name="Island14" type="StaticBody2D" parent="World/Collision"]
+position = Vector2(1325, 3187)
+physics_material_override = SubResource("PhysicsMaterial_ywnst")
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island14"]
+position = Vector2(36, 135)
+color = Color(0.321569, 0.192157, 0, 1)
+script = ExtResource("8_w2ktp")
+
 [node name="Island12" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(-1715, 1560)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
@@ -291,7 +317,7 @@ physics_material_override = SubResource("PhysicsMaterial_ywnst")
 [node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island9"]
 position = Vector2(36, 135)
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(623, -291, 712, -261, 791, -221, 1471, 99, 2222, 133, 2518, -27, 2678, -31, 2782, 121, 2982, 597, 2490, 789, 2018, 845, 1886, 453, 1614, 417, 1230, 297, 1106, 177, 829, 80, 622, 177, 574, 397, 302, 437, 162, 377, 78, 65, 126, -43, 220, -142, 334, -261)
+polygon = PackedVector2Array(623, -291, 712, -261, 791, -221, 1471, 99, 2222, 133, 2518, -27, 2678, -31, 2782, 121, 2982, 597, 2930, 788, 2490, 789, 2018, 845, 1886, 453, 1614, 417, 1230, 297, 1106, 177, 829, 80, 622, 177, 574, 397, 302, 437, 162, 377, 78, 65, 126, -43, 220, -142, 334, -261)
 script = ExtResource("8_w2ktp")
 
 [node name="Island7" type="StaticBody2D" parent="World/Collision"]
@@ -311,7 +337,7 @@ physics_material_override = SubResource("PhysicsMaterial_ywnst")
 [node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island6"]
 position = Vector2(91, -494)
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(-65, -168, -8, -287, 107, -615, 421, -1305, 1472, -1348, 2390, 1226, 4135, 4608, 1296, 5254, 1449, 2635, 1072, 1613, 1058, 1460, 930, 1366, 765, 1406, 715, 1599, 487, 1700, 295, 1543, 265, 800, 289, 234, 92, 162, -6, 14)
+polygon = PackedVector2Array(-65, -168, -8, -287, 107, -615, 421, -1305, 1472, -1348, 2390, 1226, 4135, 4608, 3487, 6860, -142, 7445, -5758, 8457, -6544, 6368, -6544, 5332, -6170, 4788, -5679, 4521, -5039, 4552, -4411, 4821, -3734, 5420, -2109, 5805, 143, 5649, 755, 5120, 1045, 4322, 1136, 3838, 1061, 3529, 638, 3265, 275, 3333, -140, 3453, -480, 3257, -684, 3061, -601, 2917, -427, 2887, -170, 2887, 313, 2879, 789, 2895, 1363, 2932, 1449, 2635, 1072, 1613, 1058, 1460, 930, 1366, 765, 1406, 715, 1599, 487, 1700, 295, 1543, 265, 800, 289, 234, 92, 162, -6, 14)
 script = ExtResource("8_w2ktp")
 
 [node name="Island4" type="StaticBody2D" parent="World/Collision"]
@@ -320,7 +346,7 @@ physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
 [node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island4"]
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(-381, 90, -399, 253, -468, 448, -455, 810, -669, 891, -873, 786, -955, 430, -1171, 335, -1495, 290, -1749, 360, -1857, 716, -1851, 970, -2067, 1224, -2219, 957, -2121, 615, -1930, 46, -2056, -127, -2128, -319, -1820, -547, -1676, -505, -1651, -338, -1719, -266, -1791, -270, -1848, -228, -1850, -115, -1810, -45, -1721, 15, -1519, 15, -1385, -49, -1293, -182, -1086, -232, -945, -192, -774, -160, -552, -112, -398, -34)
+polygon = PackedVector2Array(-381, 90, -399, 253, -468, 448, -455, 810, -669, 891, -873, 786, -955, 430, -1171, 335, -1495, 290, -1749, 360, -1857, 716, -1851, 970, -1925, 1191, -2018, 1339, -2195, 1399, -2195, 1729, -2366, 1976, -2664, 1873, -2826, 1663, -2716, 1221, -2512, 992, -2531, 757, -2398, 402, -1930, 46, -2056, -127, -2128, -319, -1820, -547, -1676, -505, -1651, -338, -1719, -266, -1791, -270, -1848, -228, -1850, -115, -1810, -45, -1721, 15, -1519, 15, -1385, -49, -1293, -182, -1086, -232, -945, -192, -774, -160, -552, -112, -398, -34)
 script = ExtResource("8_w2ktp")
 
 [node name="Island10" type="StaticBody2D" parent="World/Collision"]
@@ -329,7 +355,7 @@ physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
 [node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island10"]
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(-381, 90, -499, 184, -609, 294, -724, 474, -812, 711, -958, 725, -1181, 458, -1152, 223, -938, 79, -723, -19, -512, -32, -398, -34, -225, -49, -101, -61, -75, 43, -177, 89)
+polygon = PackedVector2Array(-381, 90, -499, 184, -518, 489, -357, 848, 24, 1110, 417, 1118, 772, 891, 1036, 982, 1308, 1223, 1240, 1503, 894, 2399, 369, 2755, -106, 2653, -1655, 2721, -3109, 2416, -3486, 1787, -4348, 1320, -5264, 1338, -6036, 1733, -6503, 2218, -7044, 2709, -8068, 2261, -8694, 1141, -8515, 225, -3808, -208, -3720, -411, -3474, -309, -3300, -369, -3215, -483, -3158, -975, -2895, -1017, -2553, -754, -2182, -689, -1818, -689, -1662, -362, -1362, 95, -938, 79, -723, -19, -512, -32, -398, -34, -225, -49, -101, -61, -75, 43, -177, 89)
 script = ExtResource("8_w2ktp")
 
 [node name="Fish" type="Node2D" parent="World"]
