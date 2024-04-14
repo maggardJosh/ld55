@@ -1,36 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbdra5ythrfmg"]
+[gd_scene load_steps=6 format=3 uid="uid://daahkbyc5olew"]
 
-[ext_resource type="Script" path="res://items/ItemPickup.gd" id="1_v4pd1"]
-[ext_resource type="Resource" uid="uid://cnn7fbtlxt5a" path="res://items/craftable/glass.tres" id="2_w7we7"]
-[ext_resource type="Texture2D" uid="uid://yodcd7d5m6ag" path="res://items/craftable/glass.png" id="3_wst7g"]
+[ext_resource type="Script" path="res://items/ItemPickup.gd" id="1_0wluu"]
+[ext_resource type="Resource" uid="uid://cccvsrjmbfrt2" path="res://items/raw_material/gold.tres" id="2_5i3pc"]
+[ext_resource type="Texture2D" uid="uid://b2w6edknw13vn" path="res://items/raw_material/gold.png" id="3_ltnh8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4m02g"]
-radius = 6.0
+radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wbb2"]
 radius = 16.0312
 
-[node name="Glass" type="RigidBody2D"]
+[node name="Gold" type="RigidBody2D"]
 collision_layer = 4
 mass = 0.3
 freeze = true
 angular_damp = 11.312
-script = ExtResource("1_v4pd1")
-inventory_item = ExtResource("2_w7we7")
+script = ExtResource("1_0wluu")
+inventory_item = ExtResource("2_5i3pc")
 random_rotation_on_drop = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_4m02g")
 
-[node name="Glass" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
-texture = ExtResource("3_wst7g")
+[node name="Gold" type="Sprite2D" parent="."]
+texture = ExtResource("3_ltnh8")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
-position = Vector2(0, -3)
 collision_layer = 0
 collision_mask = 2
 gravity_point_center = Vector2(0, -1)
@@ -38,7 +34,7 @@ gravity_direction = Vector2(0, -1)
 linear_damp = 17.195
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 3)
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_5wbb2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

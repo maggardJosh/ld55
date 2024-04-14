@@ -109,7 +109,7 @@ func _physics_process(delta):
 			if velocity.y > max_fall_speed:
 				velocity.y = max_fall_speed
 		else:
-			if direction_input:
+			if direction_input.x:
 				animation_player.play("walk")
 			else:
 				animation_player.play("idle")

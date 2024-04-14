@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CraftableInventoryItem" load_steps=5 format=3 uid="uid://jelef2wcbg1y"]
 
-[ext_resource type="Texture2D" uid="uid://yodcd7d5m6ag" path="res://items/glass.png" id="1_7n3n4"]
-[ext_resource type="Resource" uid="uid://cnn7fbtlxt5a" path="res://items/glass.tres" id="1_68de6"]
-[ext_resource type="Resource" uid="uid://dcorhwv3uco24" path="res://items/coral.tres" id="3_xhc0a"]
+[ext_resource type="Texture2D" uid="uid://yodcd7d5m6ag" path="res://items/craftable/glass.png" id="1_7n3n4"]
+[ext_resource type="Resource" uid="uid://cnn7fbtlxt5a" path="res://items/craftable/glass.tres" id="1_68de6"]
+[ext_resource type="Resource" uid="uid://dcorhwv3uco24" path="res://items/raw_material/coral.tres" id="3_xhc0a"]
 [ext_resource type="Script" path="res://items/craftable/CraftableInventoryItem.gd" id="4_qdgxp"]
 
 [resource]

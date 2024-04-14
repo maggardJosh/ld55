@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgb5nkn0locyr"]
 
-[ext_resource type="Texture2D" uid="uid://b8frlh3w52834" path="res://items/coral.png" id="1_5t1h7"]
 [ext_resource type="Script" path="res://inventory_space.gd" id="1_a02tl"]
+[ext_resource type="Texture2D" uid="uid://b8frlh3w52834" path="res://items/raw_material/coral.png" id="2_pbicp"]
 
 [node name="InventorySpace" type="ColorRect"]
 custom_minimum_size = Vector2(16, 16)
@@ -12,7 +12,7 @@ script = ExtResource("1_a02tl")
 layout_mode = 2
 offset_right = 16.0
 offset_bottom = 16.0
-texture = ExtResource("1_5t1h7")
+texture = ExtResource("2_pbicp")
 
 [node name="Hover" type="ColorRect" parent="."]
 visible = false

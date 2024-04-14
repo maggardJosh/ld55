@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cccvsrjmbfrt2"]
+
+[ext_resource type="Texture2D" uid="uid://b2w6edknw13vn" path="res://items/raw_material/gold.png" id="1_gmc1g"]
+[ext_resource type="Script" path="res://items/InventoryItem.gd" id="2_ogrq8"]
+
+[resource]
+script = ExtResource("2_ogrq8")
+inventory_image = ExtResource("1_gmc1g")
+title = "Gold"
+description = "Useful for crafting"
+scenePath = "res://items/pickups/gold_pickup.tscn"

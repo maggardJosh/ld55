@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://items/upgrades/upgradeResource.gd" id="1_dqut5"]
 [ext_resource type="Texture2D" uid="uid://u2l6iuurrubb" path="res://items/upgrades/tank_upgrade.png" id="1_g1kp6"]
-[ext_resource type="Resource" uid="uid://dcorhwv3uco24" path="res://items/coral.tres" id="2_mlg7c"]
-[ext_resource type="Resource" uid="uid://cnn7fbtlxt5a" path="res://items/glass.tres" id="3_n2eb8"]
+[ext_resource type="Resource" uid="uid://dcorhwv3uco24" path="res://items/raw_material/coral.tres" id="2_mlg7c"]
+[ext_resource type="Resource" uid="uid://cnn7fbtlxt5a" path="res://items/craftable/glass.tres" id="3_n2eb8"]
 
 [resource]
 script = ExtResource("1_dqut5")

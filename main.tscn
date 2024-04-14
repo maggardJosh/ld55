@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=20 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bpdlhgmmoy15j" path="res://portal.tscn" id="5_ekxwn"]
 [ext_resource type="Script" path="res://OxygenArea.gd" id="5_ghrk7"]
 [ext_resource type="PackedScene" uid="uid://ba5qec1sf8vey" path="res://items/pickups/coral_pickup.tscn" id="9_6hed1"]
+[ext_resource type="PackedScene" uid="uid://cyx2ogpbol255" path="res://items/pickups/rock_break_interact.tscn" id="10_j5waq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
 size = Vector2(4246, 378)
@@ -32,6 +33,9 @@ size = Vector2(5029, 735)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdpq8"]
 size = Vector2(2186, 1266)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ywnst"]
+rough = true
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mk1d2"]
 size = Vector2(80, 16)
@@ -162,6 +166,7 @@ shape = SubResource("RectangleShape2D_jdpq8")
 
 [node name="StartingIsland" type="StaticBody2D" parent="World"]
 position = Vector2(-110, -8)
+physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
 [node name="Polygon2D" type="Polygon2D" parent="World/StartingIsland"]
 color = Color(0.321569, 0.192157, 0, 1)
@@ -173,6 +178,7 @@ polygon = PackedVector2Array(25, 0, 81, 33, 79, 45, 72, 67, 42, 79, -5, 65, -59,
 
 [node name="MiddleSeparator" type="StaticBody2D" parent="World"]
 position = Vector2(2240, 2)
+physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
 [node name="Sprite2D" type="Sprite2D" parent="World/MiddleSeparator"]
 texture = SubResource("PlaceholderTexture2D_mk1d2")
@@ -187,6 +193,7 @@ polygon = PackedVector2Array(-677, -104, -783, -1932, -1047, -1962, -1017, -112,
 
 [node name="OOB" type="StaticBody2D" parent="World"]
 position = Vector2(-1647, 2848)
+physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
 [node name="Polygon2D" type="Polygon2D" parent="World/OOB"]
 color = Color(0.321569, 0.192157, 0, 1)
@@ -226,6 +233,30 @@ rotation = 2.9962
 [node name="Coral10" parent="." instance=ExtResource("9_6hed1")]
 position = Vector2(-298, 103)
 rotation = 2.40323
+
+[node name="Rock" parent="." instance=ExtResource("10_j5waq")]
+position = Vector2(-34, 48)
+rotation = -0.336489
+
+[node name="Rock3" parent="." instance=ExtResource("10_j5waq")]
+position = Vector2(-132, 53)
+rotation = 0.934133
+
+[node name="Rock4" parent="." instance=ExtResource("10_j5waq")]
+position = Vector2(-156, 50)
+rotation = 0.934133
+
+[node name="Rock5" parent="." instance=ExtResource("10_j5waq")]
+position = Vector2(-186, 51)
+rotation = 0.519851
+
+[node name="Rock6" parent="." instance=ExtResource("10_j5waq")]
+position = Vector2(-232, 61)
+rotation = 0.37377
+
+[node name="Rock2" parent="." instance=ExtResource("10_j5waq")]
+position = Vector2(-102, 62)
+rotation = 0.984002
 
 [connection signal="body_entered" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_exited"]

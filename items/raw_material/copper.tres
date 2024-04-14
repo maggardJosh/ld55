@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://deery3yh4y3io"]
+
+[ext_resource type="Texture2D" uid="uid://bta316wk7a4nt" path="res://items/raw_material/copper.png" id="1_p2hqe"]
+[ext_resource type="Script" path="res://items/InventoryItem.gd" id="2_ews3a"]
+
+[resource]
+script = ExtResource("2_ews3a")
+inventory_image = ExtResource("1_p2hqe")
+title = "Copper"
+description = "Useful for crafting"
+scenePath = "res://items/pickups/copper_pickup.tscn"

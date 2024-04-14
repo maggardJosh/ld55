@@ -41,6 +41,9 @@ func _on_drop_item_index(item_index: int):
 	emit_inventory_signals()
 	
 func try_pickup(item_pickup: ItemPickup):
+	if item_pickup is ItemBreakable:
+		item_pickup.pickup()
+		return
 	if try_get_inventory_item(item_pickup.inventory_item):
 		item_pickup.pickup()
 

@@ -1,36 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbdra5ythrfmg"]
+[gd_scene load_steps=6 format=3 uid="uid://da7n1mecu53jy"]
 
-[ext_resource type="Script" path="res://items/ItemPickup.gd" id="1_v4pd1"]
-[ext_resource type="Resource" uid="uid://cnn7fbtlxt5a" path="res://items/craftable/glass.tres" id="2_w7we7"]
-[ext_resource type="Texture2D" uid="uid://yodcd7d5m6ag" path="res://items/craftable/glass.png" id="3_wst7g"]
+[ext_resource type="Script" path="res://items/ItemPickup.gd" id="1_8pvge"]
+[ext_resource type="Resource" uid="uid://deery3yh4y3io" path="res://items/raw_material/copper.tres" id="2_2t75o"]
+[ext_resource type="Texture2D" uid="uid://bta316wk7a4nt" path="res://items/raw_material/copper.png" id="3_3xk1k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4m02g"]
-radius = 6.0
+radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wbb2"]
 radius = 16.0312
 
-[node name="Glass" type="RigidBody2D"]
+[node name="Copper" type="RigidBody2D"]
 collision_layer = 4
 mass = 0.3
 freeze = true
 angular_damp = 11.312
-script = ExtResource("1_v4pd1")
-inventory_item = ExtResource("2_w7we7")
+script = ExtResource("1_8pvge")
+inventory_item = ExtResource("2_2t75o")
 random_rotation_on_drop = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_4m02g")
 
-[node name="Glass" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
-texture = ExtResource("3_wst7g")
+[node name="Copper" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 0)
+texture = ExtResource("3_3xk1k")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
-position = Vector2(0, -3)
 collision_layer = 0
 collision_mask = 2
 gravity_point_center = Vector2(0, -1)

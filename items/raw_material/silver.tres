@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://buujnokf8u7ei"]
+
+[ext_resource type="Texture2D" uid="uid://ca7pnoortup6" path="res://items/raw_material/silver.png" id="1_8mk2b"]
+[ext_resource type="Script" path="res://items/InventoryItem.gd" id="2_v8d84"]
+
+[resource]
+script = ExtResource("2_v8d84")
+inventory_image = ExtResource("1_8mk2b")
+title = "Silver"
+description = "Useful for crafting"
+scenePath = "res://items/pickups/silver_pickup.tscn"

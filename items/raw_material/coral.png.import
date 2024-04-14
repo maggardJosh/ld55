@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yodcd7d5m6ag"
-path="res://.godot/imported/glass.png-65e295f186a66afb33818b89c352987b.ctex"
+uid="uid://b8frlh3w52834"
+path="res://.godot/imported/coral.png-5c9c1fa427f315af8d73ad532182fb86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/glass.png"
-dest_files=["res://.godot/imported/glass.png-65e295f186a66afb33818b89c352987b.ctex"]
+source_file="res://items/raw_material/coral.png"
+dest_files=["res://.godot/imported/coral.png-5c9c1fa427f315af8d73ad532182fb86.ctex"]
 
 [params]
 

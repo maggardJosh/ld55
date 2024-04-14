@@ -273,7 +273,33 @@ offset_left = 9.0
 offset_top = -19.0
 offset_right = 61.0
 grow_vertical = 2
-text = "pickup"
+text = "pickup silver"
+vertical_alignment = 1
+
+[node name="InventoryFullLabel" type="Label" parent="PickupComponent/PickupPrompt/Sprite2D"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -19.0
+offset_right = 61.0
+grow_vertical = 2
+text = "Inventory Full"
+vertical_alignment = 1
+
+[node name="BreakLabel" type="Label" parent="PickupComponent/PickupPrompt/Sprite2D"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -19.0
+offset_right = 61.0
+grow_vertical = 2
+text = "break"
 vertical_alignment = 1
 
 [node name="OxygenBar" type="ProgressBar" parent="."]

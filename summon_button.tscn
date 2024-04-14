@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtntstrceesaa"]
 
 [ext_resource type="Script" path="res://summon_button.gd" id="1_wjstv"]
-[ext_resource type="Texture2D" uid="uid://b8frlh3w52834" path="res://items/coral.png" id="1_xggp8"]
+[ext_resource type="Texture2D" uid="uid://b8frlh3w52834" path="res://items/raw_material/coral.png" id="2_wc6kc"]
 
 [node name="SummonButton" type="ColorRect"]
 custom_minimum_size = Vector2(16, 16)
@@ -17,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_xggp8")
+texture = ExtResource("2_wc6kc")
 
 [node name="UI" type="ColorRect" parent="."]
 visible = false
@@ -110,19 +110,19 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/RequirementsHBox"]
 layout_mode = 2
-texture = ExtResource("1_xggp8")
+texture = ExtResource("2_wc6kc")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="TextureRect2" type="TextureRect" parent="UI/RequirementsHBox"]
 layout_mode = 2
-texture = ExtResource("1_xggp8")
+texture = ExtResource("2_wc6kc")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="TextureRect3" type="TextureRect" parent="UI/RequirementsHBox"]
 layout_mode = 2
-texture = ExtResource("1_xggp8")
+texture = ExtResource("2_wc6kc")
 expand_mode = 3
 stretch_mode = 4
 
