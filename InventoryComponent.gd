@@ -15,6 +15,11 @@ func _ready() -> void:
 	GameEvents.drop_item_index.connect(_on_drop_item_index)
 	GameEvents.get_upgrade.connect(_on_get_upgrade)
 	GameEvents.get_item.connect(_on_get_item)
+
+func die():
+	for i in max_inventory_size:
+		items[i] = null
+	emit_inventory_signals()
 	
 func _on_get_upgrade(upgrade: UpgradeResource):
 	for req in upgrade.requirements:

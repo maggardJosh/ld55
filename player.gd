@@ -92,6 +92,7 @@ func exit_water():
 
 func die():
 	global_position = spawn_point.global_position
+	inventory_component.die()
 	
 func set_in_oxygen(is_in_oxygen):
 	if is_in_oxygen:
