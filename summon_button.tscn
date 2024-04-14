@@ -7,6 +7,8 @@
 custom_minimum_size = Vector2(16, 16)
 color = Color(0.145098, 0.145098, 0.145098, 0.67451)
 script = ExtResource("1_wjstv")
+can_summon_bg = Color(0.701961, 0.701961, 0.701961, 0.752941)
+cannot_summon_bg = Color(0.145098, 0.145098, 0.145098, 0.67451)
 can_summon_color = Color(0.1825, 0.73, 0.1825, 1)
 cannot_summon_color = Color(0.760784, 0.168627, 0.168627, 1)
 

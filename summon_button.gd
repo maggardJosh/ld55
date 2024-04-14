@@ -9,6 +9,9 @@ extends ColorRect
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var can_summon_label: Label = %CanSummonLabel
 
+@export var can_summon_bg: Color
+@export var cannot_summon_bg: Color
+
 @export var can_summon_color: Color = Color.GREEN
 @export var cannot_summon_color: Color = Color.RED
 
@@ -87,4 +90,5 @@ func update_can_summon(inventory_items_in: Array[InventoryItem]):
 func update_ui():
 	can_summon_label.modulate = can_summon_color if can_summon else cannot_summon_color
 	can_summon_label.text = "Can Summon" if can_summon else "Missing Ingredients"
+	color = can_summon_bg if can_summon else cannot_summon_bg
 	texture_rect.self_modulate.a = 1.0 if can_summon else .5

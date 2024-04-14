@@ -95,12 +95,22 @@ grow_horizontal = 2
 text = "Summon Recipes"
 horizontal_alignment = 1
 
+[node name="Click" type="Label" parent="UI/SummonMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 73.0
+offset_bottom = 86.0
+grow_horizontal = 2
+text = "Click To Summon"
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/SummonMenu"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 14.0
+offset_left = 34.0
+offset_top = 7.0
 offset_right = 166.0
-offset_bottom = 81.0
+offset_bottom = 83.0
 mouse_filter = 2
 theme_override_constants/separation = 1
 alignment = 1
