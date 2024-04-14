@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=39 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="Script" path="res://ResourceSpawnManager.gd" id="1_7jq02"]
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cfty03o4bgxy2" path="res://items/pickups/silver_pickup.tscn" id="16_nbxcd"]
 [ext_resource type="PackedScene" uid="uid://drhq5o870i1ub" path="res://items/pickups/shard_pickup.tscn" id="16_vr302"]
 [ext_resource type="Script" path="res://decoration_line.gd" id="20_hpkv7"]
+[ext_resource type="AudioStream" uid="uid://d1p3a0gvu4ifh" path="res://ld55.wav" id="31_37gy1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
 size = Vector2(6439, 416)
@@ -1431,6 +1432,11 @@ position = Vector2(-4775, 6245)
 
 [node name="divedepth1" type="Marker2D" parent="."]
 position = Vector2(227, 950)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_37gy1")
+autoplay = true
+bus = &"Music"
 
 [connection signal="timeout" from="ResourceSpawnManager/CheckSpawnTimer" to="ResourceSpawnManager" method="_on_check_spawn_timer_timeout"]
 [connection signal="body_entered" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_entered"]

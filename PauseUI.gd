@@ -1,6 +1,7 @@
 extends ColorRect
 
 @onready var resume_button: Button = $VBoxContainer/ResumeButton
+@onready var mute_button: Button = $VBoxContainer/MuteButton
 
 func _ready():
 	visible = false
@@ -29,3 +30,9 @@ func _on_resume_button_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+var is_muted = false
+func _on_mute_button_pressed() -> void:
+	is_muted = not is_muted
+	mute_button.text = "Mute Music" if not is_muted else "Unmute Music"
+	AudioServer.set_bus_mute(1, is_muted )
