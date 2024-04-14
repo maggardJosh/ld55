@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="UpgradeResource" load_steps=6 format=3 uid="uid://c37trtlbwvuqw"]
 
 [ext_resource type="Texture2D" uid="uid://5edsig5hv6ot" path="res://items/upgrades/tank_upgrade_1.png" id="1_vb7lf"]
-[ext_resource type="Resource" uid="uid://b2k1tbq58w01i" path="res://items/craftable/fiber.tres" id="2_1e2cd"]
 [ext_resource type="Resource" uid="uid://d14afxbanphdh" path="res://items/upgrades/tank2.tres" id="2_7g75l"]
-[ext_resource type="Resource" uid="uid://dbar0iep4nnvp" path="res://items/raw_material/fish.tres" id="3_4knws"]
+[ext_resource type="Resource" uid="uid://deery3yh4y3io" path="res://items/raw_material/copper.tres" id="3_wd0p8"]
+[ext_resource type="Resource" uid="uid://rbw08l4h5jir" path="res://items/raw_material/flower.tres" id="4_1fad6"]
 [ext_resource type="Script" path="res://items/upgrades/upgradeResource.gd" id="4_es7by"]
 
 [resource]
@@ -14,4 +14,4 @@ next_upgrade = ExtResource("2_7g75l")
 title = "Tank Upgrade 1"
 image = ExtResource("1_vb7lf")
 description = "Increase O2 to 20 seconds"
-requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("2_1e2cd"), ExtResource("3_4knws")])
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("3_wd0p8"), ExtResource("4_1fad6")])

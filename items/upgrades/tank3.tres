@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=7 format=3 uid="uid://djfwbqfk2k5lv"]
+
+[ext_resource type="Texture2D" uid="uid://c47x7whidwfqq" path="res://items/upgrades/tank_upgrade_3.png" id="1_2i3yg"]
+[ext_resource type="Resource" uid="uid://dmollf7h74fs2" path="res://items/craftable/glass_plus.tres" id="2_02gwk"]
+[ext_resource type="Resource" uid="uid://deery3yh4y3io" path="res://items/raw_material/copper.tres" id="3_6j88f"]
+[ext_resource type="Resource" uid="uid://cccvsrjmbfrt2" path="res://items/raw_material/gold.tres" id="4_c64uq"]
+[ext_resource type="Script" path="res://items/upgrades/upgradeResource.gd" id="4_yn3gb"]
+[ext_resource type="Resource" uid="uid://mafc8o4e3kxa" path="res://items/raw_material/fish3.tres" id="5_4do0h"]
+
+[resource]
+script = ExtResource("4_yn3gb")
+upgrade_id = "tank"
+upgrade_value = 80.0
+title = "Tank Upgrade 3"
+image = ExtResource("1_2i3yg")
+description = "Increase O2 to 80 seconds"
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("2_02gwk"), ExtResource("3_6j88f"), ExtResource("4_c64uq"), ExtResource("5_4do0h")])
