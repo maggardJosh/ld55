@@ -107,6 +107,7 @@ func _input(event: InputEvent) -> void:
 		pickup_component.try_pickup(inventory_component)
 	if event.is_action_pressed("cheat_1"):
 		current_water_speed_level += 1
+		oxygen_component.max_oxygen_seconds = 1000
 	if event.is_action_pressed("cheat_2"):
 		GameEvents.toggle_costs.emit()
 	if event.is_action_pressed("drop"):
@@ -166,14 +167,14 @@ func _physics_process(delta):
 				accel_value *= 2
 			velocity.x = move_toward(velocity.x, x_input * water_speeds[current_water_speed_level], accel_value * delta)
 		else:
-			velocity.x = move_toward(velocity.x, 0, water_friction_speed * delta)
+			velocity.x = move_toward(velocity.x, 0, water_speeds[current_water_speed_level] * delta)
 		accel_value = water_accels[current_water_speed_level]
 		if y_input:
 			if sign(y_input) != sign(velocity.y):
 				accel_value *= 2
 			velocity.y = move_toward(velocity.y, y_input * water_speeds[current_water_speed_level], accel_value * delta)
 		else:
-			velocity.y = move_toward(velocity.y, 0, water_friction_speed * delta)
+			velocity.y = move_toward(velocity.y, 0,  water_speeds[current_water_speed_level] * delta)
 		if direction_input:
 			swim_target_angle = direction_input.angle()
 		else:
