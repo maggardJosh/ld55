@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpdlhgmmoy15j"]
+[gd_scene load_steps=15 format=3 uid="uid://bpdlhgmmoy15j"]
 
 [ext_resource type="Script" path="res://portal.gd" id="1_gin5e"]
 [ext_resource type="Texture2D" uid="uid://jhqp07488shd" path="res://portal.png" id="1_ouc00"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://m36ajpsksv30" path="res://items/craftable/craftable_glass_plus.tres" id="7_b8jhj"]
 [ext_resource type="PackedScene" uid="uid://dtntstrceesaa" path="res://summon_button.tscn" id="7_yaqxb"]
 [ext_resource type="Resource" uid="uid://c8mwfknfyiak1" path="res://items/craftable/craftable_fiber_glass.tres" id="8_lbr7f"]
+[ext_resource type="Resource" uid="uid://7jxu8rxe5bs4" path="res://items/upgrades/pack1.tres" id="11_1e8j0"]
 
 [sub_resource type="Animation" id="Animation_tfgl8"]
 length = 0.5
@@ -159,6 +160,14 @@ item = ExtResource("6_qu4o5")
 [node name="SummonButton3" parent="UI/SummonMenu/VBoxContainer/UpgradesContainer" instance=ExtResource("7_yaqxb")]
 layout_mode = 2
 item = ExtResource("7_6oinr")
+
+[node name="SummonButton4" parent="UI/SummonMenu/VBoxContainer/UpgradesContainer" instance=ExtResource("7_yaqxb")]
+layout_mode = 2
+item = ExtResource("11_1e8j0")
+
+[node name="SummonButton5" parent="UI/SummonMenu/VBoxContainer/UpgradesContainer" instance=ExtResource("7_yaqxb")]
+layout_mode = 2
+item = ExtResource("11_1e8j0")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false

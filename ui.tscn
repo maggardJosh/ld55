@@ -64,9 +64,9 @@ mouse_filter = 2
 
 [node name="DebugLabel" type="Label" parent="MarginContainer/DebugUI"]
 layout_mode = 2
-offset_left = 190.0
+offset_left = 217.0
 offset_top = 1.0
-offset_right = 206.0
+offset_right = 233.0
 offset_bottom = 14.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -119,6 +119,21 @@ layout_mode = 2
 [node name="InventorySpace10" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
 layout_mode = 2
 
+[node name="InventorySpace11" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace12" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace13" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace14" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
+[node name="InventorySpace15" parent="MarginContainer/InventoryUI/InventoryGridContainer" instance=ExtResource("8_bjuti")]
+layout_mode = 2
+
 [node name="OxygenUI" type="Control" parent="MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
@@ -134,7 +149,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 offset_left = 21.0
 offset_top = 4.0
-offset_right = 171.0
+offset_right = 206.0
 offset_bottom = 27.0
 max_value = 20.0
 value = 20.0

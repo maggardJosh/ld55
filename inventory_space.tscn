@@ -15,6 +15,7 @@ offset_bottom = 16.0
 texture = ExtResource("2_pbicp")
 
 [node name="Hover" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 2.0
 offset_top = 18.0

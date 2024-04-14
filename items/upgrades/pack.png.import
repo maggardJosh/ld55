@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u2l6iuurrubb"
-path="res://.godot/imported/tank_upgrade.png-219327a60a7a9b8de75478efdf8e083a.ctex"
+uid="uid://ct4ahjc6vr1wl"
+path="res://.godot/imported/pack.png-ec00a4e06dd82a43f81e14230f8d7236.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/upgrades/tank_upgrade.png"
-dest_files=["res://.godot/imported/tank_upgrade.png-219327a60a7a9b8de75478efdf8e083a.ctex"]
+source_file="res://items/upgrades/pack.png"
+dest_files=["res://.godot/imported/pack.png-ec00a4e06dd82a43f81e14230f8d7236.ctex"]
 
 [params]
 

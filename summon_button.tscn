@@ -20,6 +20,7 @@ grow_vertical = 2
 texture = ExtResource("2_wc6kc")
 
 [node name="UI" type="ColorRect" parent="."]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_left = -71.0

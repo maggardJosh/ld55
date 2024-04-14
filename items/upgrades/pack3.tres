@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=6 format=3 uid="uid://bcx4bc3t5k2jr"]
+
+[ext_resource type="Texture2D" uid="uid://bp3jvjsbjwv0p" path="res://items/upgrades/pack3.png" id="1_yniad"]
+[ext_resource type="Resource" uid="uid://lhq7a1famv6o" path="res://items/craftable/fiber_plus.tres" id="2_iowef"]
+[ext_resource type="Resource" uid="uid://dbar0iep4nnvp" path="res://items/raw_material/fish.tres" id="3_7djns"]
+[ext_resource type="Script" path="res://items/upgrades/upgradeResource.gd" id="4_ggoar"]
+[ext_resource type="Resource" uid="uid://bcfm6adtv1lts" path="res://items/raw_material/fish2.tres" id="4_jwlww"]
+
+[resource]
+script = ExtResource("4_ggoar")
+upgrade_id = "pack"
+upgrade_value = 15.0
+title = "Pack Upgrade 3"
+image = ExtResource("1_yniad")
+description = "Increase Inventory Size to 15"
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("2_iowef"), ExtResource("3_7djns"), ExtResource("4_jwlww")])

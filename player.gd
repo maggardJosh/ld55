@@ -32,6 +32,7 @@ var current_water_speed_level: int = 0
 @onready var inventory_component: InventoryComponent = $InventoryComponent
 @onready var tank_sprite: Sprite2D = %TankSprite
 @onready var flippers_sprite: Sprite2D = %FlippersSprite
+@onready var pack_sprite: Sprite2D = %PackSprite
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -46,6 +47,8 @@ func _on_get_upgrade(upgrade: UpgradeResource):
 	if upgrade.upgrade_id == "flippers":
 		flippers_sprite.visible = true
 		update_speed(upgrade.upgrade_value)
+	if upgrade.upgrade_id == "pack":
+		pack_sprite.visible = true
 
 
 func update_speed(upgrade_value: float):

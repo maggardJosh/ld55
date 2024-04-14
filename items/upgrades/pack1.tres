@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=6 format=3 uid="uid://7jxu8rxe5bs4"]
+
+[ext_resource type="Texture2D" uid="uid://ct4ahjc6vr1wl" path="res://items/upgrades/pack.png" id="1_1fvtw"]
+[ext_resource type="Resource" uid="uid://dy8vvpkj27vel" path="res://items/upgrades/pack2.tres" id="2_22q2b"]
+[ext_resource type="Resource" uid="uid://deery3yh4y3io" path="res://items/raw_material/copper.tres" id="2_hxjev"]
+[ext_resource type="Resource" uid="uid://rbw08l4h5jir" path="res://items/raw_material/flower.tres" id="3_atec2"]
+[ext_resource type="Script" path="res://items/upgrades/upgradeResource.gd" id="5_2khte"]
+
+[resource]
+script = ExtResource("5_2khte")
+upgrade_id = "pack"
+upgrade_value = 5.0
+next_upgrade = ExtResource("2_22q2b")
+title = "Pack Upgrade 1"
+image = ExtResource("1_1fvtw")
+description = "Increase Inventory Size to 5"
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("2_hxjev"), ExtResource("3_atec2")])

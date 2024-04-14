@@ -22,6 +22,11 @@ func _on_get_upgrade(upgrade: UpgradeResource):
 			if items[i] == req:
 				items[i] = null
 				break
+	if upgrade.upgrade_id == "pack":
+		max_inventory_size = roundi(upgrade.upgrade_value)
+		for i in max_inventory_size - items.size():
+			items.append(null)
+		GameEvents.inventory_settings_updated.emit(max_inventory_size)
 	emit_inventory_signals()
 
 func _on_get_item(item: CraftableInventoryItem):
