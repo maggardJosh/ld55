@@ -15,6 +15,8 @@ border_width_bottom = 1
 border_color = Color(0.247059, 0.247059, 0.454902, 1)
 
 [resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_dd7y8")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 3

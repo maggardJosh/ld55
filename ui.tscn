@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjiok5o0qam3w"]
+[gd_scene load_steps=14 format=3 uid="uid://cjiok5o0qam3w"]
 
 [ext_resource type="Script" path="res://DeathRect.gd" id="1_e1oy5"]
 [ext_resource type="Script" path="res://DebugLabel.gd" id="1_f57q1"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://OxygenUI.gd" id="9_qgeul"]
 [ext_resource type="Script" path="res://Discard Tip.gd" id="9_r3y7j"]
 [ext_resource type="Script" path="res://UpgradeUIContainer.gd" id="9_yqdpa"]
+[ext_resource type="Script" path="res://PauseUI.gd" id="12_38kxr"]
 
 [sub_resource type="Curve" id="Curve_74mx5"]
 _data = [Vector2(0, 0), 0.0, 0.76295, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -269,3 +270,52 @@ offset_right = 32.405
 offset_bottom = 28.0
 text = "Oxygen"
 horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.866667)
+script = ExtResource("12_38kxr")
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -102.0
+offset_right = -480.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme_override_font_sizes/font_size = 20
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 376.0
+offset_top = 31.0
+offset_right = -376.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Quit" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/ResumeButton" to="ColorRect" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Quit" to="ColorRect" method="_on_quit_pressed"]

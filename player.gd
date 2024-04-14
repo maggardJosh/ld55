@@ -120,8 +120,6 @@ func _physics_process(delta):
 	GameEvents.add_debug_obj.emit("in_water", is_in_water)
 	GameEvents.add_debug_obj.emit("grounded", is_on_floor())
 	GameEvents.add_debug_obj.emit("pos", global_position)
-	if Input.is_action_just_pressed("exit"):
-		get_tree().quit()
 	
 	var direction_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	GameEvents.add_debug_obj.emit("direction_input", direction_input)
