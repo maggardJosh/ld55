@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0kqrk3vva1y1"]
+
+[ext_resource type="Texture2D" uid="uid://b22vgato6q5c2" path="res://world/grass1.png" id="1_ywu6d"]
+[ext_resource type="Script" path="res://Decoration.gd" id="2_uk71n"]
+[ext_resource type="Shader" path="res://world/deco/seaweed.gdshader" id="2_vpkxb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1awf7"]
+resource_local_to_scene = true
+shader = ExtResource("2_vpkxb")
+shader_parameter/offset = 0.0
+
+[node name="Seaweed" type="Node2D"]
+script = ExtResource("2_uk71n")
+max_y_scale = 4.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1awf7")
+position = Vector2(0, -7)
+texture = ExtResource("1_ywu6d")

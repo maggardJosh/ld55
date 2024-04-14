@@ -3,6 +3,10 @@ extends RigidBody2D
 
 @export var inventory_item: InventoryItem
 @export var random_rotation_on_drop: bool = false
+const random_rotation_range = PI/10
+
+func _ready() -> void:
+	rotation = rotation + randf_range(-random_rotation_range, random_rotation_range)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("pickup_update_range"):

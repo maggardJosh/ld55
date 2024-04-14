@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=22 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
@@ -10,16 +10,16 @@
 [ext_resource type="Script" path="res://InnerAirArea.gd" id="8_7dvb7"]
 [ext_resource type="Script" path="res://PolygonWithCollision.gd" id="8_w2ktp"]
 [ext_resource type="PackedScene" uid="uid://daco7mvhk2p22" path="res://items/pickups/fish/orange_fish.tscn" id="9_najt1"]
+[ext_resource type="PackedScene" uid="uid://btgsom7dis0lc" path="res://items/pickups/fish/fast_fish.tscn" id="10_ki5cb"]
 [ext_resource type="PackedScene" uid="uid://b440huetpsjvh" path="res://items/pickups/flower_pickup.tscn" id="13_e6f26"]
+[ext_resource type="PackedScene" uid="uid://da7n1mecu53jy" path="res://items/pickups/copper_pickup.tscn" id="13_qekb3"]
+[ext_resource type="PackedScene" uid="uid://c0kqrk3vva1y1" path="res://world/deco/seaweed.tscn" id="14_8talo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
 size = Vector2(3343, 416)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxn7y"]
 size = Vector2(4543, 1464)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2dco"]
-size = Vector2(5782.5, 1362)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wau00"]
 size = Vector2(787, 626)
@@ -31,7 +31,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xvdo"]
-size = Vector2(10982, 735)
+size = Vector2(13640, 735)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ywnst"]
 rough = true
@@ -45,10 +45,11 @@ visible = false
 position = Vector2(-170, -27)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rotku")]
-position = Vector2(-145, -131)
+position = Vector2(-760, 182)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Biomes" type="Node2D" parent="."]
+visible = false
 z_index = 1
 
 [node name="NormalBiome" parent="Biomes" instance=ExtResource("5_18gyt")]
@@ -73,16 +74,14 @@ shape = SubResource("RectangleShape2D_hxn7y")
 debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 
 [node name="DarkBiome2" parent="Biomes" instance=ExtResource("5_18gyt")]
-position = Vector2(-2415, 3090)
+position = Vector2(-576, 1864)
 collision_layer = 0
 collision_mask = 2
 water_bg_color = Color(0.160784, 0.2, 0.537255, 1)
 water_color = Color(0.12549, 0.152941, 0.435294, 0.784314)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Biomes/DarkBiome2"]
-position = Vector2(1921.25, 1274)
-shape = SubResource("RectangleShape2D_t2dco")
-debug_color = Color(0.666667, 0.933333, 1, 0.419608)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Biomes/DarkBiome2"]
+polygon = PackedVector2Array(2731, 594, 3287, 544, 3893, 2062, 3909, 3186, -181, 2684, 705, 1275, 1229, 955, 2126, 944)
 
 [node name="SecretBiome1" parent="Biomes" instance=ExtResource("5_18gyt")]
 position = Vector2(-4252, 1741)
@@ -100,7 +99,7 @@ debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 z_index = 1
 material = SubResource("ShaderMaterial_sylxd")
 color = Color(0.262745, 0.317647, 0.768627, 0.501961)
-polygon = PackedVector2Array(-5857, 0, -6180, 675, -5440, 3257, -2795, 3363, 4967, 3000, 4367, 1410, -1005, 1780, -1316, 1780, -1338, 1772, -1374, 1701, -1301, 1603, -1210, 1563, -1024, 1573, -928, 1663, -938, 1739, -1005, 1780, 4367, 1410, 4149, 832, 69, 1074, -366, 1074, -357, 1047, -261, 945, -114, 934, -1, 1002, 69, 1074, 4149, 832, 3840, 0)
+polygon = PackedVector2Array(-10911, 0, -10526, 7326, -4756, 9815, 6859, 7142, 4429, 1576, 2388, 1772, 2054, 1772, 2088, 1643, 2253, 1603, 2381, 1697, 2388, 1772, 4429, 1576, 4367, 1410, -1005, 1780, -1316, 1780, -1338, 1772, -1374, 1701, -1301, 1603, -1210, 1563, -1024, 1573, -928, 1663, -938, 1739, -1005, 1780, 4367, 1410, 4149, 832, 69, 1074, -366, 1074, -357, 1047, -261, 945, -114, 934, -1, 1002, 69, 1074, 4149, 832, 3840, 0)
 script = ExtResource("2_imxiw")
 default_biome = NodePath("../Biomes/NormalBiome")
 biome_transition_time = 3.0
@@ -110,7 +109,7 @@ biome_transition_curve = SubResource("Curve_0m4yk")
 z_index = -2
 material = SubResource("ShaderMaterial_sylxd")
 color = Color(0.356863, 0.431373, 0.882353, 1)
-polygon = PackedVector2Array(-5857, 0, -6180, 675, -5440, 3257, -2795, 3363, 4967, 3000, 4367, 1410, -1005, 1780, -1316, 1780, -1338, 1772, -1374, 1701, -1301, 1603, -1210, 1563, -1024, 1573, -928, 1663, -938, 1739, -1005, 1780, 4367, 1410, 4149, 832, 69, 1074, -366, 1074, -357, 1047, -261, 945, -114, 934, -1, 1002, 69, 1074, 4149, 832, 3840, 0)
+polygon = PackedVector2Array(-10911, 0, -10526, 7326, -4756, 9815, 6859, 7142, 4429, 1576, 2388, 1772, 2054, 1772, 2088, 1643, 2253, 1603, 2381, 1697, 2388, 1772, 4429, 1576, 4367, 1410, -1005, 1780, -1316, 1780, -1338, 1772, -1374, 1701, -1301, 1603, -1210, 1563, -1024, 1573, -928, 1663, -938, 1739, -1005, 1780, 4367, 1410, 4149, 832, 69, 1074, -366, 1074, -357, 1047, -261, 945, -114, 934, -1, 1002, 69, 1074, 4149, 832, 3840, 0)
 
 [node name="AirBG" type="Polygon2D" parent="Water"]
 z_index = -3
@@ -126,10 +125,18 @@ position = Vector2(-2846, 1005)
 color = Color(0.333333, 0.25098, 0.227451, 1)
 polygon = PackedVector2Array(1464, 792, 1451, 687, 1555, 537, 1836, 532, 1979, 639, 1907, 789)
 
+[node name="AirBG3" type="Polygon2D" parent="Water"]
+z_index = -3
+material = SubResource("ShaderMaterial_sylxd")
+position = Vector2(525, 1000)
+color = Color(0.333333, 0.25098, 0.227451, 1)
+polygon = PackedVector2Array(1464, 792, 1451, 687, 1555, 537, 1836, 532, 1979, 639, 1907, 789)
+
 [node name="Portal" parent="." instance=ExtResource("5_ekxwn")]
 position = Vector2(-207, -33)
 
 [node name="Areas" type="Node2D" parent="."]
+visible = false
 
 [node name="WaterArea" type="Area2D" parent="Areas"]
 position = Vector2(0, 7)
@@ -143,14 +150,14 @@ script = ExtResource("3_58cow")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/WaterArea"]
 z_index = 4
-polygon = PackedVector2Array(4050, 0, -5857, 0, -6180, 675, -5440, 3257, -2795, 3363, 4967, 3000, 4062, -29)
+polygon = PackedVector2Array(4050, 0, -9495, 0, -8885, 7096, 6727, 6248, 4062, -29)
 
 [node name="OxygenArea" type="Area2D" parent="Areas"]
 collision_mask = 2
 script = ExtResource("5_ghrk7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/OxygenArea"]
-position = Vector2(-1482, -367.5)
+position = Vector2(-2811, -367.5)
 shape = SubResource("RectangleShape2D_8xvdo")
 
 [node name="OxygenArea3" type="Area2D" parent="Areas"]
@@ -187,151 +194,587 @@ script = ExtResource("8_7dvb7")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/InnerAirArea2"]
 polygon = PackedVector2Array(16, 65, 16, -8, 100, -94, 279, -92, 416, -52, 462, 65)
 
+[node name="OxygenArea5" type="Area2D" parent="Areas"]
+position = Vector2(2233, 1720)
+collision_mask = 2
+script = ExtResource("5_ghrk7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/OxygenArea5"]
+position = Vector2(-1, -3)
+polygon = PackedVector2Array(-202, 55, -212, 5, -145, -85, 10, -129, 163, -69, 244, 55)
+
+[node name="InnerAirArea3" type="Area2D" parent="Areas"]
+position = Vector2(2013, 1698)
+collision_mask = 2
+script = ExtResource("8_7dvb7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/InnerAirArea3"]
+polygon = PackedVector2Array(16, 65, 16, -8, 100, -94, 279, -92, 416, -52, 462, 65)
+
 [node name="World" type="Node2D" parent="."]
 
-[node name="StartingIsland" type="StaticBody2D" parent="World"]
+[node name="Collision" type="Node2D" parent="World"]
+
+[node name="StartingIsland" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(-110, -8)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/StartingIsland"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/StartingIsland"]
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(25, 0, 81, 33, 79, 45, 72, 67, 42, 79, -5, 65, -59, 57, -123, 69, -184, 110, -237, 121, -269, 98, -285, 64, -255, 19, -183, 0)
 script = ExtResource("8_w2ktp")
 
-[node name="Island2" type="StaticBody2D" parent="World"]
+[node name="Island2" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(427, 320)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Island2"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island2"]
 position = Vector2(-68, -5)
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(-123, 69, -284, 141, -402, 194, -425, 160, -490, 163, -562, 221, -546, 293, -671, 342, -724, 296, -741, 192, -713, 65, -635, -10, -510, 31, -398, -34, -225, -49, -163, -51, -108, -19)
 script = ExtResource("8_w2ktp")
 
-[node name="Island3" type="StaticBody2D" parent="World"]
+[node name="Island3" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(-137, 358)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Island3"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island3"]
 position = Vector2(122, 306)
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(379, -171, 346, -362, 526, -428, 707, -428, 821, -300, 822, -176, 793, 28, 636, 250, 511, 317, 303, 380, 276, 239, 308, 9)
 script = ExtResource("8_w2ktp")
 
-[node name="Island8" type="StaticBody2D" parent="World"]
+[node name="Island8" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(-639, 1406)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Island8"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island8"]
 position = Vector2(36, 135)
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(276, -181, 388, -197, 451, -275, 623, -291, 712, -261, 791, -221, 857.752, -49.6971, 829, 80, 762, 158, 660, 139, 578, 80, 420, 99, 385, 195, 284, 139, 236, 18, 212, -93)
 script = ExtResource("8_w2ktp")
 
-[node name="Island12" type="StaticBody2D" parent="World"]
+[node name="Island13" type="StaticBody2D" parent="World/Collision"]
+position = Vector2(517, 1247)
+physics_material_override = SubResource("PhysicsMaterial_ywnst")
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island13"]
+position = Vector2(36, 135)
+color = Color(0.321569, 0.192157, 0, 1)
+polygon = PackedVector2Array(276, -181, 329, -238, 622, -276, 695, -246, 821, -160, 857.752, -49.6971, 829, 80, 762, 158, 660, 139, 632, 72, 574, 34, 486, 64, 465, 122, 491, 251, 435, 344, 332, 344, 271, 338, 248, 305, 283, 246, 351, 65, 300, -28, 235, -37, 212, -93)
+script = ExtResource("8_w2ktp")
+
+[node name="Island12" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(-1715, 1560)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Island12"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island12"]
 position = Vector2(36, 135)
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(276, -181, 388, -197, 451, -275, 623, -291, 712, -261, 791, -221, 857.752, -49.6971, 829, 80, 762, 158, 660, 139, 663, 92, 741, 44, 751, -32, 655, -122, 469, -132, 378, -92, 305, 6, 341, 77, 419, 107, 446, 157, 385, 195, 284, 139, 236, 18, 212, -93)
 script = ExtResource("8_w2ktp")
 
-[node name="Island11" type="StaticBody2D" parent="World"]
+[node name="Island11" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(-2101, 1078)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Island11"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island11"]
 position = Vector2(9, 99)
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(365, -113, 405, -184, 365, -379, 470, -421, 523, -363, 546, -255, 541, -184, 657, -147, 743, -238, 845, -261, 894, -174, 807, -129, 766, -76, 747, 0, 762, 158, 685, 164, 620, 85, 569, 0, 453, -34, 340, 56, 314, 135, 280, 166, 210, 99, 218, 5, 286, -71)
 script = ExtResource("8_w2ktp")
 
-[node name="Island9" type="StaticBody2D" parent="World"]
+[node name="Island9" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(-635, 1937)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Island9"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island9"]
 position = Vector2(36, 135)
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(623, -291, 712, -261, 791, -221, 1471, 99, 2222, 133, 2518, -27, 2678, -31, 2782, 121, 2982, 597, 2490, 789, 2018, 845, 1886, 453, 1614, 417, 1230, 297, 1106, 177, 829, 80, 622, 177, 574, 397, 302, 437, 162, 377, 78, 65, 126, -43, 220, -142, 334, -261)
 script = ExtResource("8_w2ktp")
 
-[node name="Island7" type="StaticBody2D" parent="World"]
+[node name="Island7" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(-742, 907)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Island7"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island7"]
 position = Vector2(36, 135)
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(276, -181, 348, -229, 451, -275, 586, -275, 712, -261, 822, -176, 886, 33, 801, 59, 705, -40, 592, -108, 445, -97, 349, 5, 309, 132, 261, 149, 250, 16, 242, -81)
 script = ExtResource("8_w2ktp")
 
-[node name="Island6" type="StaticBody2D" parent="World"]
+[node name="Island6" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(1232, 731)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Island6"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island6"]
 position = Vector2(91, -494)
 color = Color(0.321569, 0.192157, 0, 1)
-polygon = PackedVector2Array(-65, -168, -8, -287, 107, -615, 421, -1305, 1472, -1348, 2390, 1226, 4135, 4608, 1296, 5254, 1449, 2635, 1072, 1613, 964, 1236, 783, 1276, 715, 1599, 487, 1700, 295, 1543, 265, 800, 289, 234, 92, 162, -6, 14)
+polygon = PackedVector2Array(-65, -168, -8, -287, 107, -615, 421, -1305, 1472, -1348, 2390, 1226, 4135, 4608, 1296, 5254, 1449, 2635, 1072, 1613, 1058, 1460, 930, 1366, 765, 1406, 715, 1599, 487, 1700, 295, 1543, 265, 800, 289, 234, 92, 162, -6, 14)
 script = ExtResource("8_w2ktp")
 
-[node name="Island4" type="StaticBody2D" parent="World"]
+[node name="Island4" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(-137, 358)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Island4"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island4"]
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(-381, 90, -399, 253, -468, 448, -455, 810, -669, 891, -873, 786, -955, 430, -1171, 335, -1495, 290, -1749, 360, -1857, 716, -1851, 970, -2067, 1224, -2219, 957, -2121, 615, -1930, 46, -2056, -127, -2128, -319, -1820, -547, -1676, -505, -1651, -338, -1719, -266, -1791, -270, -1848, -228, -1850, -115, -1810, -45, -1721, 15, -1519, 15, -1385, -49, -1293, -182, -1086, -232, -945, -192, -774, -160, -552, -112, -398, -34)
 script = ExtResource("8_w2ktp")
 
-[node name="Island10" type="StaticBody2D" parent="World"]
+[node name="Island10" type="StaticBody2D" parent="World/Collision"]
 position = Vector2(955, 2822)
 physics_material_override = SubResource("PhysicsMaterial_ywnst")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Island10"]
+[node name="Polygon2D" type="Polygon2D" parent="World/Collision/Island10"]
 color = Color(0.321569, 0.192157, 0, 1)
 polygon = PackedVector2Array(-381, 90, -499, 184, -609, 294, -724, 474, -812, 711, -958, 725, -1181, 458, -1152, 223, -938, 79, -723, -19, -512, -32, -398, -34, -225, -49, -101, -61, -75, 43, -177, 89)
 script = ExtResource("8_w2ktp")
 
 [node name="Fish" type="Node2D" parent="World"]
 
-[node name="Fish" parent="World/Fish" instance=ExtResource("9_najt1")]
-position = Vector2(-232, 174)
+[node name="Biome1" type="Node2D" parent="World/Fish"]
 
-[node name="Fish2" parent="World/Fish" instance=ExtResource("9_najt1")]
-position = Vector2(-338, 226)
+[node name="Fish" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-131, 172)
 
-[node name="Fish3" parent="World/Fish" instance=ExtResource("9_najt1")]
-position = Vector2(-110, 203)
+[node name="Fish2" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-343, 182)
+
+[node name="Fish3" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-140, 236)
+
+[node name="Fish4" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-435, 395)
+
+[node name="Fish5" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(292, 401)
+
+[node name="Fish6" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-1727, 252)
+
+[node name="Fish13" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-1821, 247)
+
+[node name="Fish14" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-1817, 174)
+
+[node name="Fish15" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-1773, 86)
+
+[node name="Fish16" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-1403, 53)
+
+[node name="Fish17" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-1036, 69)
+
+[node name="Fish18" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-649, 94)
+
+[node name="Fish7" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-1870, 182)
+
+[node name="Fish8" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(-1743, 182)
+
+[node name="Fish9" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(1134, 255)
+
+[node name="Fish10" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(1086, 134)
+
+[node name="Fish11" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(829, 293)
+
+[node name="Fish12" parent="World/Fish/Biome1" instance=ExtResource("9_najt1")]
+position = Vector2(826, 141)
+
+[node name="Biome2" type="Node2D" parent="World/Fish"]
+
+[node name="PurpleFish" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(1045, 1050)
+
+[node name="PurpleFish2" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(587, 1299)
+
+[node name="PurpleFish3" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(1103, 1497)
+
+[node name="PurpleFish4" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(1251, 1867)
+
+[node name="PurpleFish13" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(-371, 1312)
+
+[node name="PurpleFish14" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(-1252, 1161)
+
+[node name="PurpleFish15" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(-1790, 963)
+
+[node name="PurpleFish16" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(-1565, 1861)
+
+[node name="PurpleFish17" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(-1178, 2049)
+
+[node name="PurpleFish18" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(-542, 1753)
+
+[node name="PurpleFish5" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(654, 1729)
+
+[node name="PurpleFish6" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(-1631, 1356)
+
+[node name="PurpleFish7" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(-1399, 790)
+
+[node name="PurpleFish8" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(832, 1403)
+
+[node name="PurpleFish9" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(1075, 1526)
+
+[node name="PurpleFish10" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(358, 1547)
+
+[node name="PurpleFish11" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(-1927, 1174)
+
+[node name="PurpleFish12" parent="World/Fish/Biome2" instance=ExtResource("10_ki5cb")]
+position = Vector2(-1695, 608)
 
 [node name="Fauna" type="Node2D" parent="World"]
 
-[node name="Flower" parent="World/Fauna" instance=ExtResource("13_e6f26")]
-position = Vector2(-226, 59)
-rotation = 2.87979
+[node name="Biome1" type="Node2D" parent="World/Fauna"]
 
-[node name="Flower4" parent="World/Fauna" instance=ExtResource("13_e6f26")]
-position = Vector2(-117, 56)
-rotation = 3.23792
+[node name="Flower" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-237, 63)
+rotation = 2.61799
 
-[node name="Flower5" parent="World/Fauna" instance=ExtResource("13_e6f26")]
-position = Vector2(-169, 48)
-rotation = 3.16427
+[node name="Flower14" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-206, 54)
+rotation = 2.90671
 
-[node name="Flower6" parent="World/Fauna" instance=ExtResource("13_e6f26")]
-position = Vector2(-664, 174)
-rotation = 3.31727
+[node name="Flower2" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-170, 49)
+rotation = 3.14159
 
-[node name="Flower2" parent="World/Fauna" instance=ExtResource("13_e6f26")]
-position = Vector2(-1008, 207)
-rotation = 2.87979
+[node name="Flower3" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-1137, 150)
+rotation = 6.80677
 
-[node name="Flower3" parent="World/Fauna" instance=ExtResource("13_e6f26")]
-position = Vector2(-690, 171)
-rotation = 3.12723
+[node name="Flower4" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-1162, 143)
+rotation = 6.55447
+
+[node name="Flower5" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-1220, 127)
+rotation = 6.44228
+
+[node name="Flower8" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-821, 217)
+rotation = 6.44228
+
+[node name="Flower9" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-723, 237)
+rotation = 6.44228
+
+[node name="Flower10" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-748, 232)
+rotation = 6.45157
+
+[node name="Flower11" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-765, 229)
+rotation = 6.45157
+
+[node name="Flower12" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-784, 225)
+rotation = 6.45157
+
+[node name="Flower13" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-801, 223)
+rotation = 6.45157
+
+[node name="Flower6" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-1424, 177)
+rotation = 5.86059
+
+[node name="Flower7" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-1436, 188)
+rotation = 5.49743
+
+[node name="Flower15" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-1879, 358)
+rotation = 6.60978
+
+[node name="Flower16" parent="World/Fauna/Biome1" instance=ExtResource("13_e6f26")]
+position = Vector2(-1923, 330)
+rotation = 6.80184
+
+[node name="Copper" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-1926, 88)
+rotation = -1.39718
+
+[node name="Copper2" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-1936, 94.9999)
+rotation = -2.25802
+
+[node name="Copper3" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-1984, 129)
+rotation = -2.54134
+
+[node name="Copper4" parent="World/Fauna/Biome1" instance=ExtResource("13_qekb3")]
+position = Vector2(-1985, 163)
+rotation = -3.0342
+
+[node name="Biome2" type="Node2D" parent="World/Fauna"]
+
+[node name="Biome3" type="Node2D" parent="World/Fauna"]
+
+[node name="Deco" type="Node2D" parent="World"]
+
+[node name="Seaweed" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-151, 348)
+rotation = 0.0343135
+
+[node name="Seaweed17" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-126, 334)
+rotation = -0.525219
+
+[node name="Seaweed18" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-112, 323)
+rotation = -0.525219
+
+[node name="Seaweed19" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-99, 318)
+rotation = -0.525219
+
+[node name="Seaweed20" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-78, 308)
+rotation = -0.525219
+
+[node name="Seaweed21" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-64, 298)
+rotation = -0.525219
+
+[node name="Seaweed22" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-55, 287)
+rotation = -0.525219
+
+[node name="Seaweed23" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-170, 344)
+rotation = 0.476013
+
+[node name="Seaweed24" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-184, 338)
+rotation = 0.476013
+
+[node name="Seaweed25" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-208, 329)
+rotation = 0.476013
+
+[node name="Seaweed26" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-221, 327)
+rotation = 0.476013
+
+[node name="Seaweed27" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-254, 316)
+rotation = 0.476013
+
+[node name="Seaweed28" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-272, 309)
+rotation = 0.220384
+
+[node name="Seaweed29" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-286, 323)
+rotation = -0.329936
+
+[node name="Seaweed31" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-312, 347)
+rotation = -0.329936
+
+[node name="Seaweed32" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-329, 363)
+rotation = -0.329936
+
+[node name="Seaweed33" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-30, 283)
+rotation = -0.0701862
+
+[node name="Seaweed34" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-6, 277)
+rotation = -0.0701862
+
+[node name="Seaweed35" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(9, 280)
+rotation = -0.0701862
+
+[node name="Seaweed36" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(25, 279)
+rotation = -0.0701862
+
+[node name="Seaweed37" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(43, 272)
+rotation = -0.0701862
+
+[node name="Seaweed38" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(57, 277)
+rotation = -0.0701862
+
+[node name="Seaweed39" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(78, 269)
+rotation = -0.0701862
+
+[node name="Seaweed40" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(95, 270)
+rotation = -0.0701862
+
+[node name="Seaweed41" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(110, 271)
+rotation = -0.0701862
+
+[node name="Seaweed42" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(129, 267)
+rotation = -0.0701862
+
+[node name="Seaweed43" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(149, 267)
+rotation = -0.0701862
+
+[node name="Seaweed44" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(171, 267)
+rotation = -0.0701862
+
+[node name="Seaweed45" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(187, 266)
+rotation = -0.0701862
+
+[node name="Seaweed46" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(202, 272)
+rotation = 0.395431
+
+[node name="Seaweed47" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(216, 278)
+rotation = 0.395431
+
+[node name="Seaweed48" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(234, 288)
+rotation = 0.395431
+
+[node name="Seaweed30" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-303, 335)
+rotation = -0.329936
+
+[node name="Seaweed2" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-849, 212)
+rotation = 0.258746
+
+[node name="Seaweed3" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-869, 208)
+rotation = 0.258746
+
+[node name="Seaweed4" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-814, 220)
+rotation = 0.258746
+
+[node name="Seaweed5" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-790, 226)
+rotation = 0.258746
+
+[node name="Seaweed6" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-768, 230)
+rotation = 0.258746
+
+[node name="Seaweed49" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1939, 320)
+rotation = 0.258746
+
+[node name="Seaweed50" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1926, 329)
+rotation = 0.334898
+
+[node name="Seaweed51" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1915, 338)
+rotation = 0.258746
+
+[node name="Seaweed52" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1902, 344)
+rotation = 0.258746
+
+[node name="Seaweed53" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1895, 355)
+rotation = 0.258746
+
+[node name="Seaweed54" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1884, 355)
+rotation = 0.258746
+
+[node name="Seaweed55" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1871, 365)
+rotation = 0.258746
+
+[node name="Seaweed56" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1859, 376)
+rotation = 0.155347
+
+[node name="Seaweed57" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1848, 374)
+rotation = 0.155347
+
+[node name="Seaweed58" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1842, 374)
+rotation = 0.155347
+
+[node name="Seaweed59" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1830, 376)
+rotation = 0.155347
+
+[node name="Seaweed60" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-1817, 372)
+rotation = 0.155347
+
+[node name="Seaweed7" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-738, 234)
+rotation = 0.258746
+
+[node name="Seaweed8" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-709, 244)
+rotation = 0.258746
+
+[node name="Seaweed9" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-689, 250)
+rotation = 0.258746
+
+[node name="Seaweed10" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-915, 200)
+rotation = 0.258746
+
+[node name="Seaweed11" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-964, 190)
+rotation = 0.258746
+
+[node name="Seaweed12" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-954, 194)
+rotation = 0.258746
+
+[node name="Seaweed13" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-943, 195)
+rotation = 0.258746
+
+[node name="Seaweed14" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-925, 197)
+rotation = 0.258746
+
+[node name="Seaweed15" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-905, 204)
+rotation = 0.258746
+
+[node name="Seaweed16" parent="World/Deco" instance=ExtResource("14_8talo")]
+position = Vector2(-886, 205)
+rotation = 0.258746
 
 [node name="divedepth1" type="Marker2D" parent="."]
 position = Vector2(227, 950)
