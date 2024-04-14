@@ -53,7 +53,7 @@ position = Vector2(-170, -27)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rotku")]
 z_index = 1
-position = Vector2(-500, 86)
+position = Vector2(-3065, 2519)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Biomes" type="Node2D" parent="."]
@@ -105,8 +105,8 @@ debug_color = Color(0.666667, 0.933333, 1, 0.419608)
 position = Vector2(-7473, -1676)
 collision_layer = 0
 collision_mask = 2
-water_bg_color = Color(0.701961, 0.658824, 0.537255, 1)
-water_color = Color(0.419608, 0.411765, 0.227451, 0.556863)
+water_bg_color = Color(0.305882, 0.564706, 0.564706, 1)
+water_color = Color(0.392157, 0.482353, 0.678431, 0.580392)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Biomes/SideBiome"]
 position = Vector2(3526.5, 3712)
@@ -133,7 +133,7 @@ polygon = PackedVector2Array(-8135, 0, -8109.02, 973.453, -3666, 950, -3599, 820
 z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-1865, 305)
-color = Color(0.286275, 0.215686, 0.192157, 1)
+color = Color(0.168627, 0.156863, 0.211765, 1)
 polygon = PackedVector2Array(1464, 792, 1497, 691, 1588, 605, 1780, 605, 1982, 782)
 
 [node name="AirBG7" type="Polygon2D" parent="Water"]
@@ -147,28 +147,28 @@ polygon = PackedVector2Array(1497, 474, 2052, 285, 2752, 545, 2926, 769, 3045, 9
 z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-2846, 1005)
-color = Color(0.333333, 0.25098, 0.227451, 1)
+color = Color(0.168627, 0.156863, 0.211765, 1)
 polygon = PackedVector2Array(1464, 792, 1451, 687, 1555, 537, 1836, 532, 1979, 639, 1907, 789)
 
 [node name="AirBG3" type="Polygon2D" parent="Water"]
 z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(525, 1000)
-color = Color(0.333333, 0.25098, 0.227451, 1)
+color = Color(0.168627, 0.156863, 0.211765, 1)
 polygon = PackedVector2Array(1464, 792, 1451, 687, 1555, 537, 1836, 532, 1979, 639, 1907, 789)
 
 [node name="AirBG5" type="Polygon2D" parent="Water"]
 z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-6655, 1415)
-color = Color(0.333333, 0.25098, 0.227451, 1)
+color = Color(0.301961, 0.266667, 0.235294, 1)
 polygon = PackedVector2Array(1649, 776, 1679, 671, 1785, 646, 1892, 725, 1907, 789)
 
 [node name="AirBG6" type="Polygon2D" parent="Water"]
 z_index = -4
 material = SubResource("ShaderMaterial_sylxd")
 position = Vector2(-5202, 177)
-color = Color(0.333333, 0.25098, 0.227451, 1)
+color = Color(0.301961, 0.266667, 0.235294, 1)
 polygon = PackedVector2Array(1518, 781, 1582, 623, 1885, 552, 2052, 613, 2066, 790)
 
 [node name="AirBG4" type="Polygon2D" parent="Water"]
@@ -1179,7 +1179,9 @@ points = PackedVector2Array(-456, 358, -397, 292, -320, 249, -289, 204)
 script = ExtResource("20_hpkv7")
 decoration = ExtResource("14_8talo")
 
-[node name="Label" type="Label" parent="World"]
+[node name="End" type="Node2D" parent="World"]
+
+[node name="Label" type="Label" parent="World/End"]
 offset_left = -4223.0
 offset_top = 4623.0
 offset_right = -4103.0
@@ -1188,6 +1190,78 @@ scale = Vector2(4.28647, 4.28647)
 text = "Thanks For Playing!
 Made for LD55 - MaggardJosh"
 horizontal_alignment = 1
+
+[node name="PurpleFish" parent="World/End" instance=ExtResource("10_ki5cb")]
+position = Vector2(-5552, 5856)
+
+[node name="PurpleFish2" parent="World/End" instance=ExtResource("10_ki5cb")]
+position = Vector2(-5528, 5869)
+
+[node name="PurpleFish3" parent="World/End" instance=ExtResource("10_ki5cb")]
+position = Vector2(-5486, 5845)
+
+[node name="PurpleFish4" parent="World/End" instance=ExtResource("10_ki5cb")]
+position = Vector2(-5796, 6001)
+
+[node name="PurpleFish5" parent="World/End" instance=ExtResource("10_ki5cb")]
+position = Vector2(-5796, 6145)
+
+[node name="PurpleFish6" parent="World/End" instance=ExtResource("10_ki5cb")]
+position = Vector2(-5622, 6245)
+
+[node name="Fish" parent="World/End" instance=ExtResource("9_najt1")]
+position = Vector2(-5570, 5904)
+
+[node name="Fish2" parent="World/End" instance=ExtResource("9_najt1")]
+position = Vector2(-5330, 6091)
+
+[node name="Fish3" parent="World/End" instance=ExtResource("9_najt1")]
+position = Vector2(-5449, 6245)
+
+[node name="Fish4" parent="World/End" instance=ExtResource("9_najt1")]
+position = Vector2(-5570, 6114)
+
+[node name="Fish5" parent="World/End" instance=ExtResource("9_najt1")]
+position = Vector2(-5230, 5971)
+
+[node name="Fish6" parent="World/End" instance=ExtResource("9_najt1")]
+position = Vector2(-4924, 5948)
+
+[node name="Fish7" parent="World/End" instance=ExtResource("9_najt1")]
+position = Vector2(-5107, 6145)
+
+[node name="Fish8" parent="World/End" instance=ExtResource("9_najt1")]
+position = Vector2(-5330, 6294)
+
+[node name="Fish9" parent="World/End" instance=ExtResource("9_najt1")]
+position = Vector2(-5125, 5813)
+
+[node name="RedFish" parent="World/End" instance=ExtResource("12_eofuo")]
+position = Vector2(-5751, 6446)
+
+[node name="RedFish2" parent="World/End" instance=ExtResource("12_eofuo")]
+position = Vector2(-5449, 6563)
+
+[node name="RedFish3" parent="World/End" instance=ExtResource("12_eofuo")]
+position = Vector2(-5125, 6510)
+
+[node name="RedFish4" parent="World/End" instance=ExtResource("12_eofuo")]
+position = Vector2(-5024, 6446)
+
+[node name="RedFish5" parent="World/End" instance=ExtResource("12_eofuo")]
+position = Vector2(-5330, 6599)
+
+[node name="RedFish6" parent="World/End" instance=ExtResource("12_eofuo")]
+position = Vector2(-5622, 6510)
+
+[node name="RedFish7" parent="World/End" instance=ExtResource("12_eofuo")]
+position = Vector2(-5854, 6510)
+
+[node name="RedFish8" parent="World/End" instance=ExtResource("12_eofuo")]
+position = Vector2(-6115, 6268)
+
+[node name="RedFish9" parent="World/End" instance=ExtResource("12_eofuo")]
+position = Vector2(-4775, 6245)
 
 [node name="divedepth1" type="Marker2D" parent="."]
 position = Vector2(227, 950)
