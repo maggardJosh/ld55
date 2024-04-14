@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1e2254bs6m3e"]
+[gd_scene load_steps=21 format=3 uid="uid://c1e2254bs6m3e"]
 
 [ext_resource type="PackedScene" uid="uid://mnaxd41w2loc" path="res://player.tscn" id="1_rotku"]
 [ext_resource type="Script" path="res://Water.gd" id="2_imxiw"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://OxygenArea.gd" id="5_ghrk7"]
 [ext_resource type="PackedScene" uid="uid://ba5qec1sf8vey" path="res://items/pickups/coral_pickup.tscn" id="9_6hed1"]
 [ext_resource type="PackedScene" uid="uid://cyx2ogpbol255" path="res://items/pickups/rock_break_interact.tscn" id="10_j5waq"]
+[ext_resource type="PackedScene" uid="uid://drhq5o870i1ub" path="res://items/pickups/shard_pickup.tscn" id="10_mgcnv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as6lo"]
 size = Vector2(4246, 378)
@@ -257,6 +258,14 @@ rotation = 0.37377
 [node name="Rock2" parent="." instance=ExtResource("10_j5waq")]
 position = Vector2(-102, 62)
 rotation = 0.984002
+
+[node name="Shard" parent="." instance=ExtResource("10_mgcnv")]
+position = Vector2(-353, 155)
+rotation = 2.35619
+
+[node name="Shard2" parent="." instance=ExtResource("10_mgcnv")]
+position = Vector2(-325, 130)
+rotation = 2.61211
 
 [connection signal="body_entered" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Areas/WaterArea" to="Areas/WaterArea" method="_on_body_exited"]

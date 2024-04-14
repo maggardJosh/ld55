@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="CraftableInventoryItem" load_steps=5 format=3 uid="uid://jelef2wcbg1y"]
+[gd_resource type="Resource" script_class="CraftableInventoryItem" load_steps=6 format=3 uid="uid://jelef2wcbg1y"]
 
-[ext_resource type="Texture2D" uid="uid://yodcd7d5m6ag" path="res://items/craftable/glass.png" id="1_7n3n4"]
-[ext_resource type="Resource" uid="uid://cnn7fbtlxt5a" path="res://items/craftable/glass.tres" id="1_68de6"]
-[ext_resource type="Resource" uid="uid://dcorhwv3uco24" path="res://items/raw_material/coral.tres" id="3_xhc0a"]
+[ext_resource type="Texture2D" uid="uid://yodcd7d5m6ag" path="res://items/craftable/glass.png" id="1_fu26d"]
+[ext_resource type="Resource" uid="uid://cnn7fbtlxt5a" path="res://items/craftable/glass.tres" id="2_o2uc5"]
+[ext_resource type="Resource" uid="uid://dcorhwv3uco24" path="res://items/raw_material/coral.tres" id="3_eyhid"]
+[ext_resource type="Resource" uid="uid://c1a3igbsujtvc" path="res://items/raw_material/shards.tres" id="4_kfxq4"]
 [ext_resource type="Script" path="res://items/craftable/CraftableInventoryItem.gd" id="4_qdgxp"]
 
 [resource]
 script = ExtResource("4_qdgxp")
-inventory_item = ExtResource("1_68de6")
+inventory_item = ExtResource("2_o2uc5")
 title = "Glass"
-image = ExtResource("1_7n3n4")
+image = ExtResource("1_fu26d")
 description = "Smooth and clear"
-requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("3_xhc0a"), ExtResource("3_xhc0a")])
+requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("3_eyhid"), ExtResource("4_kfxq4")])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c1a3igbsujtvc"]
+
+[ext_resource type="Texture2D" uid="uid://cpnme144vbek0" path="res://items/raw_material/shards.png" id="1_8g3w8"]
+[ext_resource type="Script" path="res://items/InventoryItem.gd" id="2_rmdso"]
+
+[resource]
+script = ExtResource("2_rmdso")
+inventory_image = ExtResource("1_8g3w8")
+title = "Shards"
+description = "Sharp gems"
+scenePath = "res://items/pickups/shard_pickup.tscn"
