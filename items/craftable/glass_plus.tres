@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dmollf7h74fs2"]
 
-[ext_resource type="Texture2D" uid="uid://yodcd7d5m6ag" path="res://items/craftable/glass.png" id="1_d1ayq"]
+[ext_resource type="Texture2D" uid="uid://cvv4rj470cxy" path="res://items/craftable/glass_plus.png" id="1_bxeqd"]
 [ext_resource type="Script" path="res://items/InventoryItem.gd" id="2_ordxg"]
 
 [resource]
 script = ExtResource("2_ordxg")
-inventory_image = ExtResource("1_d1ayq")
+inventory_image = ExtResource("1_bxeqd")
 title = "Glass+"
 description = "Smoother and clearer"
 scenePath = "res://items/pickups/glass_plus_pickup.tscn"

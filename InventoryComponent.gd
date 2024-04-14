@@ -36,7 +36,8 @@ func _on_get_item(item: CraftableInventoryItem):
 func _on_drop_item_index(item_index: int):
 	var instantiated_obj:ItemPickup = load(items[item_index].scenePath).instantiate()
 	get_tree().root.add_child(instantiated_obj)
-	instantiated_obj.drop(owner.global_position)
+	var facing_left = owner.is_facing_left()
+	instantiated_obj.drop(owner.global_position, -PI/4 if facing_left else PI/4, -PI/9 if facing_left else PI/9 )
 	items[item_index] = null
 	emit_inventory_signals()
 	
@@ -53,6 +54,14 @@ func try_get_inventory_item(inventory_item: InventoryItem) -> bool:
 			items[i] = inventory_item
 			emit_inventory_signals()
 			return true
+	return false
+
+func try_drop() -> bool:
+	for i in max_inventory_size:
+		if items[i] != null:
+			_on_drop_item_index(i)
+			return true
+
 	return false
 
 func emit_inventory_signals():

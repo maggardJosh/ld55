@@ -94,12 +94,19 @@ func set_in_oxygen(is_in_oxygen):
 	if is_in_oxygen:
 		GameEvents.player_enter_air.emit()
 	oxygen_component.set_is_in_water(not is_in_oxygen)
+	
+func is_facing_left() -> bool:
+	return sprite.scale.x == 1
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		pickup_component.try_pickup(inventory_component)
 	if event.is_action_pressed("cheat_1"):
 		current_water_speed_level += 1
+	if event.is_action_pressed("cheat_2"):
+		GameEvents.toggle_costs.emit()
+	if event.is_action_pressed("drop"):
+		inventory_component.try_drop()
 		
 		
 var swim_angle: float = 0

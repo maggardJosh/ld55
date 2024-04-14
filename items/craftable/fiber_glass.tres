@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bvdnd87huhc3r"]
 
-[ext_resource type="Texture2D" uid="uid://dx68lnjpd7sts" path="res://items/craftable/fiber.png" id="1_a3dg3"]
+[ext_resource type="Texture2D" uid="uid://bj8pujwjlfgyc" path="res://items/craftable/fiber_glass.png" id="1_72aac"]
 [ext_resource type="Script" path="res://items/InventoryItem.gd" id="2_x1hva"]
 
 [resource]
 script = ExtResource("2_x1hva")
-inventory_image = ExtResource("1_a3dg3")
+inventory_image = ExtResource("1_72aac")
 title = "Fiber Glass"
 description = "The ultimate crafting material"
 scenePath = "res://items/pickups/fiber_glass_pickup.tscn"

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://lhq7a1famv6o"]
 
-[ext_resource type="Texture2D" uid="uid://dx68lnjpd7sts" path="res://items/craftable/fiber.png" id="1_jkvoa"]
+[ext_resource type="Texture2D" uid="uid://bjxjgpea5kd52" path="res://items/craftable/fiber_plus.png" id="1_cmgpq"]
 [ext_resource type="Script" path="res://items/InventoryItem.gd" id="2_1iqa4"]
 
 [resource]
 script = ExtResource("2_1iqa4")
-inventory_image = ExtResource("1_jkvoa")
+inventory_image = ExtResource("1_cmgpq")
 title = "Fiber+"
 description = "Useful for crafting upgrades"
 scenePath = "res://items/pickups/fiber_plus_pickup.tscn"
