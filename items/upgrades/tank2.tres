@@ -10,9 +10,9 @@
 [resource]
 script = ExtResource("4_4ducs")
 upgrade_id = "tank"
-upgrade_value = 40.0
+upgrade_value = 60.0
 next_upgrade = ExtResource("2_ycrcv")
 title = "Tank Upgrade 2"
 image = ExtResource("1_ybg5a")
-description = "Increase O2 to 40 seconds"
+description = "Increase O2 to 60 seconds"
 requirements = Array[Resource("res://items/InventoryItem.gd")]([ExtResource("3_jx5qc"), ExtResource("2_ax7m5"), ExtResource("5_1p02g")])
