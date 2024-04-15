@@ -214,10 +214,9 @@ polygon = PackedVector2Array(384, 1074, 852, 431, 1751, 196, 2710, 188, 3783, 69
 position = Vector2(-207, -33)
 
 [node name="Areas" type="Node2D" parent="."]
-visible = false
 
 [node name="WaterArea" type="Area2D" parent="Areas"]
-position = Vector2(0, -31)
+position = Vector2(0, -27)
 collision_mask = 6
 gravity_space_override = 3
 gravity_point_center = Vector2(0, 0.2)
@@ -232,6 +231,7 @@ position = Vector2(4, 34)
 polygon = PackedVector2Array(4050, 0, -13841, 0, -12041, 12496, 9540, 11904, 4062, -29)
 
 [node name="OxygenArea" type="Area2D" parent="Areas"]
+position = Vector2(0, 5)
 collision_mask = 2
 script = ExtResource("5_ghrk7")
 
