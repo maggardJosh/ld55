@@ -7,7 +7,7 @@ on:
 
 env:
   GODOT_VERSION: 4.2.1
-  EXPORT_NAME: ld55
+  EXPORT_NAME: deep
 
 jobs:
 
@@ -37,13 +37,13 @@ jobs:
             mkdir -v -p build/pc
             cd $EXPORT_NAME
             godot -v --headless --export-debug "html5" ../build/web/index.html
-            godot -v --headless --export-debug "Windows Desktop" ../build/pc/aarl.exe
+            godot -v --headless --export-debug "Windows Desktop" ../build/pc/deep.exe
         - name: Butler Upload
           uses: manleydev/butler-publish-itchio-action@master
           env:
             BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
             CHANNEL: web
-            ITCH_GAME: ld55
+            ITCH_GAME: deep
             ITCH_USER: maggardJosh
             PACKAGE: build/web
             VERSION: ${{ github.ref_name }}
@@ -52,7 +52,7 @@ jobs:
           env:
             BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
             CHANNEL: pc
-            ITCH_GAME: ld55
+            ITCH_GAME: deep
             ITCH_USER: maggardJosh
             PACKAGE: build/pc
             VERSION: ${{ github.ref_name }}
