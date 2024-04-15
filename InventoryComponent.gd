@@ -2,6 +2,8 @@ class_name InventoryComponent
 extends Node
 
 @export var max_inventory_size: int = 5
+@onready var pickup_audio_stream_player: AudioStreamPlayer2D = $"../PickupAudioStreamPlayer"
+@onready var drop_audio_stream_player: AudioStreamPlayer2D = $"../DropAudioStreamPlayer"
 
 var items: Array[InventoryItem]
 var is_full = false
@@ -62,6 +64,7 @@ func try_get_inventory_item(inventory_item: InventoryItem) -> bool:
 	for i in max_inventory_size:
 		if items[i] == null:
 			items[i] = inventory_item
+			pickup_audio_stream_player.play()
 			emit_inventory_signals()
 			return true
 	return false
@@ -70,6 +73,7 @@ func try_drop() -> bool:
 	for i in max_inventory_size:
 		if items[i] != null:
 			_on_drop_item_index(i)
+			drop_audio_stream_player.play()
 			return true
 
 	return false

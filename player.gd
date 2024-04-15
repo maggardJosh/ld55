@@ -34,6 +34,10 @@ var current_water_speed_level: int = 0
 @onready var flippers_sprite: Sprite2D = %FlippersSprite
 @onready var pack_sprite: Sprite2D = %PackSprite
 
+@onready var step_audio_player: AudioStreamPlayer2D = $StepAudioPlayer
+@onready var splash_audio_player: AudioStreamPlayer2D = $SplashAudioPlayer
+@onready var pickup_audio_stream_player: AudioStreamPlayer2D = $PickupAudioStreamPlayer
+@onready var jump_audio_player: AudioStreamPlayer2D = $JumpAudioPlayer
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water: bool = false
@@ -49,6 +53,7 @@ func _on_get_upgrade(upgrade: UpgradeResource):
 		update_speed(upgrade.upgrade_value)
 	if upgrade.upgrade_id == "pack":
 		pack_sprite.visible = true
+	pickup_audio_stream_player.play()
 
 
 func update_speed(upgrade_value: float):
@@ -75,6 +80,12 @@ func enter_water():
 		velocity.y *= .1
 	else:
 		velocity.y *= .5
+	
+	splash_audio_player.play()
+
+func on_step():
+	if is_on_floor():
+		step_audio_player.play()
 
 func exit_water():
 	if sprite.scale.x == 1:
@@ -89,6 +100,8 @@ func exit_water():
 	is_in_water = false
 	if velocity.y > -20:
 		velocity.y = 0
+	if velocity.y < -100:
+		splash_audio_player.play()
 
 func die():
 	global_position = spawn_point.global_position
@@ -138,6 +151,7 @@ func _physics_process(delta):
 
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_vel
+			jump_audio_player.play()
 
 		var x_input = Input.get_axis("move_left", "move_right")	
 		if is_on_floor():

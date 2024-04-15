@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://mnaxd41w2loc"]
+[gd_scene load_steps=25 format=3 uid="uid://mnaxd41w2loc"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b3cg5"]
 [ext_resource type="Texture2D" uid="uid://c4etptninfkid" path="res://player.png" id="2_7u1va"]
@@ -8,9 +8,14 @@
 [ext_resource type="Script" path="res://OxygenComponent.gd" id="4_qxc6h"]
 [ext_resource type="Texture2D" uid="uid://bbiyi08usjejr" path="res://e_key_prompt.png" id="6_d0b6w"]
 [ext_resource type="Script" path="res://InventoryComponent.gd" id="6_ln2tb"]
+[ext_resource type="AudioStream" uid="uid://pwbvhjw723hx" path="res://sfx/pickup.wav" id="7_q78ai"]
 [ext_resource type="Texture2D" uid="uid://ciodcpkov6n6m" path="res://tank.png" id="8_1i6di"]
+[ext_resource type="AudioStream" uid="uid://cdydakg8tlheu" path="res://sfx/drop.wav" id="8_rwc7s"]
 [ext_resource type="Texture2D" uid="uid://v1upy5pq1ex5" path="res://flippers.png" id="9_uomt8"]
 [ext_resource type="Texture2D" uid="uid://ca21dymab7yp4" path="res://pack.png" id="10_i418l"]
+[ext_resource type="AudioStream" uid="uid://d3tspm6sywl0g" path="res://sfx/step.wav" id="12_suukh"]
+[ext_resource type="AudioStream" uid="uid://dm0143dpm8ar1" path="res://sfx/splash.wav" id="13_jwyq2"]
+[ext_resource type="AudioStream" uid="uid://bcnrrw1b4xlp8" path="res://sfx/jump.wav" id="16_byf8e"]
 
 [sub_resource type="Curve" id="Curve_b2lt3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -419,6 +424,23 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(0.5, 6), Vector2(0.5, 7), Vector2(0.5, 6), Vector2(0.5, 7)]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"on_step"
+}, {
+"args": [],
+"method": &"on_step"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_781fc"]
 _data = {
@@ -525,31 +547,31 @@ max_inventory_size = 2
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("2_7u1va")
-offset = Vector2(1.5, 0.5)
+offset = Vector2(0.5, 1)
 region_enabled = true
-region_rect = Rect2(41, 46, 17, 21)
+region_rect = Rect2(77, 2, 17, 22)
 
 [node name="TankSprite" type="Sprite2D" parent="Sprite"]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("8_1i6di")
-offset = Vector2(9, 1)
+offset = Vector2(7, 1)
 region_enabled = true
-region_rect = Rect2(21, 18, 8, 14)
+region_rect = Rect2(31, 18, 8, 14)
 
 [node name="FlippersSprite" type="Sprite2D" parent="Sprite"]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("9_uomt8")
-offset = Vector2(-0.5, 7.5)
+offset = Vector2(0, 8.5)
 region_enabled = true
-region_rect = Rect2(2, 12, 17, 7)
+region_rect = Rect2(64, 24, 10, 7)
 
 [node name="PackSprite" type="Sprite2D" parent="Sprite"]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("10_i418l")
-offset = Vector2(1.5, 6)
+offset = Vector2(0.5, 6)
 region_enabled = true
 region_rect = Rect2(19, 2, 15, 8)
 
@@ -574,3 +596,28 @@ libraries = {
 "": SubResource("AnimationLibrary_781fc")
 }
 autoplay = "idle"
+
+[node name="StepAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 7)
+stream = ExtResource("12_suukh")
+bus = &"SFX"
+
+[node name="SplashAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 7)
+stream = ExtResource("13_jwyq2")
+bus = &"SFX"
+
+[node name="JumpAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 7)
+stream = ExtResource("16_byf8e")
+bus = &"SFX"
+
+[node name="PickupAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(112, 37)
+stream = ExtResource("7_q78ai")
+bus = &"SFX"
+
+[node name="DropAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(112, 37)
+stream = ExtResource("8_rwc7s")
+bus = &"SFX"
