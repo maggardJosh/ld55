@@ -108,7 +108,7 @@ offset_top = -34.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 0
+theme_override_constants/separation = 1
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/RequirementsHBox"]
